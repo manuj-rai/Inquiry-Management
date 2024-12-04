@@ -4,6 +4,8 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
+
+  /*Main Layout*/
   {
     path: '',
     component: MainLayoutComponent,
@@ -14,6 +16,8 @@ export const routes: Routes = [
 
     ]
   },
+
+  /*Admin Layout*/
   {
     path: 'admin',
     component: AdminComponent,

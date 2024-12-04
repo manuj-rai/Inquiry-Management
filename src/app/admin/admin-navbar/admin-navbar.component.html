@@ -1,1 +1,34 @@
-<p>admin-navbar works!</p>
+
+<div class="navbar">
+    <span class="logo"><span class="email" style="color:red;">Blur</span>Admin
+     <button (click)="toggleSidebar()" class="toggle-button">
+      <span class="material-icons">menu</span>
+    </button>
+  <div class="search-container">
+      <span class="material-icons search-icon">search</span>
+      <input type="text" placeholder="Search for..." class="search-box" />    
+    </div></span>
+    <div class="user-info">
+      <span>Have questions? <span class="email" style="color:red;"><a href="mailto:example@example.com">Send Email</a></span></span>
+   
+    <!-- Profile Image with Dropdown -->
+    <div class="profile-dropdown">
+      <img src="https://img.freepik.com/free-photo/portrait-charismatic-sensual-male-black-sweater-creative-personality_613910-11128.jpg?t=st=1730097183~exp=1730100783~hmac=b50f701024affc8e11d46c8969708505745c0cc74e9af592365e5e49e8bbf1c0&w=740" 
+           alt="User Profile" 
+           class="user-img" 
+           (click)="toggleDropdown()" />
+  
+     <!-- Dropdown Menu -->
+      <div class="dropdown-menu" *ngIf="isDropdownVisible">
+      <a href="/profile" class="dropdown-item">
+          <span class="material-icons">account_circle</span> Profile
+      </a>
+      <a href="/settings" class="dropdown-item">
+          <span class="material-icons">settings</span> Settings
+      </a>
+      <a href="/logout" class="dropdown-item">
+          <span class="material-icons">logout</span> Logout
+      </a>
+      </div>
+    </div>
+  </div>

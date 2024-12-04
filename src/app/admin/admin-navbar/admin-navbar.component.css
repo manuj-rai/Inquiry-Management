@@ -1,0 +1,139 @@
+
+/* Base Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background-color: #242b44;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    color: #fff;
+    align-items: center;
+    position: relative;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+  }
+  
+  .toggle-button { 
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    flex: 1;
+  }
+  
+  .search-icon {
+    color: white;
+    margin-right: 8px;
+    font-size: 18px;
+  }
+  
+  .search-box {
+    background: transparent;
+    color: #fff;
+    width: 100%;
+    max-width: 350px;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .search-box:focus {
+    outline: 1px solid rgb(255 255 255 / 16%);
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+  }
+  
+  .user-img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  /* Profile Dropdown */
+  .profile-dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 40px;
+    right: -15px;
+    background-color: #242b44;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    border-radius: 5px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dropdown-menu.active {
+    display: block;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .dropdown-item:last-child {
+    color: red;
+  }
+  
+  
+  .dropdown-item:hover {
+    color: #36f; 
+  }
+
+  .dropdown-item:last-child:hover {
+    color:rgb(255, 65, 65)
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .search-container {
+      display: none; /* Hide search on smaller screens */
+    }
+  
+    .dropdown-menu {
+      top: 50px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo {
+      font-size: 20px;
+    }
+  
+    .user-info {
+      font-size: 12px;
+    }
+  
+    .user-img {
+      width: 25px;
+      height: 25px;
+    }
+  }
