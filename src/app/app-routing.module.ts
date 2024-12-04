@@ -1,15 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact.component'; // Import ContactComponent
+import { RouterModule,} from '@angular/router';
+import { appRoutes } from './app.routes';
 
-const routes: Routes = [
-  { path: 'contact', component: ContactComponent }, // Define route for ContactComponent
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Optional: Redirect to home if no route is found
-  { path: '**', redirectTo: '/home' }, // Optional: Redirect unknown routes to home
-];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

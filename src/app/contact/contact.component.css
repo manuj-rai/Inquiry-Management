@@ -1,9 +1,14 @@
 .contact-form {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 45px auto;
     padding: 20px;
-    background-color: #f4f4f4;
-    border-radius: 8px;
+    background-color: #222b45;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    border-radius: .25rem;
+    color:#fff;
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
   }
   
   .contact-form h2 {
@@ -21,11 +26,28 @@
   }
   
   .form-control {
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+    border: 1px solid #101426;
+    border-radius: .25rem;
+    padding: .6375rem 0rem;
+    background-color: #161a2f;
+    color: #fff;
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    transition: 0.3s ease-in;
+  }
+
+  .form-control::placeholder {
+    padding: 0 10px;
+  }
+
+  .form-control:hover {
+    background-color: #121525;
+  }
+
+  .form-control:focus {
+    outline:none;
+    border: 1px solid #007bff;
   }
   
   .btn {
@@ -39,7 +61,7 @@
   }
   
   .btn:disabled {
-    background-color: #ccc;
+    background-color: #0057b375;
     cursor: not-allowed;
   }
   
@@ -47,3 +69,16 @@
     background-color: #0056b3;
   }
   
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .col-md-6 {
+    flex: 1 1 45%;
+  }
+  
+  .col-12 {
+    flex: 1 1 100%;
+  }

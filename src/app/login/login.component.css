@@ -1,0 +1,108 @@
+.login-form {
+    max-width: 300px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #222b45;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    border-radius: .25rem;
+    color:#fff;
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  input.form-control {
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+    border: 1px solid #101426;
+    border-radius: .25rem;
+    padding: 9px 13px;
+    background-color: #161a2f;
+    color: #fff;
+    width: 90%;
+    transition: 0.3s ease-in;
+  }
+
+  input.form-control:focus {
+    outline: none;
+    border: 1px solid #007bff;
+  }
+
+  input.form-control:hover {
+    background-color: #121525;
+  }
+
+  .form-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 5px;
+
+  }
+
+  .remember-me {
+    display: flex;
+    align-items: center;
+  }
+
+  a.forgot-password {
+    color: #598bff;
+  }
+  
+  button:disabled {
+    background-color: #007bff93;
+    cursor: not-allowed;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 12px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  .social-btn.google {
+    background-color: #db4437;
+  }
+  
+  .social-btn.facebook {
+    background-color: #4267b2;
+  }
+  
+  .social-btn:hover {
+    opacity: 0.9;
+  }
+
+  .signup-link {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 0 5px;
+  }
+
+  a {
+    color: #598bff;
+  }
+  
