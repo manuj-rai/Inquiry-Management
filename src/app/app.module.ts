@@ -7,12 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
+    AppComponent,
     ContactComponent
   ], 
   imports: [
     BrowserModule,
-    AppComponent,
-    ContactComponent,
     AppRoutingModule
   ],
   providers: [],  
