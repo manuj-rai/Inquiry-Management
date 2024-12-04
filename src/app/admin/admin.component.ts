@@ -16,7 +16,7 @@ import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 })
 export class AdminComponent {
 
-  isSidebarVisible = true;
+  isSidebarVisible = false;
 
   onSidebarToggle() {
     this.isSidebarVisible = !this.isSidebarVisible; // Toggle sidebar visibility
