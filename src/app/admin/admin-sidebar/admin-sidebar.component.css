@@ -55,7 +55,12 @@
   }
   
   @media (max-width: 768px){
-    .hidden{
+    .sidebar {
+      width: 130px;
+    }
+
+    .hidden {
+        width: 40px;
       padding: 0px;
     }
   }

@@ -52,7 +52,11 @@
   }
   
   .search-box:focus {
-    outline: 1px solid rgb(255 255 255 / 16%);
+    outline: 1px solid #161a2f;
+  }
+
+  a {
+    color: #36f;
   }
   
   .user-info {
@@ -78,13 +82,18 @@
   .dropdown-menu {
     position: absolute;
     top: 40px;
-    right: -15px;
+    right: -12px;
     background-color: #242b44;
     box-shadow: 0 .5rem 1rem #1a1f33;
     border-radius: 5px;
-    width: 150px;
+    width: 130px;
     display: flex;
     flex-direction: column;
+  }
+
+  .dropdown-item .material-icons {
+    font-size: 14px;
+    margin-right: 10px;
   }
   
   .dropdown-menu.active {
@@ -119,7 +128,7 @@
     }
   
     .dropdown-menu {
-      top: 50px;
+      top: 35px;
     }
   }
   
