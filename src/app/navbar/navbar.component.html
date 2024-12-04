@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <!-- Logo -->
+    <div class="navbar-logo">
+      <img src="https://static.fibre2fashion.com/f2flogo/f2flogo-white.svg" alt="Logo">
+      <span></span>
+    </div>
+  
+    <!-- Hamburger Menu -->
+    <div class="navbar-toggle" (click)="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  
+    <!-- Navigation Links -->
+    <ul class="navbar-links" [class.active]="menuOpen">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/contact">Contact</a></li>
+      <li><a routerLink="/about">About</a></li>
+    </ul>
+  
+    <!-- Login Button -->
+    <div class="navbar-login">
+      <a href="#">Login</a>
+    </div>
+  </nav>
+  
+
