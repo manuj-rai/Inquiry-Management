@@ -1,15 +1,25 @@
 import { Routes } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
-import { LoginComponent } from './login/login.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AdminComponent } from './admin/admin.component';
-import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
+export const routes: Routes = [
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent) },
+      { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
 
-
-export const appRoutes: Routes = [
-  { path: 'contact', component: ContactComponent },
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+    ]
+  },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-
-  { path: '**', redirectTo: '/login'},
+  { path: '**', redirectTo: 'login' }
 ];
