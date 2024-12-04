@@ -14,5 +14,4 @@ export class ContactComponent {
       console.log('Form is invalid');
     }
   }
-
 }
