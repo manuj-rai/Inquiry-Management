@@ -1,14 +1,15 @@
 
 .sidebar {
     width: 150px; 
-    background-color: #242b44;
+    background-color: #222b45;
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white; 
-    height: 100vh; 
+    height: calc(100vh - 3.5rem);; 
     padding: 5px; 
     transition: width 0.3s;
-    font-size: .8125rem;
-    font-weight: 600;
+    font-family: Open Sans, sans-serif;
+    font-size: .9375rem;
+    font-weight: 400;
   }
   
   .hidden {
@@ -27,6 +28,7 @@
     cursor: pointer; 
     display: flex; 
     align-items: center; 
+    line-height: 1.5rem;
   }
   
   
