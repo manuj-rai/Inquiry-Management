@@ -26,6 +26,10 @@
   margin-bottom: 100px;
 }
 
+p{
+  margin-bottom: 40px;
+}
+
 .btn {
   background-color: #3366ff14;
   border-color: #36f;
@@ -273,7 +277,7 @@
 
   .social-btn.google {
     background-color: #db45371f;
-    color: #DB4437ed;
+    color: #DB4437;
     border-color: #DB4437;
     padding: .6875rem 1.125rem;
     border-style: solid;
