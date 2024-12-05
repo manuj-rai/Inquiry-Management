@@ -1,3 +1,46 @@
+.login-page {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 0 40px;
+  color: #fff;
+}
+
+.info-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.info-container h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+.info-container p {
+  font-size: 1em;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.features-list li {
+  margin-bottom: 10px;
+  font-size: 0.95em;
+  color: #555;
+}
+
+.info-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
 .login-form {
     max-width: 300px;
     margin: 100px auto;
@@ -242,3 +285,14 @@
     color: #598bff;
   }
   
+
+  @media (max-width: 768px) {
+    .login-page {
+      flex-direction: column;
+    }
+  
+    .login-container {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
