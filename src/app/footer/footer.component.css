@@ -8,6 +8,9 @@
     text-align: left;
     max-width: 1000px;
     margin: 45px auto;
+    font-size: .9375rem;
+    font-weight: 600;
+    line-height: 1.5rem;
   }
   
   /* Footer content */
@@ -22,6 +25,9 @@
     min-width: 250px;
     max-width: 300px;
     text-align: center;
+    font-size: .9375rem;
+    font-weight: 600;
+    line-height: 1.5rem;
   }
   
   .footer-section h3 {

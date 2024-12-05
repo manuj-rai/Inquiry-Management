@@ -20,12 +20,21 @@
   }
   
   .welcome-section .btn-primary {
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    text-decoration: none;
-    border-radius: 5px;
+    background-color: #3366ff14;
+    border-color: #36f;
+    color: #36f;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+  }
+
+  .welcome-section .btn-primary:hover {
+    background-color: #3366ff28;
   }
   
   .features-section {
@@ -82,26 +91,26 @@
   
   .cta-buttons .btn-primary,
   .cta-buttons .btn-secondary {
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    color: #fff;
+    background-color: #3366ff14;
+    border-color: #36f;
+    color: #36f;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
   }
   
-  .btn-primary {
-    background-color: #0063ce;
+  .cta-buttons .btn-primary:hover {
+    background-color: #3366ff28;
   }
-
-  .btn-primary:hover {
-    background-color: #007bff;
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #007bff;
+    
+  .cta-buttons .btn-secondary:hover {
+    background-color: #3366ff28;
   }
 
   .signup-newsletter {
@@ -159,18 +168,23 @@
   }
   
   .subscribe-btn {
-    background-color: #0063ce;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    font-size: 16px;
-    border-radius: 4px;
+    background-color: #3366ff14;
+    border-color: #36f;
+    color: #36f;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .subscribe-btn:hover {
-    background-color: #007bff;
+    background-color: #3366ff28;
   }
   
   .subscribe-form:hover {

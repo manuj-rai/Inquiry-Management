@@ -6,7 +6,6 @@
   box-shadow: 0 .5rem 1rem #1a1f33;
   padding: 20px;
   border-radius: .25rem;
-  margin-top: 20px;
   color:#fff;
   text-align: center;
 }
@@ -30,7 +29,14 @@
   
   .contact-form h2 {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #151a30;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #fff;
+    font-size: .9375rem;
+    font-weight: 600;
+    line-height: 1.5rem;
   }
   
   .form-group {
@@ -68,22 +74,28 @@
   }
   
   .btn {
+    background-color: #3366ff14;
+    border-color: #36f;
+    color: #36f;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
   .btn:disabled {
-    background-color: #007bff;
+    background-color: #3366ff14;
     cursor: not-allowed;
   }
   
   .btn:hover:not(:disabled) {
-    background-color: #0056b3;
+    background-color: #3366ff28;
   }
   
   .row {

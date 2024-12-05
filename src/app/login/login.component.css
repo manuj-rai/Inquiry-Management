@@ -25,29 +25,29 @@
   color: #777;
   margin-bottom: 100px;
 }
+
 .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  color: white;
+  background-color: #3366ff14;
+  border-color: #36f;
+  color: #36f;
+  padding: .6875rem 1.125rem;
+  border-style: solid;
+  border-width: .0625rem;
+  text-transform: uppercase;
+  border-radius: .25rem;
+  font-size: .875rem;
+  line-height: 1rem;
+  font-weight: 700;
   text-decoration: none;
-  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.btn-primary {
-  background-color: #007bff;
+.btn:hover {
+  background-color: #3366ff28;
 }
 
-.btn-secondary {
-  margin-left: 10px;
-  background-color: #6c757d;
-}
-
-.btn-primary {
-  background-color: #007bff;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
+.btn.btn-primary {
+  margin-right: 10px;
 }
 
 .login-form {
@@ -248,7 +248,6 @@
   }
   
   button:disabled {
-    background-color: #007bff;
     cursor: not-allowed;
   }
   
@@ -261,7 +260,6 @@
     width: 100%;
     padding: 10px;
     margin-top: 30px;
-    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -271,13 +269,43 @@
   button:hover {
     background-color: #0056b3;
   }
+  
 
   .social-btn.google {
-    background-color: #db4437;
+    background-color: #db45371f;
+    color: #DB4437ed;
+    border-color: #DB4437;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
   }
   
   .social-btn.facebook {
-    background-color: #4267b2;
+    background-color: #4267b21f;
+    color: #4267B2;
+    border-color: #4267B2;
+    padding: .6875rem 1.125rem;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    border-radius: .25rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .social-icon {
+    font-size: 24px;
+    margin-right: 10px;
   }
   
   .social-btn:hover {
