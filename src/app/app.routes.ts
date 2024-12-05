@@ -11,6 +11,7 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
       { path: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent) },
       { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
 

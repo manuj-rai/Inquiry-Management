@@ -18,7 +18,7 @@ export class LoginComponent {
     // Initialize the form group
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],  // Email field with validation
-      password: ['', [Validators.required, Validators.minLength(6)]],  // Password with min length
+      password: ['', [Validators.required, Validators.minLength(5)]],  // Password with min length
     });
   }
 
@@ -28,7 +28,7 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
 
       // Simulate a login check
-      if (email === 'admin@example.com' && password === 'password123') {
+      if (email === 'admin@example.com' && password === 'admin') {
         alert('Login successful!');
         localStorage.setItem('user', JSON.stringify({ email }));
         console.log('Navigating to Admin...');

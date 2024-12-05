@@ -108,17 +108,13 @@
     text-decoration: none;
   }
   
-  .dropdown-item:last-child {
+  .dropdown-item:last-child:hover {
     color: red;
   }
   
   
   .dropdown-item:hover {
     color: #36f; 
-  }
-
-  .dropdown-item:last-child:hover {
-    color:rgb(255, 65, 65)
   }
   
   /* Responsive Styles */
