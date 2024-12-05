@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  showSuccessCard = false;
 
   constructor(private fb: FormBuilder, private router: Router) {
     // Initialize the form group
@@ -29,11 +30,13 @@ export class LoginComponent {
 
       // Simulate a login check
       if (email === 'admin@example.com' && password === 'admin') {
-        alert('Login successful!');
+        this.showSuccessCard = true;
         localStorage.setItem('user', JSON.stringify({ email }));
         console.log('Navigating to Admin...');
-        // Navigate to the admin dashboard
-        this.router.navigate(['/admin']);
+        setTimeout(() => {
+          this.showSuccessCard = false;
+          this.router.navigate(['/admin']);
+        }, 2000); // Navigate to admin after 2 seconds
       } else {
         alert('Invalid credentials!');
       }
