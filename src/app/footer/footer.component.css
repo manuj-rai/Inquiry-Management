@@ -1,0 +1,89 @@
+/* General Footer Styling */
+.footer {
+    background-color: #222b45;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    color: white;
+    padding: 50px 20px;
+    text-align: left;
+    max-width: 1000px;
+    margin: 45px auto;
+  }
+  
+  /* Footer content */
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Footer Sections */
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+    font-size: 1rem;
+    line-height: 1.3rem;
+    color: #5c5c5c;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin: 10px 0;
+  }
+  
+  .footer-section ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Social Media Icons */
+  .social-media {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .social-media li a {
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+  
+  .social-media li a:hover {
+    color: #3498db;
+  }
+  
+  /* Footer Bottom */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1rem;
+  }
+  
+  .footer-bottom p {
+    color: #bdc3c7;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-section {
+        text-align: left !important;
+    }
+  }

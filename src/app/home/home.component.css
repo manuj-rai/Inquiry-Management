@@ -1,6 +1,7 @@
 .home-container {
-    padding: 20px;
     color: #fff;
+    max-width: 1045px;
+    margin: 45px auto;
   }
   
   .welcome-section {
@@ -43,7 +44,7 @@
   }
   
   .feature {
-    background-color: #242b44;
+    background-color: #222b45;
     color: #cecece;
     padding: 20px;
     border-radius: 5px;
@@ -88,11 +89,11 @@
   }
   
   .btn-primary {
-    background-color: #007bff;
+    background-color: #0063ce;
   }
 
   .btn-primary:hover {
-    background-color: #0063ce;
+    background-color: #007bff;
   }
   
   .btn-secondary {
@@ -101,4 +102,82 @@
   
   .btn-secondary:hover {
     background-color: #007bff;
+  }
+
+  .signup-newsletter {
+    background-color: #222b45;
+    padding: 45px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 950px;
+    margin: auto;
+  }
+
+  .signup-newsletter-title {
+    color: #fff;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .signup-newsletter-pera {
+    font-size: 15px;
+    color: #b7b7b7cb;
+  }
+
+  .signup-newsletter-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 4px;
+    padding: 2px 8px;
+    width: 400px;
+    height: 45px;
+    
+  }
+  
+  .form-form {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: #161a2f;
+    padding: 5px;
+    border-radius: 4px;
+  }
+
+  .email-input {
+    background-color: #161a2f;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    outline: none;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 80%;  
+    color: #fff;
+  }
+  
+  .subscribe-btn {
+    background-color: #0063ce;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subscribe-btn:hover {
+    background-color: #007bff;
+  }
+  
+  .subscribe-form:hover {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .signup-newsletter-form-text{
+    font-size: 14px;
+    color: #b7b7b7cb;
   }

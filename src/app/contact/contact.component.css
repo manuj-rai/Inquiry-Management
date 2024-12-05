@@ -1,5 +1,22 @@
+.contact-info {
+  margin: 45px auto;
+  max-width: 1000px;
+  background-color: #222b45;
+  border: .0625rem solid #101426;
+  box-shadow: 0 .5rem 1rem #1a1f33;
+  padding: 20px;
+  border-radius: .25rem;
+  margin-top: 20px;
+  color:#fff;
+  text-align: center;
+}
+
+.contact-info p {
+  margin: 15px 0px;
+}
+
 .contact-form {
-    max-width: 600px;
+    max-width: 1000px;
     margin: 45px auto;
     padding: 20px;
     background-color: #222b45;
