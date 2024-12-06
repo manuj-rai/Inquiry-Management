@@ -71,7 +71,7 @@
   }
   
   select#gender {
-    width: 101%;
+    width: 101.2%;
   }
 
   .btn {
@@ -86,7 +86,7 @@
     font-size: .875rem;
     line-height: 1rem;
     font-weight: 700;
-    width: 101%;
+    width: 101.2%;
     transition: background-color 0.3s ease;
   }
   
