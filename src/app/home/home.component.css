@@ -1,7 +1,7 @@
 .home-container {
     color: #fff;
     max-width: 1045px;
-    margin: 45px auto;
+    margin: 50px auto;
   }
   
   .welcome-section {
@@ -121,6 +121,8 @@
     justify-content: space-between;
     max-width: 950px;
     margin: auto;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
   }
 
   .signup-newsletter-title {
@@ -194,4 +196,22 @@
   .signup-newsletter-form-text{
     font-size: 14px;
     color: #b7b7b7cb;
+  }
+
+  @media (max-width: 720px) {
+    .signup-newsletter {
+      flex-direction: column;
+      padding: 10px;
+      gap:10px;
+    }
+
+    .signup-newsletter-form {
+      width: 340px;
+      height: 90px;
+    }
+
+    .signup-newsletter-form-text {
+      font-size: 14px;
+    }
+
   }
