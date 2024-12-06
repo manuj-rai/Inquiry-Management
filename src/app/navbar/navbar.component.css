@@ -40,6 +40,8 @@
   
   .navbar-links li {
     display: inline-block;
+    border-right: 1px solid #151a30;  
+
   }
   
   .navbar-links a {

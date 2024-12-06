@@ -5,7 +5,7 @@
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white; 
     height: calc(100vh - 3.5rem);; 
-    padding: 5px; 
+    padding: 5px 0; 
     transition: width 0.3s;
     font-family: Open Sans, sans-serif;
     font-size: .9375rem;
@@ -29,6 +29,11 @@
     display: flex; 
     align-items: center; 
     line-height: 1.5rem;
+    border-bottom: 1px solid #151a30;    
+  }
+
+  .sidebar li:last-child {
+    border: none;
   }
   
   
