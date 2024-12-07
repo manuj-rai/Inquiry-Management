@@ -36,7 +36,7 @@ export class LoginComponent {
         setTimeout(() => {
           this.showSuccessCard = false;
           this.router.navigate(['/admin']);
-        }, 2000); // Navigate to admin after 2 seconds
+        }, 1000); // Navigate to admin after 1 seconds
       } else {
         alert('Invalid credentials!');
       }

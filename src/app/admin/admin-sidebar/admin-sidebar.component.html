@@ -4,16 +4,12 @@
         <span class="material-icons">dashboard</span>
         <span class="menu-text">Dashboard</span>
       </li>
-      <li [ngClass]="{'active': activeMenu === 'components'}" (click)="setActiveMenu('components')">
-        <span class="material-icons">widgets</span>
-        <span class="menu-text">Components</span>
-      </li>
-      <li [ngClass]="{'active': activeMenu === 'charts'}" (click)="setActiveMenu('charts')">
-        <span class="material-icons">show_chart</span>
-        <span class="menu-text">Charts</span>
+      <li [ngClass]="{'active': activeMenu === 'profile'}" (click)="setActiveMenu('profile')">
+        <span class="material-icons">person</span>
+        <span class="menu-text">Profile</span>
       </li>
       <li [ngClass]="{'active': activeMenu === 'news'}" (click)="setActiveMenu('news')">
-        <span class="material-icons">star</span>
+        <span class="material-icons">auto_stories</span>
         <span class="menu-text">News</span>
       </li>
       <li [ngClass]="{'active': activeMenu === 'tables'}" (click)="setActiveMenu('tables')">
@@ -21,16 +17,16 @@
         <span class="menu-text">Tables</span>
       </li>
       <li [ngClass]="{'active': activeMenu === 'maps'}" (click)="setActiveMenu('maps')">
-        <span class="material-icons">map</span>
+        <span class="material-icons">pin_drop</span>
         <span class="menu-text">Maps</span>
       </li>
       <li [ngClass]="{'active': activeMenu === 'pages'}" (click)="setActiveMenu('pages')">
         <span class="material-icons">description</span>
         <span class="menu-text">Pages</span>
       </li>
-      <li [ngClass]="{'active': activeMenu === 'menuLevel1'}" (click)="setActiveMenu('menuLevel1')">
-        <span class="material-icons">folder</span>
-        <span class="menu-text">Menu Level 1</span>
+      <li [ngClass]="{'active': activeMenu === 'logout'}" (click)="setActiveMenu('logout')">
+        <span class="material-icons">logout</span>
+        <span class="menu-text">Logout</span>
       </li>
     </ul>
   </div>

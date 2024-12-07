@@ -35,10 +35,8 @@ export class AdminSidebarComponent implements OnInit {
     // Navigate to the selected menu route
     if (menu === 'dashboard') {
       this.router.navigate(['/dashboard']);
-    } else if (menu === 'components') {
-      this.router.navigate(['/components']);
-    } else if (menu === 'charts') {
-      this.router.navigate(['/charts']);
+    } else if (menu === 'profile') {
+      this.router.navigate(['/profile']);
     } else if (menu === 'news') {
       this.router.navigate(['/news']);
     } else if (menu === 'tables') {
@@ -47,8 +45,8 @@ export class AdminSidebarComponent implements OnInit {
       this.router.navigate(['/maps']);
     } else if (menu === 'pages') {
       this.router.navigate(['/pages']);
-    } else if (menu === 'menuLevel1') {
-      this.router.navigate(['/menuLevel1']);
+    } else if (menu === 'logout') {
+      this.router.navigate(['/logout']);
     }
   }
 }
