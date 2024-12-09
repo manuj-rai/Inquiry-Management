@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
 
@@ -24,8 +23,9 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
+      { path: '', redirectTo: 'admin', pathMatch: 'full' },
+      { path: 'dashboard', loadComponent: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent) },
     ]
   },
-  { path: 'login', component: LoginComponent },
-  { path: '**', redirectTo: 'login' }
+
 ];

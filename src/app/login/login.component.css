@@ -306,8 +306,8 @@ p{
   
   .social-btn.facebook {
     background-color: #4267b21f;
-    color: #4267B2;
-    border-color: #4267B2;
+    color: #3272f3;
+    border-color: #3272f3;
     padding: .6875rem 1.125rem;
     border-style: solid;
     border-width: .0625rem;
@@ -320,10 +320,13 @@ p{
     transition: background-color 0.3s ease;
   }
 
-  .social-icon {
-    font-size: 24px;
-    margin-right: 10px;
+
+  .fa-fw {
+    text-align: center;
+    width: 1.25em;
+    margin-right: 5px;
   }
+  
   
   .social-btn:hover {
     opacity: 0.9;
@@ -431,5 +434,10 @@ p{
 
     .login-side-content{
       max-width: 100%;
+    }
+
+    .card {
+      left: 10%;
+      top:40%
     }
   }

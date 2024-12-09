@@ -34,19 +34,19 @@ export class AdminSidebarComponent implements OnInit {
 
     // Navigate to the selected menu route
     if (menu === 'dashboard') {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['admin/dashboard']);
     } else if (menu === 'profile') {
-      this.router.navigate(['/profile']);
+      this.router.navigate(['admin/profile']);
     } else if (menu === 'news') {
-      this.router.navigate(['/news']);
+      this.router.navigate(['admin/news']);
     } else if (menu === 'tables') {
-      this.router.navigate(['/tables']);
+      this.router.navigate(['admin/tables']);
     } else if (menu === 'maps') {
-      this.router.navigate(['/maps']);
+      this.router.navigate(['admin/maps']);
     } else if (menu === 'pages') {
-      this.router.navigate(['/pages']);
+      this.router.navigate(['admin/pages']);
     } else if (menu === 'logout') {
-      this.router.navigate(['/logout']);
+      this.router.navigate(['admin/logout']);
     }
   }
 }
