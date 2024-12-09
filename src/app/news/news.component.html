@@ -1,3 +1,5 @@
+<app-news-categories (selectedTagEvent)="onTagSelected($event)"></app-news-categories>
+<app-categorised-news [tagName]="selectedTag"></app-categorised-news>
 <div #newsContainer class="news-container">
 
       <!-- Top News Slider -->
@@ -68,9 +70,4 @@
         <p>loading more news...</p>
     </div>
 
-    <!-- All news loaded message when no more data is available -->
-    <div *ngIf="!isLoading && newsList.length >= totalNewsCount" class="loading-indicator">
-        <p>no more news.</p>
-    </div>
-    
 </div>

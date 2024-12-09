@@ -2,16 +2,19 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { NewsService } from '../services/news.service';
 import { DatePipe } from '@angular/common';  // Import DatePipe
 import { CommonModule } from "@angular/common";
+import { NewsCategoriesComponent } from "./news-categories/news-categories.component";
+import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],
 })
 export class NewsComponent implements OnInit, OnDestroy {
+  selectedTag: string = '';
   newsList: any[] = [];
   topNews: any[] = [];
   currentSlideIndex: number = 0;
@@ -120,11 +123,16 @@ export class NewsComponent implements OnInit, OnDestroy {
           this.fetchPaginatedNews();
         }
       }
-    }, 1000);  // 1000ms (1 second) delay before loading more news
+    }, 2000);  // 1000ms (2 second) delay before loading more news
   }
 
   getImageUrl(imagePath: string): string {
     const cleanedPath = imagePath.replace('~/', '');
     return `${this.baseImageUrl}${cleanedPath}`;
+  }
+
+  // Handle selected tag event from child component
+  onTagSelected(tagName: string): void {
+    this.selectedTag = tagName;  // Set the selected tag
   }
 }
