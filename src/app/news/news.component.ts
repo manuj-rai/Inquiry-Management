@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { NewsService } from '../services/news.service';
 import { DatePipe } from '@angular/common';  // Import DatePipe
 import { CommonModule } from "@angular/common";
@@ -11,8 +11,12 @@ import { CommonModule } from "@angular/common";
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent implements OnInit, OnDestroy {
   newsList: any[] = [];
+  topNews: any[] = [];
+  currentSlideIndex: number = 0;
+  autoSlideInterval: any;
+  rightSideNews: any[] = [];
   pageIndex: number = 1;
   pageSize: number = 5;
   totalNewsCount: number = 0;
@@ -27,6 +31,14 @@ export class NewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchPaginatedNews();
+    this.fetchTopNews();
+  }
+
+  ngOnDestroy(): void {
+    // Clear the interval when the component is destroyed
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
   }
 
   fetchPaginatedNews(pageIndex: number = this.pageIndex, pageSize: number = this.pageSize): void {
@@ -62,6 +74,38 @@ export class NewsComponent implements OnInit {
         this.isLoading = false;
       }
     });
+  }
+
+  // Fetch top news for the slider
+  fetchTopNews(): void {
+    const take = 5;
+    const skip = 2;
+
+    this.newsService.getTopNews(take, skip).subscribe({
+      next: (data: any[]) => {
+        console.log('Loaded top news:', data);
+
+        this.topNews = data; 
+        this.startAutoSlide();
+        this.rightSideNews = data.slice(2, 5); // News for the right-hand side
+      },
+      error: (err) => console.error('Error fetching top news:', err)
+    });
+  }
+
+  startAutoSlide(): void {
+    this.autoSlideInterval = setInterval(() => {
+      // Increment slide index and reset if at the last slide
+      this.currentSlideIndex =
+        (this.currentSlideIndex + 1) % this.topNews.length;
+    }, 3000); // Change slides every 3 seconds
+  }
+
+  goToSlide(index: number): void {
+    // Allow manual navigation
+    this.currentSlideIndex = index;
+    clearInterval(this.autoSlideInterval); // Stop auto-slide on manual navigation
+    this.startAutoSlide(); // Restart auto-slide
   }
 
   @HostListener('window:scroll', [])
