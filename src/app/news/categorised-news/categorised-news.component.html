@@ -4,8 +4,8 @@
     <div *ngFor="let news of newsList" class="news-item">
       <img [src]="getImageUrl(news.bigImage)" alt="News Image" class="news-img">
       <div class="news-content">
-      <h4>{{ news.title }}</h4>
-      <p>{{ news.shortDesc }}</p>
+      <h3>{{ news.title }}</h3>
+      <!-- <p>{{ news.shortDesc }}</p> -->
     </div>
     </div>
   </div>

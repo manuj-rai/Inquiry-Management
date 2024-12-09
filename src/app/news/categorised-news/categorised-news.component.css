@@ -35,12 +35,6 @@
   .news-img {
     max-width: 350px;
     margin: 15px;
-    border: 4px;
-  }
-  
-  .news-image {
-    width: 100%;
-    height: auto;
     border-radius: 4px;
     border: .0625rem solid #101426;
   }

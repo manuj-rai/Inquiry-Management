@@ -1,7 +1,7 @@
 
 .tags {
     max-width: 1045px;
-    margin: 25px auto;
+    margin: 10px auto;
     overflow-x: scroll;
     -ms-overflow-style: none;  
     scrollbar-width: none;
@@ -10,8 +10,7 @@
   .tag-list {
     list-style-type: none;
     padding: 0;
-    display: flex
-;
+    display: flex;
     justify-content: space-between;
   }
   
