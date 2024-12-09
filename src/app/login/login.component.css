@@ -349,8 +349,8 @@ p{
     background-color: #ffffff;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     position: fixed;
-    top: 45px;
-    left: 0;
+    top: 40%;
+    left: 40%;
     overflow: hidden;
     display: flex;
     align-items: center;
