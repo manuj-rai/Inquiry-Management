@@ -1,1 +1,33 @@
-<p>Dashboard works!</p>
+<header>Smart Table</header>
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Gender</th>
+              <th>Country</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+      <tbody>
+        <tr *ngFor="let inquiry of inquiries">
+            <td>{{ inquiry.id }}</td>
+            <td>{{ inquiry.firstName }}</td>
+            <td>{{ inquiry.lastName }}</td>
+            <td>{{ inquiry.gender }}</td>
+            <td>{{ inquiry.country }}</td>
+            <td>{{ inquiry.status }}</td>
+          </tr>
+      </tbody>
+    </table>
+  
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+        <span>{{ currentPage }} / {{ totalPages }}</span>
+        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      </div> 
+  </div>
+  
