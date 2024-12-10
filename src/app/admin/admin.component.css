@@ -5,6 +5,12 @@
 
 .admin-content {
     color:#fff;
-    padding: 20px;
+    padding: 0 35px;
     width: 100%;
+}
+
+@media (max-width:720px) {
+    .admin-content {
+        padding: 4px;
+    }
 }

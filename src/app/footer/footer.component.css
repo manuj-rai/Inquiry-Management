@@ -88,8 +88,3 @@
     color: #bdc3c7;
   }
   
-  @media (max-width: 768px) {
-    .footer-section {
-        text-align: left !important;
-    }
-  }
