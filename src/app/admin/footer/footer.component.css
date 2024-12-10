@@ -1,0 +1,41 @@
+  footer {
+    background-color: #222b45;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h4 {
+    padding: 0 20px;
+  }
+
+  b {
+    font-weight: bolder;
+    color: #598bff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  .socials {
+    padding-right: 20px;
+    font-size: 2rem;
+  }
+
+  a {
+    padding: .2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #8f9bb3;
+    transition: color ease-out .1s;
+    background: none;
+    border: none;
+  }
+
+  a:hover {
+    color: #fff;
+  }

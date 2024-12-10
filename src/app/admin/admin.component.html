@@ -1,8 +1,9 @@
 <app-admin-navbar (sidebarToggle)="onSidebarToggle()"></app-admin-navbar>
 <div class="admin-layout">
 <app-admin-sidebar [isSidebarVisible]="isSidebarVisible" ></app-admin-sidebar>
-<div class="admin-content">
-<router-outlet></router-outlet>
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+    <app-admin-footer></app-admin-footer>
   </div>
 </div>
  

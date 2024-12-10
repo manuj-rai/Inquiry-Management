@@ -6,17 +6,13 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
-
 @NgModule({
   declarations: [],
-  imports: [
+  imports: [CommonModule, AdminRoutingModule,
     AdminNavbarComponent,
     AdminSidebarComponent,
-    CommonModule,
-    AdminRoutingModule,
     DashboardComponent,
-    RouterOutlet
+    RouterOutlet,
   ]
 })
 export class AdminModule { }
