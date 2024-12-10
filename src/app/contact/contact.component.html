@@ -72,25 +72,45 @@
       </div>
 
       <div class="col-md-6 form-group">
-        <input
-          type="text"
+        <select 
           id="country"
           name="country"
           ngModel
           required
           class="form-control"
           placeholder="Country"
-        />
+          [(ngModel)]="selectedCountry"
+          (change)="onCountryChange(selectedCountry)"
+        >
+        <option value="" disabled selected>Select Country</option>
+        <option *ngFor="let country of countries" [value]="country">
+          {{ country }}
+        </option>
+      </select>
       </div>
 
-      <div class="col-md-6 form-group">
+      <div class="col-md-6 form-group" *ngIf="selectedCountry === 'India'">
+        <select
+          id="state"
+          name="state"
+          class="form-control"
+          [(ngModel)]="selectedState"
+        >
+        <option value="" disabled>Select State</option>
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+      </div>
+
+        <!-- State Textbox (shown for other countries) -->
+      <div class="col-md-6 form-group" *ngIf="selectedCountry !== 'India' && selectedCountry">
         <input
           type="text"
           id="state"
-          name="state"
-          ngModel
-          required
           class="form-control"
+          [(ngModel)]="selectedState"
+          name="state"
           placeholder="State"
         />
       </div>

@@ -41,6 +41,10 @@
   .sidebar li:hover {
     color:rgba(51, 102, 255, 0.452)
   }
+
+  .sidebar li:last-child:hover {
+    color: rgb(151, 0, 0);
+  }
   
   .sidebar li.active {
     color: #36f; 

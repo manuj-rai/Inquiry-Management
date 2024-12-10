@@ -74,6 +74,14 @@
     width: 101.2%;
   }
 
+  select#country {
+    width: 102.2%;
+  }
+
+  select#state {
+    width: 102.2%;
+  }
+
   .btn {
     background-color: #3366ff14;
     border-color: #36f;
@@ -91,11 +99,12 @@
   }
   
   .btn:disabled {
-    background-color: #3366ff14;
+    background-color: #354164;
     cursor: not-allowed;
   }
   
   .btn:hover:not(:disabled) {
+    cursor: pointer;
     background-color: #3366ff28;
   }
   
