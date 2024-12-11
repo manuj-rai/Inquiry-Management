@@ -32,14 +32,14 @@ p {
   
   span {
     display: block;
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     font-weight: 700;
     color: #36f;
     margin-top: 5px;
   }
 
   .material-icons {
-    font-size: 118px;
+    font-size: 100px;
     color: #8f9bb3;
   }
   

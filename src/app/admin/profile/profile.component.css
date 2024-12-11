@@ -7,7 +7,6 @@ p {
 .profile-section {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     width: 100%;
     margin-bottom: 30px;
   }
@@ -36,7 +35,7 @@ p {
   
   /* Header section */
   .profile-header {
-    padding: 20px;
+    padding: 20px 10px;
     padding-bottom: 0;
     border-bottom: 1px solid #101426;
   }
@@ -88,6 +87,23 @@ p {
   .social-media li a:hover {
     color: #3272f3;
   }
+
+  .profile-info input {
+    width: 170px;
+    padding: 10px;
+    font-size: 12px;
+    border: 1px solid #101426;
+    border-radius: .25rem;
+    background-color: #161a2f;
+    color: #fff;
+    border-radius: 4px;
+  }
+  
+  .profile-info input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
   
   /* Action buttons */
   .profile-actions {
@@ -99,7 +115,9 @@ p {
   }
   
   .btn-edit,
-  .btn-logout {
+  .btn-logout,
+  .btn-cancel,
+  .btn-save {
     padding: 10px 15px;
     border-radius: 4px;
     font-size: .875rem;
@@ -111,23 +129,25 @@ p {
     transition: background-color 0.3s ease;
   }
 
-  .btn-logout {
+  .btn-logout, .btn-cancel {
     background-color: #ff3d7114;
     border-color: #ff3d71;
     color: #ff3d71;
   }
 
-  .btn-edit {
+  .btn-edit, .btn-save {
     background-color: #4267b21f;
     color: #3272f3;
     border-color: #3272f3;
   }
   
-  .btn-logout:hover {
+  .btn-logout:hover,
+  .btn-cancel:hover {
     background-color: #ff3d714f;
   }
 
-  .btn-edit:hover {
+  .btn-edit:hover,
+  .btn-save:hover {
     background-color: #4267b28a;
   }
   

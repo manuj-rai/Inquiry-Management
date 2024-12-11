@@ -59,6 +59,7 @@
     width: 100%;
     padding-left: 10px;
     transition: 0.3s ease-in;
+    resize: vertical;
   }
 
   .form-control:hover {

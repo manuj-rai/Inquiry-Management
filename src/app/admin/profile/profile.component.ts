@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [],
+  imports: [CommonModule,FormsModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
   userDetails: any = {};
+  isEditing = false;
 
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
@@ -41,9 +43,16 @@ export class ProfileComponent implements OnInit{
     return `${this.baseImageUrl}${cleanedPath}`;
   }
 
-  editProfile(): void {
-    // Navigate to the profile editing page or open a modal for editing
-    console.log('Edit Profile');
+  toggleEdit(editMode: boolean) {
+    this.isEditing = editMode;
+  }
+
+  saveChanges() {
+    this.isEditing = false;
+  }
+
+  cancelEdit() {
+    this.isEditing = false;
   }
 
   logout(): void {
