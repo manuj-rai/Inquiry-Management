@@ -4,7 +4,7 @@
     background-color: #222b45;
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white; 
-    height: calc(100vh - 3.5rem);; 
+    height: 100%; 
     padding: 5px 0; 
     transition: width 0.3s;
     font-family: Open Sans, sans-serif;

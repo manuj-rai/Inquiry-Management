@@ -2,19 +2,30 @@
 
 <div class="profile-section">
     <div class="profile-card">
+    <h5>Profile Details</h5>
       <div class="profile-header">
         <img class="profile-pic" [src]="getProfilePictureUrl()" alt="Profile Picture" />
         <div class="profile-info">
           <h2 class="profile-name">{{ userDetails.name }}</h2>
           <p class="profile-email">{{ userDetails.emailID }}</p>
-          <p class="profile-role">{{ userDetails.phoneNumber }}</p>
-
+          <p class="profile-tel">{{ userDetails.phoneNumber }}</p>
         </div>
+      </div>
+      <div class="profile-socials">
+        <ul class="social-media">
+            <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          </ul>
       </div>
       <div class="profile-actions">
         <button class="btn-edit" (click)="editProfile()">Edit Profile</button>
         <button class="btn-logout" (click)="logout()">Logout</button>
       </div>
+    </div>
+    <div class="none">
+
     </div>
   </div>
   

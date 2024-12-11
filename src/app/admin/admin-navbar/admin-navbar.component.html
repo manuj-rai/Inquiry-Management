@@ -13,14 +13,14 @@
    
     <!-- Profile Image with Dropdown -->
     <div class="profile-dropdown">
-      <img src="https://img.freepik.com/free-photo/portrait-charismatic-sensual-male-black-sweater-creative-personality_613910-11128.jpg?t=st=1730097183~exp=1730100783~hmac=b50f701024affc8e11d46c8969708505745c0cc74e9af592365e5e49e8bbf1c0&w=740" 
+      <img [src]="getProfilePictureUrl()" 
            alt="User Profile" 
            class="user-img" 
            (click)="toggleDropdown()" />
   
      <!-- Dropdown Menu -->
       <div class="dropdown-menu" *ngIf="isDropdownVisible">
-      <a href="/profile" class="dropdown-item">
+      <a href="admin/profile" class="dropdown-item">
           <span class="material-icons">account_circle</span> Profile
       </a>
       <a href="/settings" class="dropdown-item">

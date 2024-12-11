@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,9 @@ export class ProfileComponent implements OnInit{
 
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!); 
@@ -43,8 +47,8 @@ export class ProfileComponent implements OnInit{
   }
 
   logout(): void {
-    // Handle logout logic
-    console.log('User logged out');
-  }
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
+    this.router.navigate(['/login']);  }
 
 }

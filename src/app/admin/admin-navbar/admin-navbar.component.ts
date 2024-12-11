@@ -13,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 
 export class AdminNavbarComponent implements OnInit {
   userDetails: any = {};
+  baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
   constructor(private authService: AuthService) {}
 
@@ -28,6 +29,11 @@ export class AdminNavbarComponent implements OnInit {
         }
       });
     }
+  }
+
+  getProfilePictureUrl(): string {
+    const cleanedPath = this.userDetails.profilePicture.replace('~/', '');
+    return `${this.baseImageUrl}${cleanedPath}`;
   }
 
   @Output() sidebarToggle = new EventEmitter<void>();
