@@ -30,14 +30,13 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-
       // Simulate a login check
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
             localStorage.setItem('user', JSON.stringify({ username }));
-            this.showSuccessCard=true;
             localStorage.setItem('token', response.token);
+            this.showSuccessCard=true;
             this.router.navigate(['/admin']);
           } else {
             alert('Invalid credentials!');
