@@ -5,6 +5,8 @@ import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [],
@@ -12,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AdminNavbarComponent,
     AdminSidebarComponent,
     DashboardComponent,
+    ProfileComponent,
     RouterOutlet,
   ]
 })

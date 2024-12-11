@@ -64,6 +64,11 @@
     align-items: center;
     font-size: 14px;
   }
+
+  .user-name {
+    color: #36f;
+    font-weight: 600;
+  }
   
   .user-img {
     border-radius: 50%;

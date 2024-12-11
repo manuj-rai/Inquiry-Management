@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-admin-navbar',
@@ -9,7 +11,25 @@ import { Component, Output, EventEmitter, HostListener } from '@angular/core';
   imports:[CommonModule]
 })
 
-export class AdminNavbarComponent {
+export class AdminNavbarComponent implements OnInit {
+  userDetails: any = {};
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user')!); // Retrieve logged-in user details
+    if (user && user.username) {
+      this.authService.getUserDetails(user.username).subscribe({
+        next: (details) => {
+          this.userDetails = details;
+        },
+        error: (err) => {
+          console.error('Error fetching user details:', err);
+        }
+      });
+    }
+  }
+
   @Output() sidebarToggle = new EventEmitter<void>();
 
   toggleSidebar() {

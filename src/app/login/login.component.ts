@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,31 +16,38 @@ export class LoginComponent {
   loginForm: FormGroup;
   showSuccessCard = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+     private router: Router) {
     // Initialize the form group
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],  // Email field with validation
-      password: ['', [Validators.required, Validators.minLength(5)]],  // Password with min length
+      username: ['', [Validators.required, Validators.minLength(6)]],  // Email field with validation
+      password: ['', [Validators.required, Validators.minLength(6)]],  // Password with min length
     });
   }
 
   // Submit the login form
   onSubmit() {
     if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+      const { username, password } = this.loginForm.value;
 
       // Simulate a login check
-      if (email === 'admin@example.com' && password === 'admin') {
-        this.showSuccessCard = true;
-        localStorage.setItem('user', JSON.stringify({ email }));
-        console.log('Navigating to Admin...');
-        setTimeout(() => {
-          this.showSuccessCard = false;
-          this.router.navigate(['/admin']);
-        }, 1000); // Navigate to admin after 1 seconds
-      } else {
-        alert('Invalid credentials!');
-      }
+      this.authService.login(username, password).subscribe({
+        next: (response: any) => {
+          if (response.isAuthenticated) {
+            localStorage.setItem('user', JSON.stringify({ username }));
+            this.showSuccessCard=true;
+            localStorage.setItem('token', response.token);
+            this.router.navigate(['/admin']);
+          } else {
+            alert('Invalid credentials!');
+          }
+        },
+        error: (err) => {
+          console.error('Login error:', err);
+          alert('Login failed. Please try again.');
+        },
+      });
     }
   }
 }
