@@ -37,11 +37,11 @@ h5 {
     border: 1px solid #101426;
     border-radius: .25rem;
     padding: .6375rem 0rem;
-    background-color: #161a2f;
+    background-color: #161a2f99;
     color: #fff;
     width: 100%;
     padding: 10px;
-    transition: 0.3s ease-in;
+    transition: 0.1s ease-in;
   }
 
   .form-control:hover {
