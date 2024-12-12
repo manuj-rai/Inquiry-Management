@@ -1,0 +1,211 @@
+/* General form container */
+.registration-form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+
+h5 {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.new-user {
+    width:350px;
+    padding: 20px;
+  }
+  
+  /* Form title */
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  
+  /* Styling for each form group */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  .form-control {
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+    border: 1px solid #101426;
+    border-radius: .25rem;
+    padding: .6375rem 0rem;
+    background-color: #161a2f;
+    color: #fff;
+    width: 100%;
+    padding: 10px;
+    transition: 0.3s ease-in;
+  }
+
+  .form-control:hover {
+    background-color: #121525;
+  }
+
+  input#name,
+  input#username,
+  input#email,
+  input#phoneNumber,
+  input#password {
+    width: 93%;
+  }
+
+  select#departmentId {
+    width: 99%;
+  }
+  
+  /* Focus state */
+  input:focus, select:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+
+  /* Error messages */
+  .invalid-feedback {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Submit button styling */
+  button[type="submit"] {
+    width: 100%;
+    padding: .6875rem 1.125rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    border-style: solid;
+    border-width: .0625rem;
+    text-transform: uppercase;
+    background-color: #3366ff29;
+    border-color: #36f;
+    color: #36f;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3366ff6b;
+    border-color: #36f;
+    color: #36f;
+  }
+  
+  input[type="file"]:hover {
+    border-color: #007bff;
+  }
+  
+
+  input[type="file"]::file-selector-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Modern file input styling with hidden button */
+  input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+  
+  label[for="profilePic"] {
+    padding: .6875rem 1.125rem;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+  }
+  
+  label[for="profilePic"]:hover {
+    background-color: #0056b3;
+  }
+  
+  input[type="file"]:valid + label {
+    background-color: #00d68f14;
+    border-color: #00d68f;
+    border-radius: .25rem;
+    border-style: solid;
+    color: #00d68f;
+    border-width: .0625rem;
+  }
+  
+  input[type="file"]:valid + label:hover {
+    background-color: #00d68f49;
+    border-color: #00d68f;
+    border-radius: .25rem;
+    border-style: solid;
+    color: #00d68f;
+    border-width: .0625rem;
+  }
+
+  /* additional content */
+  .content-info {
+    padding: 30px;
+  }
+  
+  .content-info h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .content-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #888888;
+  }
+  
+  .content-info ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .content-info ul li {
+    font-size: 16px;
+    color: #888888;
+    margin-bottom: 8px;
+  }
+  
+  .content-info h4 {
+    font-size: 20px;
+    margin-top: 30px;
+    color: #d3d3d3;
+  }
+  
+  .content-info a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .content-info a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Image Styling */
+  .content-info img {
+    max-width: 100%;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+
+  @media (max-width: 720px) {
+    .registration-form {
+        flex-direction: column;
+    }
+
+    .new-user {
+        width: 100%;
+        padding: 10px 0px;
+    }
+  }

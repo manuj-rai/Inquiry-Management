@@ -88,7 +88,11 @@ p {
     color: #3272f3;
   }
 
-  .profile-info input {
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
     width: 170px;
     padding: 10px;
     font-size: 12px;
@@ -98,8 +102,12 @@ p {
     color: #fff;
     border-radius: 4px;
   }
+
+  select#departmentId {
+    width: 192px;
+}
   
-  .profile-info input:focus {
+  .form-control:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
@@ -117,7 +125,8 @@ p {
   .btn-edit,
   .btn-logout,
   .btn-cancel,
-  .btn-save {
+  .btn-save,
+  .btn-primary {
     padding: 10px 15px;
     border-radius: 4px;
     font-size: .875rem;
@@ -129,13 +138,17 @@ p {
     transition: background-color 0.3s ease;
   }
 
+  button.btn.btn-primary {
+    width: 100%;
+  }
+
   .btn-logout, .btn-cancel {
     background-color: #ff3d7114;
     border-color: #ff3d71;
     color: #ff3d71;
   }
 
-  .btn-edit, .btn-save {
+  .btn-edit, .btn-save, .btn-primary {
     background-color: #4267b21f;
     color: #3272f3;
     border-color: #3272f3;
@@ -153,13 +166,17 @@ p {
   
   /* Button disabled style */
   .btn-edit[disabled],
-  .btn-logout[disabled] {
-    background-color: #b0c7f4;
+  .btn-logout[disabled],
+  .btn-primary[disabled] {
+    background-color: #8f9bb329;
+    border-color: #8f9bb33d;
+    color: #8f9bb37a;
     cursor: not-allowed;
   }
 
   .none {
-    width: 76%;
+    width: 75.5%;
+    padding: 10px;
     margin-left: 30px;
     min-height: 100%;
     border-radius: 4px;
@@ -168,10 +185,14 @@ p {
     border: .0625rem solid #101426;
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white;
-    padding: 278px 0;
     overflow: hidden;
     text-align: center;
   }
+
+  .new-user {
+    display: flex;
+  }
+  
   
   @media (max-width: 720px) {
     .profile-section {
@@ -179,9 +200,10 @@ p {
     }
     .profile-card {
         width: 100%;
+        margin-bottom: 10px;
     }
     .none {
         margin: 0;
-        width: 100%;
+        width: 94%;
     }
   }

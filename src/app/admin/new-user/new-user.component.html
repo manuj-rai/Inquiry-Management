@@ -1,0 +1,79 @@
+<div class="registration-form">
+<div class="new-user">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <!-- Department Dropdown -->
+    <div class="form-group">
+      <select id="departmentId" name="departmentId" ngModel required class="form-control" [(ngModel)]="selectedDepartment">
+        <option value="" disabled>Select Department</option>
+        <option *ngFor="let dept of departments" [value]="dept.id">{{ dept.name }}</option>
+      </select>
+      <div *ngIf="userForm.submitted && userForm.controls['departmentId']?.invalid" class="invalid-feedback">
+        Department is required.
+      </div>
+    </div>
+
+    <!-- Name Input -->
+    <div class="form-group">
+      <input type="text" id="name" name="name" ngModel required class="form-control" placeholder="Name" />
+      <div *ngIf="userForm.submitted && userForm.controls['name']?.invalid" class="invalid-feedback">
+        Name is required.
+      </div>
+    </div>
+
+    <!-- Username Input -->
+    <div class="form-group">
+      <input type="text" id="username" name="username" ngModel required class="form-control" placeholder="Username" />
+      <div *ngIf="userForm.submitted && userForm.controls['newusername']?.invalid" class="invalid-feedback">
+        Username is required.
+      </div>
+    </div>
+
+    <!-- Email Input -->
+    <div class="form-group">
+      <input type="email" id="email" name="email" ngModel required email class="form-control" placeholder="Email" />
+      <div *ngIf="userForm.submitted && userForm.controls['email']?.invalid" class="invalid-feedback">
+        Please enter a valid email.
+      </div>
+    </div>
+
+    <!-- Password Input -->
+    <div class="form-group">
+      <input type="password" id="password" name="password" ngModel required class="form-control" placeholder="Password" />
+      <div *ngIf="userForm.submitted && userForm.controls['newpassword']?.invalid" class="invalid-feedback">
+        Password is required.
+      </div>
+    </div>
+
+    <!-- Phone Number Input -->
+    <div class="form-group">
+      <input type="text" id="phoneNumber" name="phoneNumber" ngModel required class="form-control" placeholder="Phone Number" />
+      <div *ngIf="userForm.submitted && userForm.controls['phoneNumber']?.invalid" class="invalid-feedback">
+        Phone number is required.
+      </div>
+    </div>
+
+    <!-- File Upload -->
+    <div class="form-group">
+      <input type="file" id="profilePic" name="profilePic" ngModel (change)="onFileChange($event)" />
+      <label for="profilePic">Upload Profile Picture</label>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="userForm.invalid" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<div class="content-info">
+    <h3>Why Register?</h3>
+    <p>By registering, you can:</p>
+    <ul>
+      <li>Track your progress and updates</li>
+      <li>Manage your profile and preferences easily</li>
+    </ul>
+    <h4>Already have an account?</h4>
+    <p>If you already have an account <br> <a href="/login">click here to log in</a>.</p>
+    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='150' height='150'><g fill='none' stroke='%23121525' stroke-width='2'><circle cx='50' cy='50' r='40' stroke='%23121525' stroke-width='4' fill='none'/><path d='M20 50 L50 20 L80 50 L50 80 Z' stroke='%23121525' stroke-width='3'/><line x1='10' y1='50' x2='90' y2='50' stroke='%23121525' stroke-width='2'/><line x1='50' y1='10' x2='50' y2='90' stroke='%23121525' stroke-width='2'/></g><circle cx='50' cy='50' r='10' fill='%23121525' /></svg>"
+     alt="Registration Illustration"
+     class="img-fluid" />
+</div>
+</div>
+

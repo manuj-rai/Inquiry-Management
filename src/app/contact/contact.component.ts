@@ -19,7 +19,6 @@ export class ContactComponent implements OnInit {
   states: string[] = [];
   countryStateMap: { [key: string]: string[] } = {
     India: [
-    'Ahmedabad',
     'Andhra Pradesh',
     'Arunachal Pradesh',
     'Assam',

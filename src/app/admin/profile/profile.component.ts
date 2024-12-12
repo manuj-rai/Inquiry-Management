@@ -2,23 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { NewUserComponent } from "../new-user/new-user.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, NewUserComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
   userDetails: any = {};
   isEditing = false;
-
+  
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
   constructor(private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -28,9 +29,7 @@ export class ProfileComponent implements OnInit{
         next: (details) => {
           this.userDetails = details;
           console.log(this.userDetails);
-
         },
-        
         error: (err) => {
           console.error('Error fetching user details:', err);
         }
@@ -58,6 +57,6 @@ export class ProfileComponent implements OnInit{
   logout(): void {
     localStorage.removeItem('token'); 
     localStorage.removeItem('user'); 
-    this.router.navigate(['/login']);  }
-
+    this.router.navigate(['/login']);  
+  }
 }
