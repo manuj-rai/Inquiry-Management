@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { InquiryService } from '../services/inquiry.service';
+
 
 
 
@@ -10,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   standalone:true,
-  imports:[FormsModule, CommonModule]
+  imports:[FormsModule, ReactiveFormsModule, CommonModule]
 })
 export class ContactComponent implements OnInit {
   countries: string[] = []; 
@@ -51,11 +53,31 @@ export class ContactComponent implements OnInit {
   selectedCountry: string = '';
   selectedState: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private inquiryService: InquiryService
+  ) {}
 
   ngOnInit(): void {
     this.fetchCountries(); // Fetch countries when the component initializes
   }
+
+    // Submit the form
+    onSubmit(form: any): void {
+      if (form.valid) {     
+        // Get the form data
+        const formData = form.value;
+        // Call the service to submit the data
+        this.inquiryService.submitInquiry(formData).subscribe({
+          next: (response) => {
+            console.log('Inquiry submitted successfully', response);
+            // Optionally, reset the form after successful submission
+            alert('Inquiry submitted successfully!');
+            form.reset();
+          }
+        });
+      }
+    }
 
     // Fetch countries from REST Countries API
     fetchCountries(): void {
@@ -75,13 +97,4 @@ export class ContactComponent implements OnInit {
       this.states = this.countryStateMap[country] || [];
       this.selectedState = ''; // Reset state when country changes
     }
-
-  onSubmit(form: any) {
-    if (form.valid) {
-      console.log('Form Submitted!', form.value);
-      // You can also handle the form data here, like sending it to a server.
-    } else {
-      console.log('Form is invalid');
-    }
-  }
 }

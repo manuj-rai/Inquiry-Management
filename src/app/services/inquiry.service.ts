@@ -18,4 +18,9 @@ export class InquiryService {
       }
     });
   }
+
+// Method to submit an inquiry
+submitInquiry(inquiry: any): Observable<any> {
+  return this.http.post(`${this.baseUrl}/InsertInquiry`, inquiry); 
+}
 }

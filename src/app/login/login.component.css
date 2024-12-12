@@ -259,6 +259,9 @@ p{
   }
   
   button:disabled {
+    background-color: #8f9bb329;
+    border-color: #8f9bb33d;
+    color: #8f9bb37a;
     cursor: not-allowed;
   }
   
@@ -279,6 +282,13 @@ p{
   
   button:hover {
     background-color: #0056b3;
+  }
+
+  button:disabled:hover {
+    background-color: #8f9bb329;
+    border-color: #8f9bb33d;
+    color: #8f9bb37a;
+    cursor: not-allowed;
   }
   
   hr {
