@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;  
   totalNewsCount: number = 0;
+  totalUsers: number = 0;
   users: any[] = [];
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
@@ -69,6 +70,9 @@ export class DashboardComponent implements OnInit {
     this.inquiryService.getRecentUsers().subscribe(
       (data) => {
         this.users = data;  // Store the API response in the users array
+        if (this.users.length > 0 && this.users[0].totalUsers !== undefined) {
+          this.totalUsers = this.users[0].totalUsers;  // Extract totalUsers from the first item
+        }
         console.log(this.users);
       },
       (error) => {
@@ -88,7 +92,11 @@ export class DashboardComponent implements OnInit {
 
   // Method to format "CreatedDate" into a human-readable format like "X minutes ago"
   getTimeAgo(createdDate: string): string {
-    const timeDifference = new Date().getTime() - new Date(createdDate).getTime();
+
+    const createdDateUtc = new Date(createdDate).getTime();
+    const currentUtc = new Date().getTime(); // Get the current time in UTC
+
+    const timeDifference = currentUtc - createdDateUtc;
     const minutes = Math.floor(timeDifference / 60000);  // Convert to minutes
 
     if (minutes < 60) {

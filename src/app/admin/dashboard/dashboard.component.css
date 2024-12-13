@@ -10,7 +10,7 @@ p {
     margin-bottom: 30px;
 }
   
-.total-inquiries, .total-news {
+.total-inquiries, .total-news, .total-users {
     flex: 1;
     text-align: center;
     padding: 15px;
