@@ -19,6 +19,8 @@ export class DashboardComponent implements OnInit {
   totalItems: number = 0;
   totalPages: number = 0;  
   totalNewsCount: number = 0;
+  users: any[] = [];
+  baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
   constructor(private inquiryService: InquiryService,
     private newsService: NewsService) {}
@@ -26,6 +28,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.fetchInquiries();
     this.fetchTotalNewsCount();
+    this.getRecentUsers();
   }
 
   fetchInquiries(): void {
@@ -59,6 +62,46 @@ export class DashboardComponent implements OnInit {
         console.error('Error fetching news count:', err);
       }
     });
+  }
+
+  // Method to get the top 5 recent users from the API
+  getRecentUsers(): void {
+    this.inquiryService.getRecentUsers().subscribe(
+      (data) => {
+        this.users = data;  // Store the API response in the users array
+        console.log(this.users);
+      },
+      (error) => {
+        console.error('Error fetching users:', error);
+      }
+    );
+  }
+
+  getProfilePictureUrl(user: any): string {
+    // Ensure user has a profilePicture property and replace '~/'
+    if (user && user.profilePicture) {
+      const cleanedPath = user.profilePicture.replace('~/', '');  // Remove '~/'
+      return `${this.baseImageUrl}${cleanedPath}`;  // Construct full URL
+    }
+    return 'default-profile-picture-url';  // Return a default image URL if no profile picture exists
+  }
+
+  // Method to format "CreatedDate" into a human-readable format like "X minutes ago"
+  getTimeAgo(createdDate: string): string {
+    const timeDifference = new Date().getTime() - new Date(createdDate).getTime();
+    const minutes = Math.floor(timeDifference / 60000);  // Convert to minutes
+
+    if (minutes < 60) {
+      return `${minutes} Min Ago`;
+    }
+
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) {
+      return `${hours} Hours Ago`;
+    }
+
+    const days = Math.floor(hours / 24);
+    return `${days} Days Ago`;
   }
 
 }

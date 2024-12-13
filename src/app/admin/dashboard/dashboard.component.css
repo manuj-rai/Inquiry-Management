@@ -8,9 +8,9 @@ p {
     justify-content: space-between;
     gap: 30px;
     margin-bottom: 30px;
-  }
+}
   
-  .total-inquiries, .total-news {
+.total-inquiries, .total-news {
     flex: 1;
     text-align: center;
     padding: 15px;
@@ -21,31 +21,98 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-around;
-  }
-  
-  h3 {
+}
+
+h3 {
     font-size: 1.2rem;
     color: #fff;
     font-weight: 600;
     margin: 0;
-  }
-  
-  span {
+}
+
+span {
     display: block;
     font-size: 3.5rem;
     font-weight: 700;
     color: #36f;
     margin-top: 5px;
-  }
+}
 
-  .material-icons {
+.material-icons {
     font-size: 100px;
     color: #8f9bb3;
+}
+
+.new-users {
+    padding: 15px;
+    background-color: #222b45;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border: .0625rem solid #101426;
+    margin-bottom: 30px;
+}
+
+.new-users h2 {
+    margin-top: 0;
+    font-size: .9375rem;
+    font-weight: 600;
+}
+
+.user-list{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    transition: all 0.3s ease;
+}
+
+.user-list:hover{
+    box-shadow: none;
+}
+
+.user-list .user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-list .user img{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-list .user h5 {
+    display: flex;
+    margin: 0;
+    justify-content: center;
+}
+
+.user-list .user p {
+    font-size: 10px;
+    margin-bottom: 0;
+    color: #b1b1b19d;
+    display: flex;
+    justify-content: center;
+
+}
+
+.user-list .user a {
+    text-decoration: none; 
+    color: inherit; 
+  }
+  
+  .user-list .user a:hover {
+    text-decoration: none; 
   }
   
   
 .table-container {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     padding: 20px;
     padding-bottom: 0;
     max-width: 100%;
@@ -157,12 +224,10 @@ th:hover {
 @media (max-width: 768px) {
     p {
         padding: 0;
-        margin-bottom: 10px;
     }
 
     .dashboard-stats {
         gap: 5px;
-        margin-bottom: 5px;
     }
 
     .material-icons {
@@ -171,7 +236,6 @@ th:hover {
 
     .table-container {
         padding: 5px;
-        margin-bottom: 5px;
     }
 
     header {

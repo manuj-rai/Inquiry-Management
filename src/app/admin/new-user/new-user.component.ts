@@ -19,7 +19,7 @@ export class NewUserComponent {
       { id: 2, name: 'Marketing' },
       { id: 3, name: 'IT' },
     ];
-    
+    fileName: string = '';
     selectedDepartment: string = '';
     selectedFile: File | null = null;;
 
@@ -27,44 +27,40 @@ export class NewUserComponent {
         private http: HttpClient
       ) {}
 
-  onFileChange(event: any): void {
-    if (event.target.files.length > 0) {
-      this.selectedFile = event.target.files[0];
-    }
-  }
-
-    // Submit the form
-    onSubmit(userForm: NgForm): void {
-      if (userForm.valid) {
-        const formData = new FormData();
-        
-        // Append form data to FormData
-        formData.append('departmentId', this.selectedDepartment.toString());
-        formData.append('name', userForm.value.name);
-        formData.append('username', userForm.value.username);
-        formData.append('email', userForm.value.email);
-        formData.append('phoneNumber', userForm.value.phoneNumber);
-        if (this.selectedFile) {
-          formData.append('profilePic', this.selectedFile, this.selectedFile.name);
+      onFileChange(event: any): void {
+        const file = event.target.files[0];  
+        if (file) {
+          this.fileName = file.name; 
+          this.selectedFile = file; 
         }
+      }
+
+      // Submit the form
+      onSubmit(userForm: NgForm): void {
+        if (userForm.valid) {
+          if (!this.selectedFile) {
+            alert('Please select a profile picture.');
+            return;
+          }
+
+          const formData = new FormData();
+          
+          // Append form data to FormData
+          formData.append('departmentId', this.selectedDepartment.toString());
+          formData.append('name', userForm.value.name);
+          formData.append('username', userForm.value.username);
+          formData.append('email', userForm.value.email);
+          formData.append('password', userForm.value.password);
+          formData.append('phoneNumber', userForm.value.phoneNumber);
+          formData.append('ProfilePicture', this.selectedFile);
+
   
         
-        // Call the API to submit the form
-        this.submitUserData(formData).subscribe(
-          (response) => {
-            console.log('User submitted successfully:', response);
-          },
-          (error) => {
-            console.error('Error submitting form:', error);
-          }
-        );
+          this.http.post('https://localhost:7158/register', formData)
+          .subscribe({
+            next: (response) => alert('User registered successfully!'),
+            error: (error) => console.error('Error:', error)
+          });
+        }
       }
-    }
-  
-    // Submit the user data (API call)
-    submitUserData(formData: FormData): Observable<any> {
-      const apiUrl = 'https://your-api-url.com/upload-user'; // replace with your API URL
-      return this.http.post(apiUrl, formData);
-    }
-
 }

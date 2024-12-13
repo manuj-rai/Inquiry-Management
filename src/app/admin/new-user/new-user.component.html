@@ -54,8 +54,15 @@
 
     <!-- File Upload -->
     <div class="form-group">
-      <input type="file" id="profilePic" name="profilePic" ngModel (change)="onFileChange($event)" />
-      <label for="profilePic">Upload Profile Picture</label>
+      <input
+        type="file"
+        id="profilePic"
+        name="profilePic"
+        ngModel
+        (change)="onFileChange($event)"
+        required
+      />
+      <label for="profilePic">{{ fileName || 'Upload Profile Picture' }}</label>
     </div>
 
     <!-- Submit Button -->
