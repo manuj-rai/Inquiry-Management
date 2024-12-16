@@ -1,3 +1,20 @@
+select#gender,
+select#country,
+select#status {
+    background: transparent;
+    color: #101426;
+    border: none;
+    width: 20px;
+    cursor: pointer;
+}
+
+select#gender,
+select#country,
+select#status:focus {
+    outline: none;
+}
+
+
 p {
     padding: 0 5px;
     font-weight: 800;
@@ -174,6 +191,24 @@ th {
     background-color: #222b45;
     cursor: pointer;
     line-height: 1.5em;
+}
+
+button.action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button.action-btn.approve-btn {
+    color: #00d68f;
+}
+
+button.action-btn.unapprove-btn {
+    color: #fa0;
+}
+
+button.action-btn.delete-btn {
+    color: #ff3d71;
 }
 
 th:hover {

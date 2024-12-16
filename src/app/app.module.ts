@@ -6,6 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     ContactComponent,
     LoginComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CKEditorModule
   ],
   providers: [],  
   bootstrap: [],  

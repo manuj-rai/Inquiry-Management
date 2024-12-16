@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { InquiryService } from '../../services/inquiry.service';
 import { NewsService } from '../../services/news.service';
+import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -17,27 +19,36 @@ export class DashboardComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 5;
   totalItems: number = 0;
-  totalPages: number = 0;  
+  totalPages: number = 0; 
+
+    // Filters
+    gender: string = '';
+    country: string = '';
+    status: string = '';
+
+  countries: string[] = []; 
   totalNewsCount: number = 0;
   totalUsers: number = 0;
   users: any[] = [];
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
   constructor(private inquiryService: InquiryService,
-    private newsService: NewsService) {}
+    private newsService: NewsService,
+    private http: HttpClient,) {}
 
   ngOnInit(): void {
     this.fetchInquiries();
     this.fetchTotalNewsCount();
     this.getRecentUsers();
+    this.fetchCountries();
   }
 
   fetchInquiries(): void {
-    this.inquiryService.getPaginatedUsers(this.currentPage, this.pageSize).subscribe({
+    this.inquiryService.getPaginatedUsers(this.currentPage, this.pageSize, this.gender, this.country, this.status).subscribe({
       next: (response) => {
         this.inquiries = response.data;
         this.totalItems = response.totalCount;
-        this.totalPages = Math.ceil(this.totalItems / this.pageSize);  // Set the total pages
+        this.totalPages = Math.ceil(this.totalItems / this.pageSize);  // Set total pages
       },
       error: (err) => {
         console.error('Error fetching inquiries:', err);
@@ -45,19 +56,57 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  changePage(newPage: number): void {
-    if (newPage > 0 && newPage <= this.totalPages) {
-      this.currentPage = newPage;
-      this.fetchInquiries();
+  // Action handling methods (Approve, Unapprove, Delete)
+  updateStatus(inquiryId: number, action: string): void {
+    this.inquiryService.updateInquiryStatus(inquiryId, action).subscribe({
+      next: () => {
+        // After action, refetch the inquiries
+        this.fetchInquiries();
+      },
+      error: (err) => {
+        console.error(`Error updating status for inquiry ${inquiryId}:`, err);
+      }
+    });
+  }
+
+  changePage(page: number): void {
+    if (page > 0 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.fetchInquiries(); // Fetch new page of inquiries
     }
   }
+
+    // Reset filters and fetch data
+    resetFilters(): void {
+      this.gender = '';
+      this.country = '';
+      this.status = '';
+      this.fetchInquiries();
+    }
+
+  applyFilters(): void {
+    this.fetchInquiries();
+  }
+
+      // Fetch countries from REST Countries API
+      fetchCountries(): void {
+        this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
+          next: (response) => {
+            // Extract and sort country names
+            this.countries = response
+              .map((country) => country.name.common)
+              .sort((a: string, b: string) => a.localeCompare(b));
+          },
+          error: (err) => console.error('Error fetching countries:', err)
+        });
+      }
 
   // Fetch total news count from API
   fetchTotalNewsCount(): void {
     this.newsService.getActiveNews(1, 10).subscribe({
       next: (response) => {
         // Extract total count from the API response
-        this.totalNewsCount = response.totalCount; // TotalCount is in the response
+        this.totalNewsCount = response.data.totalCount; // TotalCount is in the response
       },
       error: (err) => {
         console.error('Error fetching news count:', err);
@@ -92,24 +141,26 @@ export class DashboardComponent implements OnInit {
 
   // Method to format "CreatedDate" into a human-readable format like "X minutes ago"
   getTimeAgo(createdDate: string): string {
-
     const createdDateUtc = new Date(createdDate).getTime();
-    const currentUtc = new Date().getTime(); // Get the current time in UTC
-
-    const timeDifference = currentUtc - createdDateUtc;
+    
+    // Adjust current time to UTC - 5:30 (IST offset)
+    const currentUtc = new Date().getTime();
+    const adjustedTime = currentUtc - (5 * 60 * 60 * 1000 + 30 * 60 * 1000) + (80 * 60 * 1000); // Subtract 5 hrs 30 min
+  
+    const timeDifference = adjustedTime - createdDateUtc;
     const minutes = Math.floor(timeDifference / 60000);  // Convert to minutes
-
+  
     if (minutes < 60) {
       return `${minutes} Min Ago`;
     }
-
+  
     const hours = Math.floor(minutes / 60);
     if (hours < 24) {
       return `${hours} Hours Ago`;
     }
-
+  
     const days = Math.floor(hours / 24);
     return `${days} Days Ago`;
-  }
+  }  
 
 }

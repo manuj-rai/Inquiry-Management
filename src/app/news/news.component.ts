@@ -45,22 +45,22 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   fetchPaginatedNews(pageIndex: number = this.pageIndex, pageSize: number = this.pageSize): void {
-    if (this.isLoading) return;  // Prevent multiple calls
-
+    if (this.isLoading) return; // Prevent multiple calls
+  
     this.isLoading = true;
-
+  
     this.newsService.getActiveNews(pageIndex, pageSize).subscribe({
       next: (response: any) => {
-        if (response?.data && Array.isArray(response.data)) {
-          console.log('Loaded news:', response.data);
-
+        if (response?.data?.newsContent && Array.isArray(response.data.newsContent)) {
+          console.log('Loaded news:', response.data.newsContent);
+  
           // Append new data for infinite scroll
-          this.newsList = [...this.newsList, ...response.data];
+          this.newsList = [...this.newsList, ...response.data.newsContent];
           this.pageIndex++; // Increment the page index for the next API call
-
-          // Update total news count if available (optional)
-          this.totalNewsCount = response.totalCount || 0;
-
+  
+          // Update total news count
+          this.totalNewsCount = response.data.totalCount || 0;
+  
           // Check if all news are loaded
           if (this.newsList.length >= this.totalNewsCount) {
             this.isLoading = false;
@@ -78,6 +78,7 @@ export class NewsComponent implements OnInit, OnDestroy {
       }
     });
   }
+  
 
   // Fetch top news for the slider
   fetchTopNews(): void {

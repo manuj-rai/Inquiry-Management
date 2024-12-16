@@ -33,4 +33,9 @@ export class NewsService {
   getNewsByTag(tagName: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/News-by-Categories?tagName=${tagName}`);
   }
+
+  // Method to add news
+  addNews(newsData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/add-news`, newsData);
+  }
 }

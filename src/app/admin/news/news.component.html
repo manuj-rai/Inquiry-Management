@@ -1,0 +1,92 @@
+<div class="news-section">
+<div class="news-form-container">
+    <h2>Add News</h2>
+    <form (ngSubmit)="onSubmit()" #newsForm="ngForm" enctype="multipart/form-data">
+      <!-- Title -->
+      <div class="form-group">
+        <input type="text" placeholder="Title" id="title" [(ngModel)]="newsRequest.title" name="title" required class="form-control" />
+      </div>
+      
+      <div class="form-group-inline">
+        <!-- Big Image Upload -->
+        <div class="input-container">
+          <label for="bigImage" class="form-label fw-bold">Big Image:</label>
+          <div class="input-group">
+            <input 
+              type="file" 
+              id="bigImage" 
+              (change)="onBigImageChange($event)" 
+              class="form-control shadow-sm border-0"
+            />
+          </div>
+        </div>
+      
+        <!-- Small Image Upload -->
+        <div class="input-container">
+          <label for="smallImage" class="form-label fw-bold">Small Image:</label>
+          <div class="input-group">
+            <input 
+              type="file" 
+              id="smallImage" 
+              (change)="onSmallImageChange($event)" 
+              class="form-control shadow-sm border-0"
+            />
+          </div>
+        </div>
+      </div>     
+  
+  
+      <!-- Short Description -->
+      <div class="form-group">
+        <textarea placeholder="Short Desc" id="shortDesc" [(ngModel)]="newsRequest.shortDesc" name="shortDesc" required class="form-control"></textarea>
+      </div>
+  
+      <!-- Content -->
+      <div class="form-group">
+        <editor
+            apiKey="mv70k0hjgc1cokcn3btuanqq7y4f8mvy29d3yqdn69cqy61q"
+            [(ngModel)]="newsRequest.newsContent"
+            [init]="tinyConfig"
+            name="content"
+            id="content"
+            
+        ></editor>
+      </div>
+  
+      <!-- Copyright Text -->
+      <div class="form-group">
+        <input type="text" placeholder="Copyright Text" id="CopyWriteText" [(ngModel)]="newsRequest.CopyWriteText" name="CopyWriteText" class="form-control" />
+      </div>
+  
+      <!-- News Tags -->
+      <div class="form-group">
+        <input type="text" placeholder="News Tag" id="tags" [(ngModel)]="newsRequest.tagName" name="tags" class="form-control" />
+      </div>
+  
+      <!-- Posting Date -->
+      <div class="form-group">
+        <input type="date" placeholder="Posting Date" id="postingDate" [(ngModel)]="newsRequest.postingDate" name="postingDate" required class="form-control" />
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!newsForm.form.valid" class="btn btn-primary">Add News</button>
+    </form>
+  </div>
+  
+  <div class="recent-news">
+    <h2>Recent News</h2>
+    <!-- News List -->
+    <div class="news-list">
+        <div *ngFor="let news of newsList" class="news-card">
+            <div class="news-image">
+                <img [src]="getImageUrl(news.bigImage)" alt="News Image" />
+            </div>
+            <div class="news-content">
+                <h3 class="news-title">{{ news.title }}</h3>
+                <p class="news-date">Posted on: {{ news.postingDate | date }}</p>
+            </div>
+        </div>
+    </div>   
+  </div>
+
+</div>

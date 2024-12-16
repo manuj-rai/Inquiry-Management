@@ -7,7 +7,7 @@ p {
 .profile-section {
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    width: 98%;
     margin-bottom: 30px;
   }
   
@@ -21,7 +21,6 @@ p {
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white;
     padding: 10px 0;
-    overflow: hidden;
     text-align: center;
   }
 

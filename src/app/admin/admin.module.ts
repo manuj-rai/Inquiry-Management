@@ -6,6 +6,7 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { RouterOutlet } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
     DashboardComponent,
     ProfileComponent,
     RouterOutlet,
+    EditorModule
   ]
 })
 export class AdminModule { }
