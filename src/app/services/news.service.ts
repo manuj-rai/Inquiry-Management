@@ -38,4 +38,8 @@ export class NewsService {
   addNews(newsData: FormData): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/add-news`, newsData);
   }
+
+  getTagSuggestions(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/tagsuggestions?query=${query}`);
+  }
 }

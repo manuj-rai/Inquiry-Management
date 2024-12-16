@@ -11,18 +11,14 @@ import { CommonModule } from "@angular/common";
 })
 export class AdminSidebarComponent implements OnInit {
   @Input() isSidebarVisible: boolean = true;
-  activeMenu: string = 'dashboard'; // Default active menu
+  activeMenu: string = ''; // Default active menu
 
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // Listen to router events to set the active menu based on the current route
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        const currentRoute = event.urlAfterRedirects.split('/')[1]?.toLowerCase();
-        this.activeMenu = currentRoute || 'dashboard'; // Default to 'dashboard' if no route is found
-      }
-    });
+    // Initial setup for activeMenu based on the current route
+    const currentRoute = this.router.url.split('/')[2]?.toLowerCase(); // get the part of the URL after '/admin'
+    this.activeMenu = currentRoute || 'dashboard'; // Default to 'dashboard' if no route is found
   }
 
   toggleSidebar() {

@@ -29,6 +29,8 @@ export const routes: Routes = [
       { path: 'dashboard', loadComponent: () => import('./admin/dashboard/dashboard.component').then(m => m.DashboardComponent ) },
       { path: 'profile', loadComponent: () => import('./admin/profile/profile.component').then(m => m.ProfileComponent) },
       { path: 'news', loadComponent: () => import('./admin/news/news.component').then(m => m.NewsComponent) },
+      { path: 'maps', loadComponent: () => import('./admin/maps/maps.component').then(m => m.MapsComponent) },
+
     ]
   },
 

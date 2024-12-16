@@ -16,9 +16,8 @@
   }
   
   h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: Open Sans,sans-serif;
+    margin: 0px 0px 20px 0;
+    font-family: Open Sans, sans-serif;
     font-size: 1.2375rem;
   }
   
@@ -105,6 +104,32 @@
     padding-left: 10px;
     transition: 0.3s ease-in;
     resize: vertical;
+  }
+
+  .suggestion-item {
+    cursor: pointer;
+    font-size: 14px;
+    color:#ffffff9c;
+  }
+
+  .suggestion-item:hover {
+    color: #fff;
+  }
+
+  .selected-tag {
+    margin: 10px;
+    font-size: 14px;
+    color: #ffffff;
+  }
+  
+  .remove-tag {
+    margin-left: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .remove-tag:hover {
+    color: red;
   }
 
   .form-control:focus {

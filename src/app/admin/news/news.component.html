@@ -49,7 +49,7 @@
             [init]="tinyConfig"
             name="content"
             id="content"
-            
+            placeholder="Content"
         ></editor>
       </div>
   
@@ -60,8 +60,36 @@
   
       <!-- News Tags -->
       <div class="form-group">
-        <input type="text" placeholder="News Tag" id="tags" [(ngModel)]="newsRequest.tagName" name="tags" class="form-control" />
+        <input 
+          type="text" 
+          placeholder="News Tag" 
+          id="tags" 
+          [(ngModel)]="newsRequest.tagName" 
+          name="tags" 
+          class="form-control"
+          (input)="onTagInputChange(newsRequest.tagName)"
+          (keydown.enter)="addTag(newsRequest.tagName)" />
+      
+        <!-- Suggestions List -->
+        <div *ngIf="tagSuggestions.length > 0" class="suggestions-list">
+          <ul>
+            <li *ngFor="let tag of tagSuggestions" 
+                (click)="addTag(tag.tagName)" 
+                class="suggestion-item">
+              {{ tag.tagName }}
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Selected Tags -->
+        <div *ngIf="selectedTags.length > 0" class="selected-tags">
+          <span *ngFor="let tag of selectedTags" class="selected-tag">
+            {{ tag }} 
+            <span (click)="removeTag(tag)" class="remove-tag">x</span>
+          </span>
+        </div>
       </div>
+      
   
       <!-- Posting Date -->
       <div class="form-group">

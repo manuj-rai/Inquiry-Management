@@ -13,11 +13,16 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './news.component.html',
   styleUrl: './news.component.css'
 })
+
 export class NewsComponent implements OnInit {
   newsList: any[] = []; // Array to store news items
   pageIndex: number = 1; // Current page index
   pageSize: number = 2; // Page size
   userDetails: any;
+  tagSuggestions: any[] = [];
+  selectedTags: string[] = [];
+  
+
 
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
@@ -30,13 +35,13 @@ export class NewsComponent implements OnInit {
     tagName: '',
     bigImage: null as File | null,
     smallImage: null as File | null,
-    authorID: 0, // This will hold the logged-in user's ID
-    createdBy: '', // This will hold the logged-in user's name
+    authorID: 0, 
+    createdBy: '', 
   };
 
   tinyConfig = {
     height: 270,
-    menubar: true, // Hide menu bar
+    menubar: false, // Hide menu bar
     toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | code',
     content_style: `
       body { 
@@ -45,10 +50,8 @@ export class NewsComponent implements OnInit {
         background-color: #161a2f; 
         color: #fff;
       }
-      .tox-toolbar_primary {
-        background-color: #161a2f;
-        color: white;
-        border: 1px solid #101426;
+      .toolbar {
+        background-color: #161a2f !important;
       }
       .tox-menubar {
         background: transparent;
@@ -153,5 +156,39 @@ export class NewsComponent implements OnInit {
     const cleanedPath = imagePath.replace('~/', '');
     return `${this.baseImageUrl}${cleanedPath}`;
   }
+
+  onTagInputChange(query: string) {
+    if (query.length >= 3) {
+      this.newsService.getTagSuggestions(query).subscribe({
+        next: (suggestions) => {
+          console.log(suggestions); // Log the response to verify its structure
+          this.tagSuggestions = suggestions;
+        },
+        error: (error) => {
+          console.error('Error fetching tag suggestions', error);
+        },
+        complete: () => {
+          console.log('Tag suggestions fetching complete');
+        }
+      });
+    } else {
+      this.tagSuggestions = [];
+    }
+  } 
+
+    // Select a tag from the suggestions and add it to the input
+    addTag(tag: string) {
+      // Prevent adding the same tag again
+      if (tag && !this.selectedTags.includes(tag)) {
+        this.selectedTags.push(tag);
+        this.newsRequest.tagName = ''; // Clear input field
+        this.tagSuggestions = []; // Clear suggestions after adding tag
+      }
+    }
+  
+    // Remove a tag from selectedTags list
+    removeTag(tag: string) {
+      this.selectedTags = this.selectedTags.filter(t => t !== tag);
+    }
 
 }
