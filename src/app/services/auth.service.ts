@@ -23,6 +23,11 @@ export class AuthService {
     });
   }
 
+  // Method to get top 5 recent users
+  getRecentUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/recent-users`);
+  }
+
   // Method to update user details
   updateUserDetails(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/UpdateUserDetails`, formData);

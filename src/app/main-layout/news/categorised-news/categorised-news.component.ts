@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewsService } from '../../services/news.service';
+import { NewsService } from '../../../services/news.service';
 import { ActivatedRoute } from '@angular/router';
 
 

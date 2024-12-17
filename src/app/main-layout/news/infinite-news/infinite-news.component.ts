@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { NewsService } from '../../services/news.service';
+import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 
 

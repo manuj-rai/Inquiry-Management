@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NewsService } from '../services/news.service';
+import { NewsService } from '../../services/news.service';
 import { DatePipe } from '@angular/common';  // Import DatePipe
 import { CommonModule } from "@angular/common";
 import { NewsCategoriesComponent } from "./news-categories/news-categories.component";

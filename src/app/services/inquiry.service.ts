@@ -43,9 +43,4 @@ export class InquiryService {
     return this.http.post(`${this.baseUrl}/InsertInquiry`, inquiry); 
   }
 
-  // Method to get top 5 recent users
-  getRecentUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/recent-users`);
-  }
-
 }

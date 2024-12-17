@@ -4,6 +4,7 @@ import { InquiryService } from '../../services/inquiry.service';
 import { NewsService } from '../../services/news.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 
 
@@ -34,6 +35,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private inquiryService: InquiryService,
     private newsService: NewsService,
+    private authService: AuthService,
     private http: HttpClient,) {}
 
   ngOnInit(): void {
@@ -116,7 +118,7 @@ export class DashboardComponent implements OnInit {
 
   // Method to get the top 5 recent users from the API
   getRecentUsers(): void {
-    this.inquiryService.getRecentUsers().subscribe(
+    this.authService.getRecentUsers().subscribe(
       (data) => {
         this.users = data;  // Store the API response in the users array
         if (this.users.length > 0 && this.users[0].totalUsers !== undefined) {

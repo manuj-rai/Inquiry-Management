@@ -12,8 +12,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadComponent: () => import('./main-layout/home/home.component').then(m => m.HomeComponent) },
-      { path: 'news', loadComponent: () => import('./news/news.component').then(m => m.NewsComponent) },
-      { path: 'news/category/:tagName', loadComponent: () => import('./news/news.component').then(m => m.NewsComponent) },
+      { path: 'news', loadComponent: () => import('./main-layout/news/news.component').then(m => m.NewsComponent) },
+      { path: 'news/category/:tagName', loadComponent: () => import('./main-layout/news/news.component').then(m => m.NewsComponent) },
       { path: 'contact', loadComponent: () => import('./main-layout/contact/contact.component').then(m => m.ContactComponent) },
       { path: 'login', loadComponent: () => import('./main-layout/login/login.component').then(m => m.LoginComponent) },
     ]
