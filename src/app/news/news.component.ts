@@ -1,14 +1,15 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NewsService } from '../services/news.service';
 import { DatePipe } from '@angular/common';  // Import DatePipe
 import { CommonModule } from "@angular/common";
 import { NewsCategoriesComponent } from "./news-categories/news-categories.component";
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
+import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent],
+  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],
@@ -33,7 +34,6 @@ export class NewsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.fetchPaginatedNews();
     this.fetchTopNews();
   }
 
@@ -43,42 +43,7 @@ export class NewsComponent implements OnInit, OnDestroy {
       clearInterval(this.autoSlideInterval);
     }
   }
-
-  fetchPaginatedNews(pageIndex: number = this.pageIndex, pageSize: number = this.pageSize): void {
-    if (this.isLoading) return; // Prevent multiple calls
-  
-    this.isLoading = true;
-  
-    this.newsService.getActiveNews(pageIndex, pageSize).subscribe({
-      next: (response: any) => {
-        if (response?.data?.newsContent && Array.isArray(response.data.newsContent)) {
-          console.log('Loaded news:', response.data.newsContent);
-  
-          // Append new data for infinite scroll
-          this.newsList = [...this.newsList, ...response.data.newsContent];
-          this.pageIndex++; // Increment the page index for the next API call
-  
-          // Update total news count
-          this.totalNewsCount = response.data.totalCount || 0;
-  
-          // Check if all news are loaded
-          if (this.newsList.length >= this.totalNewsCount) {
-            this.isLoading = false;
-          }
-        } else {
-          console.error('Invalid response structure:', response);
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching news:', error);
-        this.isLoading = false;
-      },
-      complete: () => {
-        this.isLoading = false;
-      }
-    });
-  }
-  
+ 
 
   // Fetch top news for the slider
   fetchTopNews(): void {
@@ -110,21 +75,6 @@ export class NewsComponent implements OnInit, OnDestroy {
     this.currentSlideIndex = index;
     clearInterval(this.autoSlideInterval); // Stop auto-slide on manual navigation
     this.startAutoSlide(); // Restart auto-slide
-  }
-
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    if (this.isLoading) return;  // Prevent scroll triggering while loading
-
-    // Add a delay before checking the scroll position and loading more news
-    setTimeout(() => {
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        // Check if not all news are loaded and then fetch more
-        if (this.newsList.length < this.totalNewsCount) {
-          this.fetchPaginatedNews();
-        }
-      }
-    }, 2000);  // 1000ms (2 second) delay before loading more news
   }
 
   getImageUrl(imagePath: string): string {

@@ -2,72 +2,48 @@
 <app-categorised-news [tagName]="selectedTag"></app-categorised-news>
 <div #newsContainer class="news-container">
 
-      <!-- Top News Slider -->
-       <h2>Top News</h2>
-       <div class="top-news-section">
+<!-- Top News Slider -->
+<h2>Top News</h2>
+<div class="top-news-section">
 
-        <div class="slider-container">
-            <!-- Slider -->
-            <div class="slider">
+    <div class="slider-container">
+        <!-- Slider -->
+        <div class="slider">
             <div
                 *ngFor="let news of topNews; let i = index"
                 class="slide"
                 [class.active]="i === currentSlideIndex"
-            >
+                >
                 <img [src]="getImageUrl(news.bigImage)" [alt]="news.title" />
                 <div class="slide-content">
-                <h2>{{ news.title }}</h2>
-                <p>{{ news.shortDesc }}</p>
+                    <h2>{{ news.title }}</h2>
+                    <p>{{ news.shortDesc }}</p>
                 </div>
             </div>
-            </div>
-
-            <!-- Slide Indicators -->
-            <div class="indicators">
-                <span
-                    *ngFor="let news of topNews; let i = index"
-                    class="indicator"
-                    [class.active]="i === currentSlideIndex"
-                    (click)="goToSlide(i)"
-                ></span>
-                </div>
-            </div>
-
-            <!-- Right Side News (3 news items) -->
-            <div class="right-side-news">
-                <div *ngFor="let news of rightSideNews" class="right-news-item">
-                <img [src]="getImageUrl(news.bigImage)" alt="{{ news.title }}" />
-                <div class="news-details">
-                    <h5>{{ news.title }}</h5>
-                </div>
-                </div>
-            </div>   
         </div>
 
-    <h2>Latest News</h2>
-    <div class="news-items">
-        <!-- Check if the newsList has items -->
-        <div *ngIf="newsList.length > 0; else noNews">
-        <div *ngFor="let news of newsList" class="news-item">
-            <div class="news-img">
-            <img [src]="getImageUrl(news.bigImage)" alt="News Image" class="news-image" />
-            </div>
-            <div class="news-content">
-            <h3>{{ news.title }}</h3>
-            <p>{{ news.shortDesc }}</p>  
-            </div> 
-        </div>
+        <!-- Slide Indicators -->
+        <div class="indicators">
+            <span
+                *ngFor="let news of topNews; let i = index"
+                class="indicator"
+                [class.active]="i === currentSlideIndex"
+                (click)="goToSlide(i)"
+                >
+            </span>
         </div>
     </div>
 
-    <!-- Template for no news -->
-    <ng-template #noNews>
-      <p>No news available.</p>
-    </ng-template>
+    <!-- Right Side News (3 news items) -->
+    <div class="right-side-news">
+        <div *ngFor="let news of rightSideNews" class="right-news-item">
+            <img [src]="getImageUrl(news.bigImage)" alt="{{ news.title }}" />
+            <div class="news-details">
+                <h5>{{ news.title }}</h5>
+            </div>
+        </div>
+    </div>   
+</div>
 
-    <!-- Loading indicator -->
-    <div *ngIf="isLoading" class="loading-indicator">
-        <p>loading more news...</p>
-    </div>
-
+<app-infinite-news></app-infinite-news>
 </div>

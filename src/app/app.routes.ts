@@ -11,11 +11,11 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', loadComponent: () => import('./home/home.component').then(m => m.HomeComponent) },
+      { path: 'home', loadComponent: () => import('./main-layout/home/home.component').then(m => m.HomeComponent) },
       { path: 'news', loadComponent: () => import('./news/news.component').then(m => m.NewsComponent) },
       { path: 'news/category/:tagName', loadComponent: () => import('./news/news.component').then(m => m.NewsComponent) },
-      { path: 'contact', loadComponent: () => import('./contact/contact.component').then(m => m.ContactComponent) },
-      { path: 'login', loadComponent: () => import('./login/login.component').then(m => m.LoginComponent) },
+      { path: 'contact', loadComponent: () => import('./main-layout/contact/contact.component').then(m => m.ContactComponent) },
+      { path: 'login', loadComponent: () => import('./main-layout/login/login.component').then(m => m.LoginComponent) },
     ]
   },
 

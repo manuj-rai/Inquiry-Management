@@ -1,0 +1,27 @@
+<h2>Latest News</h2>
+<div class="news-items">
+    <!-- Check if the newsList has items -->
+    <div *ngIf="newsList.length > 0; else noNews">
+        <div *ngFor="let news of newsList" class="news-item">
+            <div class="news-img">
+                <img [src]="getImageUrl(news.bigImage)" alt="News Image" class="news-image" />
+            </div>
+            <div class="news-content">
+                <h3>{{ news.title }}</h3>
+                <p>{{ news.shortDesc }}</p>  
+                <p style="color: #36b;">{{ news.tagName }}</p>
+            </div> 
+        </div>
+    </div>
+    <!-- Template for no news -->
+<ng-template #noNews>
+    <p>No news available.</p>
+  </ng-template>
+  
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="loading-indicator">
+      <p>loading more news...</p>
+  </div>
+</div>
+
+
