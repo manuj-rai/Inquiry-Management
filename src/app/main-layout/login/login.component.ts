@@ -19,7 +19,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router) {
+    private router: Router
+  ) {
     // Initialize the form group
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(4)]],  // Email field with validation
