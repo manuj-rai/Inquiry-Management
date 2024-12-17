@@ -83,7 +83,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   // Fetch top news for the slider
   fetchTopNews(): void {
     const take = 5;
-    const skip = 2;
+    const skip = 0;
 
     this.newsService.getTopNews(take, skip).subscribe({
       next: (data: any[]) => {
@@ -91,7 +91,7 @@ export class NewsComponent implements OnInit, OnDestroy {
 
         this.topNews = data; 
         this.startAutoSlide();
-        this.rightSideNews = data.slice(2, 5); // News for the right-hand side
+        this.rightSideNews = data.slice(0, 3); // News for the right-hand side
       },
       error: (err) => console.error('Error fetching top news:', err)
     });

@@ -4,51 +4,120 @@
     <div class="profile-card">
         <h5>Profile Details</h5>
         <div class="profile-header">
+
           <div class="profile-pic-container">
+            <!-- Display the selected profile picture or a default placeholder -->
             <img
+              *ngIf="!selectedFile"
               class="profile-pic"
+              id="profilePicture"
               [src]="getProfilePictureUrl()"
               alt="Profile Picture"
+              [ngClass]="{'blurred': isEditing}"  
+              (click)="fileInput.click()"  
             />
-            <!-- <input
+            
+            <!-- Display the selected file -->
+            <img
+              *ngIf="selectedFile"
+              class="profile-pic"
+              [src]="selectedFile"
+              alt="Selected Profile Picture"
+              [ngClass]="{'blurred': isEditing}"
+            />
+            
+            <!-- Add SVG button displayed only during editing -->
+            <button
               *ngIf="isEditing"
-              type="text"
-              [(ngModel)]="userDetails.profilePicture"
-              placeholder="Profile Picture URL"
-              class="form-control"
-            /> -->
+              class="btn-add-pic"
+              (click)="fileInput.click()"
+            >
+              <!-- SVG for Add button -->
+              <i class="fa fa-camera"></i>
+            </button>
+            
+            <input
+              #fileInput
+              type="file"
+              id="profilePicture"
+              (change)="onProfilePictureChange($event)"
+              style="display: none;"  
+            />
           </div>
+
+
           <div class="profile-info">
+
+            <!-- Name field -->
             <h2 class="profile-name">
               <span *ngIf="!isEditing">{{ userDetails.name }}</span>
               <input
                 *ngIf="isEditing"
                 type="text"
+                id="fullName"
+                name="fullName"
                 [(ngModel)]="userDetails.name"
                 class="form-control"
                 placeholder="Enter Name"
               />
             </h2>
+
+            <!-- Username field -->
+            <p class="profile-username">
+              <span *ngIf="!isEditing">{{ username }}</span>
+              <input
+                *ngIf="isEditing"
+                type="text"
+                id="username"
+                name="username"
+                [(ngModel)]="username"
+                class="form-control"
+                placeholder="Enter Username"
+              />
+            </p>
+
+            <!-- Email field -->
             <p class="profile-email">
               <span *ngIf="!isEditing">{{ userDetails.emailID }}</span>
               <input
                 *ngIf="isEditing"
                 type="email"
+                id="email"
+                name="email"
                 [(ngModel)]="userDetails.emailID"
                 class="form-control"
                 placeholder="Enter Email"
               />
             </p>
+
+            <!-- Number field -->
             <p class="profile-tel">
               <span *ngIf="!isEditing">{{ userDetails.phoneNumber }}</span>
               <input
                 *ngIf="isEditing"
                 type="tel"
+                id="phone"
+                name="phone"
                 [(ngModel)]="userDetails.phoneNumber"
                 class="form-control"
                 placeholder="Enter Phone Number"
               />
             </p>
+
+            <!-- Password field -->
+            <p class="profile-password">
+              <span *ngIf="!isEditing"></span> <!-- Hide password in view mode -->
+              <input
+                *ngIf="isEditing"
+                type="password"
+                id="password"
+                name="password"
+                [(ngModel)]="userDetails.password"
+                class="form-control"
+                placeholder="Enter Password"
+              />
+            </p>
+
           </div>
         </div>
         <div class="profile-socials">

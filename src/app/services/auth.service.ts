@@ -22,4 +22,9 @@ export class AuthService {
       params: { userName: username }
     });
   }
+
+  // Method to update user details
+  updateUserDetails(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/UpdateUserDetails`, formData);
+  }
 }

@@ -38,6 +38,11 @@ p {
     padding-bottom: 0;
     border-bottom: 1px solid #101426;
   }
+
+  .profile-pic-container {
+    position: relative;
+    display: inline-block;
+  }
   
   .profile-pic {
     width: 120px;
@@ -45,8 +50,39 @@ p {
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #101426;
+    transition: filter 0.3s ease;
   }
-  
+
+  .profile-pic.blurred {
+    cursor: pointer;
+  }
+
+  .btn-add-pic {
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.250);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 12px;
+    transition: 0.1s ease-in-out;
+  }
+
+  .btn-add-pic:hover {
+    background-color: rgba(0, 0, 0, 0.500);
+  }
+
+  i.fa.fa-camera {
+    font-size: 26px;
+    color: #fff;
+  }
+   
   .profile-info {
     margin: 0px;
   }
@@ -56,9 +92,10 @@ p {
     font-weight: bold;
     color: #fff;
   }
-  
+
   .profile-email,
-  .profile-tel {
+  .profile-tel,
+  .profile-username {
     font-size: 0.875rem;
     color: #666;
   }

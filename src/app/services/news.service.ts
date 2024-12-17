@@ -40,6 +40,6 @@ export class NewsService {
   }
 
   getTagSuggestions(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/tagsuggestions?query=${query}`);
+    return this.http.get<any[]>(`${this.baseUrl}/suggestions?query=${query}`);
   }
 }

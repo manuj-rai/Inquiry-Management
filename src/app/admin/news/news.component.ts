@@ -158,7 +158,7 @@ export class NewsComponent implements OnInit {
   }
 
   onTagInputChange(query: string) {
-    if (query.length >= 3) {
+    if (query.length >= 1) {
       this.newsService.getTagSuggestions(query).subscribe({
         next: (suggestions) => {
           console.log(suggestions); // Log the response to verify its structure

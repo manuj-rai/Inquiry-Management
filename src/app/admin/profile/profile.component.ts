@@ -14,7 +14,9 @@ import { NewUserComponent } from "../new-user/new-user.component";
 })
 export class ProfileComponent implements OnInit{
   userDetails: any = {};
+  username: string = '';
   isEditing = false;
+  selectedFile: string | null = null;
   
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
@@ -23,17 +25,26 @@ export class ProfileComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user')!); 
-    if (user && user.username) {
-      this.authService.getUserDetails(user.username).subscribe({
-        next: (details) => {
-          this.userDetails = details;
-          console.log(this.userDetails);
-        },
-        error: (err) => {
-          console.error('Error fetching user details:', err);
-        }
-      });
+    // Ensure that localStorage is available before accessing
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      this.username = user.username || 'Default Username';
+
+      // Now, fetch the user details from the API
+      if (user && user.username) {
+        this.authService.getUserDetails(user.username).subscribe({
+          next: (details) => {
+            this.userDetails = details;
+            console.log('User details fetched:', this.userDetails);
+          },
+          error: (err) => {
+            console.error('Error fetching user details:', err);
+          }
+        });
+      }
+    } else {
+      console.log('No user found in localStorage in ngOnInit');
     }
   }
 
@@ -46,8 +57,48 @@ export class ProfileComponent implements OnInit{
     this.isEditing = editMode;
   }
 
-  saveChanges() {
-    this.isEditing = false;
+  onProfilePictureChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selectedFile = reader.result as string; // Set the selected image as base64
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  saveChanges(): void {
+    // Ensure the form is valid (optional)
+    if (this.userDetails.name && this.userDetails.emailID && this.userDetails.phoneNumber && this.userDetails.password) {
+      const formData = new FormData();
+      formData.append('userID', this.userDetails.userID);
+      formData.append('UserName', this.username);
+      formData.append('Name', this.userDetails.name);
+      formData.append('EmailID', this.userDetails.emailID);
+      formData.append('PhoneNumber', this.userDetails.phoneNumber);
+      formData.append('Password', this.userDetails.password);
+  
+      // Append the profile picture file if selected
+      if (this.userDetails.profilePicture) {
+        formData.append('ProfilePicture', this.userDetails.profilePicture);
+      }
+  
+      // Send the formData to the backend
+      this.authService.updateUserDetails(formData).subscribe({
+        next: (response) => {
+          alert('User details updated successfully:');
+          localStorage.setItem('user', JSON.stringify(this.userDetails));  
+          this.isEditing = false;  
+        },
+        error: (error) => {
+          console.error('Error updating user details:', error);
+          alert('There was an error updating your details. Please try again later.');
+        }
+      });
+    } else {
+      alert('Please fill in all the required fields.');
+    }
   }
 
   cancelEdit() {
