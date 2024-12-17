@@ -88,7 +88,6 @@ export class ProfileComponent implements OnInit{
       this.authService.updateUserDetails(formData).subscribe({
         next: (response) => {
           alert('User details updated successfully:');
-          localStorage.setItem('user', JSON.stringify(this.userDetails));  
           this.isEditing = false;  
         },
         error: (error) => {

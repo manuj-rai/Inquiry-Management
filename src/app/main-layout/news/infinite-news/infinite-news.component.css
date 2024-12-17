@@ -35,8 +35,8 @@
   }
   
   .news-content h3 {
-    margin: 0 0 10px;
-    font-size: .9375rem;
+    margin: 10px 0;
+    font-size: 1.2375rem;
     font-weight: 600;
     line-height: 1.5rem;
     font-family: Open Sans,sans-serif;
@@ -44,7 +44,7 @@
   
   .news-content p {
     font-size: .7375;
-    color: #555;
+    color: #777;
   }
   
   /* Loading indicator styles */
@@ -54,3 +54,27 @@
     color: #888;
     margin: 20px;
   }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+
+    .news-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+  
+    .news-img {
+      max-width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .news-content h3 {
+      font-size: 1.2rem;
+    }
+  
+    .news-content p {
+      font-size: 0.9rem;
+    }
+  }  
