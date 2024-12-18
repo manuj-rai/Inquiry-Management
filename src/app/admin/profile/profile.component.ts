@@ -58,12 +58,14 @@ export class ProfileComponent implements OnInit{
   }
 
   onProfilePictureChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
       const reader = new FileReader();
       reader.onload = () => {
         this.selectedFile = reader.result as string; // Set the selected image as base64
       };
+      this.userDetails.profilePicture = file; // Store the file for FormData
       reader.readAsDataURL(file);
     }
   }

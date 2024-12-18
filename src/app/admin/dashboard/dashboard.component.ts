@@ -90,18 +90,18 @@ export class DashboardComponent implements OnInit {
     this.fetchInquiries();
   }
 
-      // Fetch countries from REST Countries API
-      fetchCountries(): void {
-        this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
-          next: (response) => {
-            // Extract and sort country names
-            this.countries = response
-              .map((country) => country.name.common)
-              .sort((a: string, b: string) => a.localeCompare(b));
-          },
-          error: (err) => console.error('Error fetching countries:', err)
-        });
-      }
+  // Fetch countries from REST Countries API
+  fetchCountries(): void {
+    this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
+      next: (response) => {
+        // Extract and sort country names
+        this.countries = response
+          .map((country) => country.name.common)
+          .sort((a: string, b: string) => a.localeCompare(b));
+      },
+      error: (err) => console.error('Error fetching countries:', err)
+    });
+  }
 
   // Fetch total news count from API
   fetchTotalNewsCount(): void {

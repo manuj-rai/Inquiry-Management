@@ -51,6 +51,10 @@ export class NewsComponent implements OnInit {
         color: #000;
         line-height: 1.6;
       }
+      .tox-tinymce {
+        border: 1px solid #161a2f !important;
+        border-radius: 4px !important;
+      }
       .mce-content-body {
         background-color: #161a2f !important;
         color: #fff;
