@@ -63,6 +63,8 @@ export class DashboardComponent implements OnInit {
       title: 'Are you sure?',
       text: 'This action cannot be undone!',
       icon: 'warning',
+      background: '#222b45',
+      color: '#fff',
       showCancelButton: true,
       confirmButtonColor: '#d33',
       cancelButtonColor: '#3085d6',

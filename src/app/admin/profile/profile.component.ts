@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NewUserComponent } from "./new-user/new-user.component";
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit{
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
   constructor(
+    private alertService: AlertService,
     private authService: AuthService,
     private router: Router,
   ) {}
@@ -90,16 +92,16 @@ export class ProfileComponent implements OnInit{
       // Send the formData to the backend
       this.authService.updateUserDetails(formData).subscribe({
         next: (response) => {
-          alert('User details updated successfully:');
+          this.alertService.success('User details updated successfully:');
           this.isEditing = false;  
         },
         error: (error) => {
           console.error('Error updating user details:', error);
-          alert('There was an error updating your details. Please try again later.');
+          this.alertService.error('There was an error updating your details. Please try again later.');
         }
       });
     } else {
-      alert('Please fill in all the required fields.');
+      this.alertService.error('Please fill in all the required fields.');
     }
   }
 

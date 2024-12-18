@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AlertService } from '../../../services/alert.service';
 
 
 
@@ -24,6 +25,7 @@ export class NewUserComponent {
     selectedFile: File | null = null;;
 
       constructor(
+        private alertService: AlertService,
         private http: HttpClient
       ) {}
 
@@ -39,7 +41,7 @@ export class NewUserComponent {
       onSubmit(userForm: NgForm): void {
         if (userForm.valid) {
           if (!this.selectedFile) {
-            alert('Please select a profile picture.');
+            this.alertService.warning('Please select a profile picture.');
             return;
           }
 
@@ -58,7 +60,7 @@ export class NewUserComponent {
         
           this.http.post('https://localhost:7158/register', formData)
           .subscribe({
-            next: (response) => alert('User registered successfully!'),
+            next: (response) => this.alertService.success('User registered successfully!'),
             error: (error) => console.error('Error:', error)
           });
         }
