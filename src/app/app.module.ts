@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './main-layout/contact/contact.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { NavbarComponent } from './main-layout/navbar/navbar.component';
+import { NavbarComponent } from './main-layout/shared/navbar/navbar.component';
 import { LoginComponent } from './main-layout/login/login.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 

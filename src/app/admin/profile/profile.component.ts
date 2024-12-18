@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NewUserComponent } from "../new-user/new-user.component";
+import { NewUserComponent } from "./new-user/new-user.component";
 
 @Component({
   selector: 'app-profile',
