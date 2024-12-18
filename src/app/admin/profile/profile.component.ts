@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit{
   
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
-  constructor(private authService: AuthService,
+  constructor(
+    private authService: AuthService,
     private router: Router,
   ) {}
 
