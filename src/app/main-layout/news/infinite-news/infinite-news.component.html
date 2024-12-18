@@ -2,7 +2,7 @@
 <div class="news-items">
     <!-- Check if the newsList has items -->
     <div *ngIf="newsList.length > 0; else noNews">
-        <div *ngFor="let news of newsList" class="news-item">
+        <div *ngFor="let news of newsList" class="news-item" (click)="viewNewsDetails(news)">
             <div class="news-img">
                 <img [src]="getImageUrl(news.bigImage)" alt="News Image" class="news-image" />
             </div>

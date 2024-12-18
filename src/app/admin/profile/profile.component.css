@@ -7,7 +7,6 @@ p {
 .profile-section {
     display: flex;
     justify-content: flex-start;
-    width: 98%;
     margin-bottom: 30px;
   }
   

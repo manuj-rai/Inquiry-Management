@@ -13,6 +13,7 @@
                 *ngFor="let news of topNews; let i = index"
                 class="slide"
                 [class.active]="i === currentSlideIndex"
+                (click)="viewNewsDetails(news)"
                 >
                 <img [src]="getImageUrl(news.bigImage)" [alt]="news.title" />
                 <div class="slide-content">
@@ -36,7 +37,7 @@
 
     <!-- Right Side News (3 news items) -->
     <div class="right-side-news">
-        <div *ngFor="let news of rightSideNews" class="right-news-item">
+        <div *ngFor="let news of rightSideNews" class="right-news-item" (click)="viewNewsDetails(news)">
             <img [src]="getImageUrl(news.bigImage)" alt="{{ news.title }}" />
             <div class="news-details">
                 <h5>{{ news.title }}</h5>

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsService } from '../../../services/news.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,6 +17,7 @@ export class CategorisedNewsComponent implements OnInit {
   newsList: any[] = [];  // Array to hold the news list
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private newsService: NewsService
   ) {}
@@ -37,9 +38,9 @@ export class CategorisedNewsComponent implements OnInit {
   // Fetch news for the selected tag
   fetchNewsByTag(tagName: string): void {
     this.newsService.getNewsByTag(tagName).subscribe({
-      next: (data: any[]) => {
-        console.log('Loaded News:', data);
-        this.newsList = data;  // Store the news list in the component
+      next: (response: any) => {
+        console.log('Loaded News:', response.data);
+        this.newsList = response.data; // Adjust based on API response structure
       },
       error: (err) => console.error('Error fetching news by tag:', err)
     });
@@ -50,6 +51,9 @@ export class CategorisedNewsComponent implements OnInit {
     return `${baseUrl}${imagePath.replace('~/', '')}`;
   }
   
-
+  viewNewsDetails(news: any): void {
+    console.log('Selected News:', news);
+    this.router.navigate(['/news-details'], { state: { news } });
+  }
 
 }

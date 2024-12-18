@@ -1,0 +1,33 @@
+<div class="detailed-news-section">
+<div class="news-details-container" *ngIf="news; else noDetails">
+<div class="news-header">
+    <h1 class="news-title">{{ news.title }}</h1>
+    <p class="news-date">{{ news.postingDate | date: 'longDate' }}</p>
+</div>
+
+<div class="news-image">
+    <img [src]="getImageUrl(news.bigImage)" alt="{{ news.title }}" />
+</div>
+
+<div class="news-content">
+    <h4>{{ news.shortDesc }}</h4>
+    <div class="news-full-content" [innerHTML]="news.newsContent"></div>
+</div>
+
+<div class="news-footer">
+    <p class="news-tag">
+    <strong>Category:</strong> {{ news.tagName }}
+    </p>
+    <p class="news-author">
+    <strong>Copyright:</strong> {{ news.copywriteText }}
+    </p>
+</div>
+</div>
+
+<ng-template #noDetails>
+<p class="no-news-message">No news details available.</p>
+</ng-template>
+  
+ <app-infinite-news (newsClicked)="viewNewsDetails($event)"></app-infinite-news>
+ </div>
+  

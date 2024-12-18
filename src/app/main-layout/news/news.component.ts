@@ -5,6 +5,7 @@ import { CommonModule } from "@angular/common";
 import { NewsCategoriesComponent } from "./news-categories/news-categories.component";
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news',
@@ -29,6 +30,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
   constructor(
+    private router: Router,
     private newsService: NewsService,
     private datePipe: DatePipe
   ) {}
@@ -85,5 +87,10 @@ export class NewsComponent implements OnInit, OnDestroy {
   // Handle selected tag event from child component
   onTagSelected(tagName: string): void {
     this.selectedTag = tagName;  // Set the selected tag
+  }
+
+  viewNewsDetails(news: any): void {
+    console.log('Selected News:', news);
+    this.router.navigate(['/news-details'], { state: { news } });
   }
 }

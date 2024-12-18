@@ -1,0 +1,123 @@
+/* Container Styling */
+.detailed-news-section {
+    margin: 30px auto;
+    max-width: 1045px;
+    color: #fff;
+}
+
+.news-details-container {
+    max-width: 60%;
+    padding: 20px;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #222b45;
+    border: .0625rem solid #101426;
+    box-shadow: 0 .5rem 1rem #1a1f33;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Header Section */
+  .news-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .news-title {
+    font-size: 24px;
+    color: #36b;
+    margin: 0;
+  }
+  
+  .news-date {
+    font-size: 14px;
+    color: #a1a1a1;
+    margin-top: 5px;
+  }
+  
+  /* Image Section */
+  .news-image {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .news-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Content Section */
+  .news-content {
+    padding: 10px;
+  }
+
+  .news-content h4 {
+    margin: 0;
+  }
+  
+  .news-short-desc {
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .news-full-content {
+    font-size: 14px;
+    color: #fff;
+    margin-top: 10px;
+    text-align: justify;
+    word-wrap: break-word;
+  }
+  
+  /* Footer Section */
+  .news-footer {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #36b;
+  }
+  
+  .news-author,
+  .news-tag {
+    margin: 5px 0;
+  }
+  
+  .news-author strong,
+  .news-tag strong {
+    color: #fff;
+  }
+  
+  /* No News Message */
+  .no-news-message {
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .detailed-news-section {
+        margin: 20px 5px;
+    }
+
+    .news-details-container {
+      padding: 15px;
+    }
+  
+    .news-title {
+      font-size: 20px;
+    }
+  
+    .news-short-desc {
+      font-size: 14px;
+    }
+  
+    .news-full-content {
+      font-size: 13px;
+    }
+  }
+  

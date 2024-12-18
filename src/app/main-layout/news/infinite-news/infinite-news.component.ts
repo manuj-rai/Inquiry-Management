@@ -1,6 +1,7 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './infinite-news.component.css'
 })
 export class InfiniteNewsComponent implements OnInit  {
+  @Output() newsClicked = new EventEmitter<any>();
+  
   newsList: any[] = [];
   pageIndex: number = 1;
   pageSize: number = 5;
@@ -20,6 +23,7 @@ export class InfiniteNewsComponent implements OnInit  {
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
   constructor(
+    private router: Router,
     private newsService: NewsService,
   ) {}
 
@@ -80,6 +84,12 @@ export class InfiniteNewsComponent implements OnInit  {
   getImageUrl(imagePath: string): string {
     const cleanedPath = imagePath.replace('~/', '');
     return `${this.baseImageUrl}${cleanedPath}`;
+  }
+
+  viewNewsDetails(news: any): void {
+    this.newsClicked.emit(news);
+    console.log('Selected News:', news);
+    this.router.navigate(['/news-details'], { state: { news } });
   }
 
 }
