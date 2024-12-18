@@ -1,10 +1,11 @@
 .news-section {
     display: flex;
+    gap: 30px;
     justify-content: space-between;
 }
 
 .news-form-container {
-    max-width: 550px;
+    width: 60%;
     margin: 30px 0;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -165,7 +166,7 @@
   }
 
   .recent-news {
-    max-width: 380px;
+    width: 30%;
     margin: 30px 0;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -225,5 +226,15 @@
   @media (max-width:720px) {
     .news-section {
         flex-direction: column;
+        gap: 0;
+    }
+
+    .news-form-container {
+      width: 89%;
+    }
+
+    .recent-news {
+      width: 89%;
+      margin: 0;
     }
   }

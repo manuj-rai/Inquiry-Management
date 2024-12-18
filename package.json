@@ -31,6 +31,7 @@
     "express": "^4.18.2",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.15.2",
     "swiper": "^11.1.15",
     "tinymce": "^7.6.0",
     "tslib": "^2.3.0",

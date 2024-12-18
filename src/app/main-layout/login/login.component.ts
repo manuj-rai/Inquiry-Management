@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { AlertService } from '../../services/alert.service';
+
 
 @Component({
   selector: 'app-login',
@@ -14,9 +16,9 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  showSuccessCard = false;
 
   constructor(
+    private alertService: AlertService,
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
@@ -36,17 +38,17 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
+            this.alertService.success("Welcome back! You are now logged in!")
             localStorage.setItem('user', JSON.stringify({ username }));
             localStorage.setItem('token', response.token);
-            this.showSuccessCard=true;
             this.router.navigate(['/admin']);
           } else {
-            alert('Invalid credentials!');
+            this.alertService.error('Invalid username or password!');
           }
         },
         error: (err) => {
           console.error('Login error:', err);
-          alert('Login failed. Please try again.');
+          this.alertService.error('Login failed. Please try again.');
         },
       });
     }

@@ -1,6 +1,6 @@
   /*Active News*/
   .news-list {
-    max-width: 1045px;
+    max-width: 90%;
     margin: auto;
     color: #fff;
     padding: 10px;
@@ -9,7 +9,7 @@
   .news-items {
     display: flex;
     flex-wrap: nowrap;
-    gap: 50px;
+    gap: 54px;
     overflow-x: scroll;
     -ms-overflow-style: none;  
     scrollbar-width: none;

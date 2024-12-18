@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InquiryService } from '../../services/inquiry.service';
-
+import { AlertService } from '../../services/alert.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -50,6 +50,7 @@ export class ContactComponent implements OnInit {
   selectedState: string = '';
 
   constructor(
+    private alertService: AlertService,
     private http: HttpClient,
     private inquiryService: InquiryService
   ) {}
@@ -74,7 +75,7 @@ export class ContactComponent implements OnInit {
         error: (err) => {
           console.log('Inquiry submitted successfully', err);
           // Optionally, reset the form after successful submission
-          alert('Inquiry submitted successfully!');
+          this.alertService.success('Inquiry submitted successfully!');
           form.reset();
         }
       });

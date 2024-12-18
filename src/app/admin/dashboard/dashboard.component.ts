@@ -5,7 +5,7 @@ import { NewsService } from '../../services/news.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
-
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -54,6 +54,24 @@ export class DashboardComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error fetching inquiries:', err);
+      }
+    });
+  }
+
+  confirmDelete(id: string): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This action cannot be undone!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.updateStatus(Number(id), 'delete');
+        Swal.fire('Deleted!', 'The inquiry has been deleted.', 'success');
       }
     });
   }

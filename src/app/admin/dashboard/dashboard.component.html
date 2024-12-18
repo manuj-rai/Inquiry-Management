@@ -93,7 +93,7 @@
               <button (click)="updateStatus(inquiry.id, 'unapprove')" class="action-btn unapprove-btn" *ngIf="inquiry.status !== 'UnApproved'">
                   <i class="fas fa-times-circle"></i> <!-- Font Awesome Times Icon -->
               </button>
-              <button (click)="updateStatus(inquiry.id, 'delete')" class="action-btn delete-btn">
+              <button (click)="confirmDelete(inquiry.id)"  class="action-btn delete-btn">
                   <i class="fas fa-trash"></i> <!-- Font Awesome Trash Icon -->
               </button>
           </td>
