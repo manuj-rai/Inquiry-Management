@@ -2,13 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InfiniteNewsComponent } from "../infinite-news/infinite-news.component";
-import { NewsCategoriesComponent } from "../news-categories/news-categories.component";
-
 
 @Component({
   selector: 'app-detailed-news',
   standalone: true,
-  imports: [CommonModule, InfiniteNewsComponent, NewsCategoriesComponent],
+  imports: [CommonModule, InfiniteNewsComponent],
   templateUrl: './detailed-news.component.html',
   styleUrl: './detailed-news.component.css'
 })
