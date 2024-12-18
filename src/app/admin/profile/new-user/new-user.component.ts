@@ -63,6 +63,8 @@ export class NewUserComponent {
             next: (response) => this.alertService.success('User registered successfully!'),
             error: (error) => console.error('Error:', error)
           });
+        } else {
+          this.alertService.error("Please fill in all required details.");
         }
       }
 }
