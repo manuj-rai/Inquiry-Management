@@ -4,6 +4,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { NewsService } from '../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Editor } from 'tinymce';
 
 
 @Component({
@@ -41,24 +42,30 @@ export class NewsComponent implements OnInit {
 
   tinyConfig = {
     height: 270,
-    menubar: false, // Hide menu bar
+    menubar: true, // menu bar
     toolbar: 'undo redo | bold italic underline | alignleft aligncenter alignright | bullist numlist | code',
     content_style: `
       body { 
-        font-family: Arial, sans-serif; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
         font-size: 14px; 
-        background-color: #161a2f; 
+        color: #000;
+        line-height: 1.6;
+      }
+      .mce-content-body {
+        background-color: #161a2f !important;
         color: #fff;
       }
-      .toolbar {
-        background-color: #161a2f !important;
-      }
-      .tox-menubar {
-        background: transparent;
-      }
     `,
-    branding: false // Remove "Powered by Tiny" branding
+    branding: false, 
+    skin: 'oxide-dark', 
+    content_css: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
+    setup: function (editor: Editor) {
+      editor.on('init', function () {
+        editor.getDoc().body.style.backgroundColor = '#161a2f';
+      });
+    }
   };
+  
 
   constructor(
     private authService: AuthService,

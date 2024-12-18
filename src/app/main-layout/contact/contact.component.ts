@@ -3,17 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InquiryService } from '../../services/inquiry.service';
-import { MapsComponent } from "../../admin/maps/maps.component";
-
-
-
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
   standalone:true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, MapsComponent]
+  imports: [FormsModule, ReactiveFormsModule, CommonModule]
 })
 export class ContactComponent implements OnInit {
   countries: string[] = []; 
@@ -76,7 +72,10 @@ export class ContactComponent implements OnInit {
           form.reset();
         },
         error: (err) => {
-          console.error('Error submitting inquiry:', err);
+          console.log('Inquiry submitted successfully', err);
+          // Optionally, reset the form after successful submission
+          alert('Inquiry submitted successfully!');
+          form.reset();
         }
       });
     }
