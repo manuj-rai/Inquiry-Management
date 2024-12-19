@@ -429,6 +429,7 @@ p{
       flex-direction: column;
       padding: 0px;
       gap: 0;
+      margin: 0;
     }
 
     .login-form {
