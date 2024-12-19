@@ -1,8 +1,9 @@
 <app-news-categories (selectedTagEvent)="onTagSelected($event)"></app-news-categories>
-<app-categorised-news [tagName]="selectedTag"></app-categorised-news>
+<app-categorised-news [tagName]="selectedTag" (newsClicked)="viewNewsDetails($event)"></app-categorised-news>
 <div #newsContainer class="news-container">
 
 <!-- Top News Slider -->
+<div *ngIf="showTopNews">
 <h2>Top News</h2>
 <div class="top-news-section">
 
@@ -45,6 +46,9 @@
         </div>
     </div>   
 </div>
+</div>
 
-<app-infinite-news></app-infinite-news>
+<app-detailed-news *ngIf="!showTopNews" [news]="selectedNews" (backToTop)="backToTopNews()"></app-detailed-news>
+
+<app-infinite-news  (newsClicked)="viewNewsDetails($event)"></app-infinite-news>
 </div>

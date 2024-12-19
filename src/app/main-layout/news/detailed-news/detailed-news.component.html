@@ -1,5 +1,7 @@
+<button class="back-to-top-btn" (click)="backToTopNews()">Back to Home</button>
 
 <div class="detailed-news-section">
+
 <div class="news-details-container" *ngIf="news; else noDetails">
 <div class="news-header">
     <h1 class="news-title">{{ news.title }}</h1>
@@ -29,6 +31,5 @@
 <p class="no-news-message">No news details available.</p>
 </ng-template>
   
- <app-infinite-news (newsClicked)="viewNewsDetails($event)"></app-infinite-news>
  </div>
   

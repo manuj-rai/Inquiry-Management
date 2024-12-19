@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsService } from '../../../services/news.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,8 +13,10 @@ import { Router } from '@angular/router';
   styleUrl: './categorised-news.component.css'
 })
 export class CategorisedNewsComponent implements OnInit {
-  @Input() tagName: string = '';  // Get the tagName from the parent component
+  @Input() tagName: string = '';  // Tag passed from parent
+  @Output() newsClicked: EventEmitter<any> = new EventEmitter();
   newsList: any[] = [];  // Array to hold the news list
+
 
   constructor(
     private router: Router,
@@ -52,8 +54,7 @@ export class CategorisedNewsComponent implements OnInit {
   }
   
   viewNewsDetails(news: any): void {
-    console.log('Selected News:', news);
-    this.router.navigate(['/news-details'], { state: { news } });
+    this.newsClicked.emit(news);
   }
 
 }

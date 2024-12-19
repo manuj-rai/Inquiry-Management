@@ -19,6 +19,8 @@ export class InfiniteNewsComponent implements OnInit  {
   pageSize: number = 5;
   totalNewsCount: number = 0;
   isLoading: boolean = false;
+  selectedNews: any = null;
+  showTopNews: boolean = true;
 
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
@@ -88,8 +90,8 @@ export class InfiniteNewsComponent implements OnInit  {
 
   viewNewsDetails(news: any): void {
     this.newsClicked.emit(news);
-    console.log('Selected News:', news);
-    this.router.navigate(['/news-details'], { state: { news } });
+    this.selectedNews = news;
+    this.showTopNews = false; 
   }
 
 }

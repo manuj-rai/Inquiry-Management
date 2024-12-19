@@ -8,7 +8,7 @@ export class AlertService {
 
   constructor() { }
 
-    // Confirmation Alert (with SweetAlert2)
+  // Confirmation Alert (with SweetAlert2)
   confirm(message: string, confirmButtonText = 'Yes', cancelButtonText = 'No'): Promise<boolean> {
     return Swal.fire({
       title: 'Are you sure?',
@@ -24,7 +24,7 @@ export class AlertService {
     }).then((result) => result.isConfirmed);
   }
   
-    // Success Alert
+  // Success Alert
   success(message: string): void {
     Swal.fire({
       title: 'Success',
@@ -36,17 +36,19 @@ export class AlertService {
     });
   }
 
-    // **Warning Alert**
+  // **Warning Alert**
   warning(message: string): void {
     Swal.fire({
       title: 'Warning',
       text: message,
       icon: 'warning',
+      background: '#222b45',
+      color: '#fff',
       confirmButtonColor: '#f39c12', // Orange color
     });
   }
   
-    // Error Alert
+  // Error Alert
   error(message: string): void {
     Swal.fire({
       title: 'Error',

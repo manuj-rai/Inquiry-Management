@@ -24,6 +24,7 @@
     "@angular/ssr": "^18.2.8",
     "@ckeditor/ckeditor5-angular": "^9.1.0",
     "@ckeditor/ckeditor5-build-classic": "^44.1.0",
+    "@coreui/angular": "^4.8.0",
     "@nebular/eva-icons": "14.0.2",
     "@nebular/theme": "^14.0.2",
     "@tinymce/tinymce-angular": "^8.0.1",

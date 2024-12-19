@@ -53,5 +53,9 @@ export class LoginComponent {
       });
     }
   }
+
+  alert() {
+    this.alertService.warning("The service is currently unavailable. Please try logging in using an alternative method.")
+  }
 }
 

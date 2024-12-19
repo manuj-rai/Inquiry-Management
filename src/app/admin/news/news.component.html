@@ -1,3 +1,5 @@
+<p>News</p>
+
 <div class="news-section">
 <div class="news-form-container">
     <h2>Add News</h2>
@@ -67,6 +69,7 @@
           [(ngModel)]="newsRequest.tagName" 
           name="tags" 
           class="form-control"
+          
           (input)="onTagInputChange(newsRequest.tagName)"
           (keydown.enter)="addTag(newsRequest.tagName)" />
       

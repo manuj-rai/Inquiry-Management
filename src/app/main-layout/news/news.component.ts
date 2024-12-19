@@ -6,11 +6,12 @@ import { NewsCategoriesComponent } from "./news-categories/news-categories.compo
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
 import { Router } from '@angular/router';
+import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent],
+  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],
@@ -26,6 +27,8 @@ export class NewsComponent implements OnInit, OnDestroy {
   pageSize: number = 5;
   totalNewsCount: number = 0;
   isLoading: boolean = false;
+  selectedNews: any = null;
+  showTopNews: boolean = true;
 
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
@@ -90,7 +93,14 @@ export class NewsComponent implements OnInit, OnDestroy {
   }
 
   viewNewsDetails(news: any): void {
-    console.log('Selected News:', news);
-    this.router.navigate(['/news-details'], { state: { news } });
+    this.selectedNews = news;
+    this.showTopNews = false; 
+  }
+
+
+  // Method to go back to top news
+  backToTopNews(): void {
+    this.selectedNews = null;
+    this.showTopNews = true;
   }
 }

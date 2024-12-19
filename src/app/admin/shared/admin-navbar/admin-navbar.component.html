@@ -17,6 +17,11 @@
            alt="User Profile" 
            class="user-img" 
            (click)="toggleDropdown()" />
+           <span 
+           class="active-icon material-icons" 
+           *ngIf="!isDropdownVisible">
+           circle
+         </span>
   
      <!-- Dropdown Menu -->
       <div class="dropdown-menu" *ngIf="isDropdownVisible">

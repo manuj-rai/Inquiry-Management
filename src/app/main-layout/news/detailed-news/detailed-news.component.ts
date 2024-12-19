@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { InfiniteNewsComponent } from "../infinite-news/infinite-news.component";
 
 @Component({
   selector: 'app-detailed-news',
   standalone: true,
-  imports: [CommonModule, InfiniteNewsComponent],
+  imports: [CommonModule],
   templateUrl: './detailed-news.component.html',
   styleUrl: './detailed-news.component.css'
 })
 export class DetailedNewsComponent implements OnInit {
-  news: any;
+  @Input() news: any;
+  @Output() backToTop = new EventEmitter<void>();
+
 
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
@@ -21,15 +22,14 @@ export class DetailedNewsComponent implements OnInit {
   ) {
     // Retrieve the passed news data from state
     const navigation = this.router.getCurrentNavigation();
-    this.news = navigation?.extras?.state?.['news'];
-    console.log('Received News Details:', this.news);
+    if (navigation?.extras?.state?.['news']) {
+      this.news = navigation.extras.state['news'];
+    }
   }
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    
     if (!this.news) {
-      // Redirect back if no data is available
+      // If no news data, redirect to the news list page
       this.router.navigate(['/news']);
     }
   }
@@ -44,4 +44,7 @@ export class DetailedNewsComponent implements OnInit {
     this.news = news; // Update the displayed news when a new item is clicked
   }
 
+  backToTopNews(): void {
+    this.backToTop.emit();
+  }
 }

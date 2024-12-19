@@ -78,6 +78,16 @@
     object-fit: cover;
     cursor: pointer;
   }
+
+  .active-icon {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 10px;
+    color: #4caf50; /* Green color for the active state */
+    background: white;
+    border-radius: 50%;
+  }
   
   /* Profile Dropdown */
   .profile-dropdown {
