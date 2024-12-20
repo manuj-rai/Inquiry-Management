@@ -16,6 +16,7 @@ export const routes: Routes = [
       { path: 'news-details', loadComponent: () =>  import('./main-layout/news/detailed-news/detailed-news.component').then(m => m.DetailedNewsComponent)},
       { path: 'news/category/:tagName', loadComponent: () => import('./main-layout/news/news.component').then(m => m.NewsComponent) },
       { path: 'contact', loadComponent: () => import('./main-layout/contact/contact.component').then(m => m.ContactComponent) },
+      { path: 'about', loadComponent: () => import('./main-layout/about/about.component').then(m => m.AboutComponent) },
       { path: 'login', loadComponent: () => import('./main-layout/login/login.component').then(m => m.LoginComponent) },
     ]
   },
