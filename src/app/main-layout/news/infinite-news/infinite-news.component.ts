@@ -41,8 +41,7 @@ export class InfiniteNewsComponent implements OnInit  {
     this.newsService.getActiveNews(pageIndex, pageSize).subscribe({
       next: (response: any) => {
         if (response?.data?.newsContent && Array.isArray(response.data.newsContent)) {
-          console.log('Loaded news:', response.data.newsContent);
-  
+          
           // Append new data for infinite scroll
           this.newsList = [...this.newsList, ...response.data.newsContent];
           this.pageIndex++; // Increment the page index for the next API call

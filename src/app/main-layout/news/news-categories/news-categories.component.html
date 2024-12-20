@@ -1,11 +1,10 @@
 <div class="tags">
-    <ul class="tag-list">
-      <li 
-        *ngFor="let tag of tags" 
-        (click)="selectTag(tag.tagName)" 
-        [class.active]="tag.tagName === selectedTag">
-        {{ tag.tagName }}
-      </li>
-    </ul>
-  </div>
-    
+  <ul class="tag-list">
+    <li 
+      *ngFor="let tag of tags" 
+      (click)="selectTag(tag.tagName)" 
+      [class.active]="tag.tagName === selectedTag">
+      {{ tag.tagName }}
+    </li>
+  </ul>
+</div>

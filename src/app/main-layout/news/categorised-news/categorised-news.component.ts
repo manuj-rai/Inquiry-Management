@@ -26,8 +26,7 @@ export class CategorisedNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.tagName = params.get('tagName') || '';
-    this.fetchNewsByTag(this.tagName);  // Fetch news when the component initializes
+    this.tagName = params.get('tagName') || '';
   });
   }
 

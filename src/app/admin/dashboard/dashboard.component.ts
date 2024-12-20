@@ -6,13 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+import { TodoComponent } from "../../Reusables/todo";
+import { WeatherForecastComponent } from "../../Reusables/weather";
+import { ReminderComponent } from "../../Reusables/reminder";
 
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TodoComponent, WeatherForecastComponent, ReminderComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TsParticlesComponent } from "../../TsParticles";
+import { TsParticlesComponent } from "../../Reusables/TsParticles";
 
 @Component({
   selector: 'app-about',

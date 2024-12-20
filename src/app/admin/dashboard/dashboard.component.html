@@ -15,6 +15,12 @@
   </div>
 </div>
 
+<div class="weather-todo">
+  <app-todo></app-todo>
+  <app-reminder></app-reminder>
+  <app-weather-forecast></app-weather-forecast>
+</div> 
+
 <!-- New Users Section -->
 <div class="new-users">
   <h2>New Users</h2>
@@ -35,75 +41,71 @@
   </div>
 </div>
 
-
-  
-
 <header>Inquiry Table</header>
 <div class="table-container">
-    <table class="table">
-        <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>
-                Gender
-                <select id="gender" [(ngModel)]="gender" (change)="applyFilters()">
-                  <option value=""selected>All</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-
-                </select>
-              </th>
-              <th>
-                Country
-                <select id="country" [(ngModel)]="country" (change)="applyFilters()">
-                  <option value="" selected>All</option>
-                  <option *ngFor="let country of countries" [value]="country">
-                    {{ country }}
-                  </option>
-                  <!-- Add more countries as needed -->
-                </select>
-              </th>
-              <th>
-                Status
-                <select id="status" [(ngModel)]="status" (change)="applyFilters()">
-                  <option value="" selected>All</option>
-                  <option value="Approved">Approved</option>
-                  <option value="UnApproved">Unapproved</option>
-                  <option value="Pending">Pending</option>
-                </select>
-              </th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-      <tbody>
-        <tr *ngFor="let inquiry of inquiries">
-            <td>{{ inquiry.id }}</td>
-            <td>{{ inquiry.firstName }} {{ inquiry.lastName }}</td>
-            <td>{{ inquiry.gender }}</td>
-            <td>{{ inquiry.country }}</td>
-            <td>{{ inquiry.status }}</td>
-            <td> <!-- Action buttons -->
-              <button (click)="updateStatus(inquiry.id, 'approve')" class="action-btn approve-btn" *ngIf="inquiry.status !== 'Approved'">
-                  <i class="fas fa-check-circle"></i> <!-- Font Awesome Check Icon -->
-              </button>
-              <button (click)="updateStatus(inquiry.id, 'unapprove')" class="action-btn unapprove-btn" *ngIf="inquiry.status !== 'UnApproved'">
-                  <i class="fas fa-times-circle"></i> <!-- Font Awesome Times Icon -->
-              </button>
-              <button (click)="confirmDelete(inquiry.id)"  class="action-btn delete-btn">
-                  <i class="fas fa-trash"></i> <!-- Font Awesome Trash Icon -->
-              </button>
-          </td>
-          </tr>
-      </tbody>
-    </table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>
+          Gender
+          <select id="gender" [(ngModel)]="gender" (change)="applyFilters()">
+            <option value=""selected>All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </th>
+        <th>
+          Country
+          <select id="country" [(ngModel)]="country" (change)="applyFilters()">
+            <option value="" selected>All</option>
+            <option *ngFor="let country of countries" [value]="country">
+              {{ country }}
+            </option>
+            <!-- Add more countries as needed -->
+          </select>
+        </th>
+        <th>
+          Status
+          <select id="status" [(ngModel)]="status" (change)="applyFilters()">
+            <option value="" selected>All</option>
+            <option value="Approved">Approved</option>
+            <option value="UnApproved">Unapproved</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let inquiry of inquiries">
+          <td>{{ inquiry.id }}</td>
+          <td>{{ inquiry.firstName }} {{ inquiry.lastName }}</td>
+          <td>{{ inquiry.gender }}</td>
+          <td>{{ inquiry.country }}</td>
+          <td>{{ inquiry.status }}</td>
+          <td> <!-- Action buttons -->
+            <button (click)="updateStatus(inquiry.id, 'approve')" class="action-btn approve-btn" *ngIf="inquiry.status !== 'Approved'">
+                <i class="fas fa-check-circle"></i> <!-- Font Awesome Check Icon -->
+            </button>
+            <button (click)="updateStatus(inquiry.id, 'unapprove')" class="action-btn unapprove-btn" *ngIf="inquiry.status !== 'UnApproved'">
+                <i class="fas fa-times-circle"></i> <!-- Font Awesome Times Icon -->
+            </button>
+            <button (click)="confirmDelete(inquiry.id)"  class="action-btn delete-btn">
+                <i class="fas fa-trash"></i> <!-- Font Awesome Trash Icon -->
+            </button>
+        </td>
+        </tr>
+    </tbody>
+  </table>
   
-    <!-- Pagination Controls -->
-    <div class="pagination">
-        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-        <span>{{ currentPage }} / {{ totalPages }}</span>
-        <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-      </div> 
-  </div>
+  <!-- Pagination Controls -->
+  <div class="pagination">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span>{{ currentPage }} / {{ totalPages }}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  </div> 
+</div>
   

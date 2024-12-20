@@ -26,6 +26,13 @@ p {
     gap: 30px;
     margin-bottom: 30px;
 }
+
+.weather-todo {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 30px;
+}
   
 .total-inquiries, .total-news, .total-users {
     flex: 1;
@@ -263,6 +270,10 @@ th:hover {
 
     .dashboard-stats {
         gap: 5px;
+    }
+
+    .weather-todo {
+        flex-direction: column;
     }
 
     .material-icons {

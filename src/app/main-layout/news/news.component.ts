@@ -56,9 +56,7 @@ export class NewsComponent implements OnInit, OnDestroy {
     const skip = 0;
   
     this.newsService.getTopNews(take, skip).subscribe({
-      next: (response: any) => {
-        console.log('Loaded top news:', response);
-  
+      next: (response: any) => { 
         if (response?.data) {
           this.topNews = response.data;
           this.startAutoSlide();
