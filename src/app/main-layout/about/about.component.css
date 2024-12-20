@@ -140,3 +140,13 @@ p {
     color: #fff;
     line-height: 1.5;
 }
+
+@media (max-width:768px) {
+    .about-section {
+        padding: 10px;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+}
