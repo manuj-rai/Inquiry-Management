@@ -13,7 +13,7 @@ export class AlertService {
     return Swal.fire({
       title: 'Are you sure?',
       text: message,
-      icon: 'warning',
+      icon: 'question',
       background: '#222b45',
       color: '#fff',
       showCancelButton: true,

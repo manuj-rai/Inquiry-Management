@@ -63,7 +63,7 @@ export class DashboardComponent implements OnInit {
     Swal.fire({
       title: 'Are you sure?',
       text: 'This action cannot be undone!',
-      icon: 'warning',
+      icon: 'question',
       background: '#222b45',
       color: '#fff',
       showCancelButton: true,
