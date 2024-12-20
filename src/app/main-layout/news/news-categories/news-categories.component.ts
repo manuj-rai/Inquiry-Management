@@ -22,15 +22,15 @@ export class NewsCategoriesComponent implements OnInit {
   }
 
   // Fetch all tags
-  fetchAllTags(): void {
-    this.newsService.getAllTags().subscribe({
-      next: (data: any[]) => {
-        console.log('Loaded tags:', data);
-        this.tags = data;
-      },
-      error: (err) => console.error('Error fetching tags:', err)
-    });
-  }
+fetchAllTags(): void {
+  this.newsService.getAllTags().subscribe({
+    next: (response: any) => {
+      console.log('Loaded tags:', response);
+      this.tags = response.data;  // Assuming response has a 'data' property containing the tags
+    },
+    error: (err) => console.error('Error fetching tags:', err)
+  });
+}
 
 
     // Fetch news based on the selected tag

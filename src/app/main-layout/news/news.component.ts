@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import { NewsCategoriesComponent } from "./news-categories/news-categories.component";
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
-import { Router } from '@angular/router';
+import { Router, NavigationEnd  } from '@angular/router';
 import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
 
 @Component({
@@ -54,14 +54,18 @@ export class NewsComponent implements OnInit, OnDestroy {
   fetchTopNews(): void {
     const take = 5;
     const skip = 0;
-
+  
     this.newsService.getTopNews(take, skip).subscribe({
-      next: (data: any[]) => {
-        console.log('Loaded top news:', data);
-
-        this.topNews = data; 
-        this.startAutoSlide();
-        this.rightSideNews = data.slice(0, 3); // News for the right-hand side
+      next: (response: any) => {
+        console.log('Loaded top news:', response);
+  
+        if (response?.data) {
+          this.topNews = response.data;
+          this.startAutoSlide();
+          this.rightSideNews = response.data.slice(0, 3); // News for the right-hand side
+        } else {
+          console.error('No data found in the response');
+        }
       },
       error: (err) => console.error('Error fetching top news:', err)
     });
