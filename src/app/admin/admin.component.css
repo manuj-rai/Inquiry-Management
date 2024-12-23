@@ -1,12 +1,14 @@
 .admin-layout {
     display: flex;
     height: 100%;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .admin-content {
     color:#fff;
     padding: 0 35px;
     width: 100%;
+    animation: fadeIn 1s ease-in-out;
 }
 
 @media (max-width:720px) {
@@ -14,3 +16,14 @@
         padding: 4px;
     }
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

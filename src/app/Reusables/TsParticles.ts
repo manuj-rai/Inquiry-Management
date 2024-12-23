@@ -35,8 +35,8 @@ export class TsParticlesComponent implements OnInit{
     }
 
     if (particlesJS) {
-      particlesJS('particles-js', {
-        particles: {
+      particlesJS('particles-js', {       
+        particles: {         
           number: {
             value: 80,
             density: {
@@ -62,7 +62,7 @@ export class TsParticlesComponent implements OnInit{
             random: true,
             anim: {
               enable: true,
-              speed: 1,
+              speed: 5,
               opacity_min: 0.1,
               sync: false
             }
@@ -86,7 +86,7 @@ export class TsParticlesComponent implements OnInit{
           },
           move: {
             enable: true,
-            speed: 3,
+            speed: 5,
             direction: 'none',
             random: false,
             straight: false,

@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
+import { NotificationService } from '../../services/notification.service';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class LoginComponent {
   passwordFieldType: string = 'password';
 
   constructor(
+    private notificationService: NotificationService,
     private alertService: AlertService,
     private fb: FormBuilder,
     private authService: AuthService,
@@ -50,6 +52,12 @@ export class LoginComponent {
           } else {
             this.alertService.error('Invalid username or password!');
           }
+          // Show login notification with the username
+          this.notificationService.showNotification('Welcome Back!', {
+            body: `Hello, ${username}! You have successfully logged in.`,
+            icon: 'assets/user.png', // Optional: Add a user-specific icon
+            requireInteraction: true, // Keeps the notification visible until interaction
+          });
         },
         error: (err) => {
           console.error('Login error:', err);
