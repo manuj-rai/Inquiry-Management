@@ -1,6 +1,7 @@
 .about-section {
     max-width: 1045px;
     margin: 60px auto;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .about-content-a {
@@ -15,19 +16,16 @@
 h4 {
     margin: 0;
     color: #36b;
-    z-index: 9;
 }
 
 h2 {
     margin: 0;
     font-size: 30px;
     margin-bottom: 45px;
-    z-index: 9;
 }
 
 p {
     margin-bottom: 45px;
-    z-index: 9;
 }
 
 .global-outreach {
@@ -153,3 +151,14 @@ p {
         margin-bottom: 20px;
     }
 }
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

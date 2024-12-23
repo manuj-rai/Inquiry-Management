@@ -2,6 +2,7 @@
     color: #fff;
     max-width: 1045px;
     margin: 50px auto;
+    animation: fadeIn 1s ease-in-out;
   }
   
   .welcome-section {
@@ -216,4 +217,15 @@
       font-size: 14px;
     }
 
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
