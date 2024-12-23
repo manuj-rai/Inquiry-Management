@@ -104,6 +104,7 @@
     width: 130px;
     display: flex;
     flex-direction: column;
+    z-index: 999;
   }
 
   .dropdown-item .material-icons {

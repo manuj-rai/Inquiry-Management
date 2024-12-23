@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
 styles: [`
   .todo-container {
     height: 300px;
-    min-width: 325px;
+    max-width: 325px;
     overflow-y: scroll;
     margin: 0 auto;
     background-color: #222b45;

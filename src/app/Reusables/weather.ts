@@ -48,7 +48,7 @@ import { FormsModule } from '@angular/forms';
     border-radius: 4px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border: .0625rem solid #101426;
-    min-width: 325px;
+    max-width: 325px;
     padding: 20px;
     font-family: 'Roboto', sans-serif;
   }
