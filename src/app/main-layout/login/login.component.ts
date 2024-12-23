@@ -16,6 +16,7 @@ import { AlertService } from '../../services/alert.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  passwordFieldType: string = 'password';
 
   constructor(
     private alertService: AlertService,
@@ -28,6 +29,10 @@ export class LoginComponent {
       username: ['', [Validators.required, Validators.minLength(4)]],  // Email field with validation
       password: ['', [Validators.required, Validators.minLength(4)]],  // Password with min length
     });
+  }
+
+  togglePasswordVisibility() {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
   // Submit the login form

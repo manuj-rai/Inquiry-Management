@@ -114,6 +114,50 @@ p{
 
   }
 
+  .password-group {
+    position: relative;
+  }
+
+  .username-group {
+    position: relative;
+  }
+  
+  .username-icon-btn {
+    position: absolute;
+    right: 10px;
+    top: -15%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #999;
+    font-size: 1rem;
+    width: 40px;
+  }
+  
+  .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: -15%;
+      transform: translateY(-50%);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: #999;
+      font-size: 1rem;
+      width: 40px;
+  }
+  
+  
+  .toggle-password i {
+    pointer-events: none;
+  }
+  
+  .toggle-password:focus {
+    outline: none;
+  }
+  
+
 /* From Uiverse.io by lenin55 */ 
 .cl-checkbox {
   position: relative;
@@ -280,10 +324,6 @@ p{
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #0056b3;
-  }
-
   button:disabled:hover {
     background-color: #8f9bb329;
     border-color: #8f9bb33d;
