@@ -126,6 +126,7 @@
     margin: auto;
     border: .0625rem solid #101426;
     box-shadow: 0 .5rem 1rem #1a1f33;
+    animation: fadeIn 1s ease-in-out;
   }
 
   .signup-newsletter-title {
