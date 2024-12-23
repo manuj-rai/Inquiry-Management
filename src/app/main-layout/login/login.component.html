@@ -48,7 +48,7 @@
           <input checked="" type="checkbox" />
           <span>Remember Me</span>
         </label>
-        <a href="/login" class="forgot-password">Forgot Password?</a>
+        <a style="cursor: pointer;" (click)="signupAlert()" class="forgot-password">Forgot Password?</a>
       </div>
   
       <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
@@ -66,7 +66,7 @@
 
     <!-- Sign Up Link -->
     <p class="signup-link">
-        Don't have an account? <a href="/login">Sign Up</a>
+        Don't have an account? <a style="cursor: pointer;" (click)="signupAlert()">Sign Up</a>
     </p>
   </div>
 
@@ -79,7 +79,7 @@
       <cite>- Alex Johnson</cite>
       <h1>New Here?</h1>
       <p>Create an account today and start your journey with us.</p>
-      <a href="/login" class="btn btn-primary">Create an Account</a>
+      <a style="cursor: pointer;" (click)="signupAlert()" class="btn btn-primary">Create an Account</a>
       <a href="/login" class="btn btn-secondary">Learn More</a>
     </div>
     

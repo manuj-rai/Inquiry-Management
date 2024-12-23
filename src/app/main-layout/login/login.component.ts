@@ -62,5 +62,9 @@ export class LoginComponent {
   alert() {
     this.alertService.warning("The service is currently unavailable. Please try logging in using an alternative method.")
   }
+
+  signupAlert() {
+    this.alertService.warning("Currently Unavailable. Please ask admin for creating an account.")
+  }
 }
 

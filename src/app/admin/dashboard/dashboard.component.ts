@@ -77,7 +77,21 @@ export class DashboardComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.updateStatus(Number(id), 'delete');
-        Swal.fire('Deleted!', 'The inquiry has been deleted.', 'success');
+        Swal.fire({
+          title: '<strong>Deleted!</strong>',
+          html: '<p style="color: #b5b5b5;">The inquiry has been successfully deleted.</p>',
+          icon: 'success',
+          background: '#222b45', // Dark success background
+          color: '#fff', // Light text
+          confirmButtonColor: '#28a745', // Green confirm button
+          customClass: {
+            popup: 'swal-popup',
+            title: 'swal-title',
+            htmlContainer: 'swal-html-container',
+            confirmButton: 'swal-confirm-button',
+          },
+          buttonsStyling: false,
+        });
       }
     });
   }
@@ -191,7 +205,7 @@ export class DashboardComponent implements OnInit {
 
   getCircleBackground(percentage: number): string {
     return `conic-gradient(
-              #161a2f 0% ${percentage}%,  /* Filled portion (green) */
+              #36b 0% ${percentage}%,  /* Filled portion (green) */
                #8f9bb3 ${percentage}% 100%  /* Unfilled portion (grey) */
             )`;
   }

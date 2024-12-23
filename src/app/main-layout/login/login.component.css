@@ -12,6 +12,7 @@
   flex: 1;
   max-width: 50%;
   text-align: center;
+  animation: slideInFromLeft 0.5s ease-out;
 }
 
 .login-side-content blockquote {
@@ -66,6 +67,7 @@ p{
     font-family: Open Sans,sans-serif;
     font-size: .9375rem;
     width: 35%;
+    animation: slideInFromRight 0.5s ease-out;
   }
   
   h2 {
@@ -490,5 +492,28 @@ p{
     .card {
       left: 10%;
       top:40%
+    }
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Slide-in from the right */
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }

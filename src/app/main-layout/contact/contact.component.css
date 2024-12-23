@@ -8,6 +8,7 @@
   border-radius: .25rem;
   color:#fff;
   text-align: center;
+  animation: slideInFromLeft 0.5s ease-out;
 }
 
 .contact-info p {
@@ -25,6 +26,7 @@
     color:#fff;
     font-family: Open Sans,sans-serif;
     font-size: .9375rem;
+    animation: slideInFromRight 0.5s ease-out;
   }
   
   .contact-form h2 {
@@ -123,4 +125,27 @@
   
   .col-12 {
     flex: 1 1 100%;
+  }
+
+  @keyframes slideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Slide-in from the right */
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
