@@ -1,19 +1,26 @@
 <p>Dashboard</p>
 
 <div class="dashboard-stats">
-    <div class="total-inquiries">
-        <h3>Total Inquiries: <span>{{ totalItems }}</span></h3>
-        <span class="material-icons">help_center</span>
-    </div>
-    <div class="total-news">
-        <h3>Total News: <span>{{ totalNewsCount }}</span></h3>
-        <span class="material-icons">article</span>
-    </div>
-    <div class="total-users">
+  <div class="total-inquiries">
+      <h3>Total Inquiries: <span>{{ totalItems }}</span></h3>
+      <div class="progress-circle" [ngStyle]="{ 'background': getCircleBackground(totalItems) }">
+          <div class="progress-text">{{ totalItems }}%</div>
+      </div>
+  </div>
+  <div class="total-news">
+      <h3>Total News: <span>{{ totalNewsCount }}</span></h3>
+      <div class="progress-circle" [ngStyle]="{ 'background': getCircleBackground(totalNewsCount) }">
+          <div class="progress-text">{{ totalNewsCount }}%</div>
+      </div>
+  </div>
+  <div class="total-users">
       <h3>Total Users: <span>{{ totalUsers }}</span></h3>
-      <span class="material-icons">person</span>
+      <div class="progress-circle" [ngStyle]="{ 'background': getCircleBackground(totalUsers) }">
+          <div class="progress-text">{{ totalUsers }}%</div>
+      </div>
   </div>
 </div>
+
 
 <div class="weather-todo">
   <app-todo></app-todo>

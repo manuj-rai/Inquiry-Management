@@ -189,4 +189,11 @@ export class DashboardComponent implements OnInit {
     return `${days} Days Ago`;
   }  
 
+  getCircleBackground(percentage: number): string {
+    return `conic-gradient(
+              #161a2f 0% ${percentage}%,  /* Filled portion (green) */
+               #8f9bb3 ${percentage}% 100%  /* Unfilled portion (grey) */
+            )`;
+  }
+
 }
