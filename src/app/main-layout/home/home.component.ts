@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
 
-
 @Component({
   selector: 'app-home',
   standalone: true,
