@@ -54,6 +54,7 @@ export class CategorisedNewsComponent implements OnInit {
   
   viewNewsDetails(news: any): void {
     this.newsClicked.emit(news);
+    window.scrollTo({ top: 500, behavior: 'smooth' });
   }
 
 }

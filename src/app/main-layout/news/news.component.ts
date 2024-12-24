@@ -7,11 +7,12 @@ import { CategorisedNewsComponent } from "./categorised-news/categorised-news.co
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
 import { Router, NavigationEnd  } from '@angular/router';
 import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
+import { AppComponent } from "../../Reusables/ScrollToTop";
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent],
+  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent, AppComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],

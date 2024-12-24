@@ -2,12 +2,13 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { AppComponent } from "../../../Reusables/ScrollToTop";
 
 
 @Component({
   selector: 'app-infinite-news',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppComponent],
   templateUrl: './infinite-news.component.html',
   styleUrl: './infinite-news.component.css'
 })
@@ -91,6 +92,6 @@ export class InfiniteNewsComponent implements OnInit  {
     this.newsClicked.emit(news);
     this.selectedNews = news;
     this.showTopNews = false; 
-  }
+    window.scrollTo({ top: 500, behavior: 'smooth' });  }
 
 }
