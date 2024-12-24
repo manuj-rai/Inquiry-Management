@@ -328,7 +328,12 @@ img {
   position: relative;
   padding: 0 20px;
   margin-bottom: 40px;
-  width: 28.5%
+  width: 28.5%;
+  transition: 0.5s ease-in-out;
+}
+
+.pricing-block:hover {
+  transform: scale(1.04);
 }
 
 .pricing-block .inner-box {
@@ -414,7 +419,7 @@ img {
 
 .pricing-block .features {
   position: relative;
-  max-width: 200px;
+  max-width: 230px;
   margin: 0 auto 20px;
 }
 
