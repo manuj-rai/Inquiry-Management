@@ -8,7 +8,9 @@
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: #fff;
     align-items: center;
-    position: relative;
+    position: sticky;
+    top: 0;
+    z-index: 999;
   }
   
   .logo {

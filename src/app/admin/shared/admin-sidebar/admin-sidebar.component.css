@@ -4,17 +4,21 @@
     background-color: #222b45;
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white; 
-    height: 100%; 
+    height: 800px; 
     padding: 5px 0; 
     transition: width 0.3s;
     font-family: Open Sans, sans-serif;
     font-size: .9375rem;
     font-weight: 400;
+    position: sticky; 
+    top: 45px; 
+    z-index: 998; 
   }
   
   .hidden {
     width: 35px; 
     overflow: hidden; /* Hide overflow */
+    position: sticky; 
   }
   
   

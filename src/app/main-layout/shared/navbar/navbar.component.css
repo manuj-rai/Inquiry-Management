@@ -6,6 +6,8 @@
     background-color: #222b45;
     box-shadow: 0 .5rem 1rem #1a1f33;
     z-index: 999;
+    position: sticky;
+    top: 0;
   }
   
   .navbar-logo {
