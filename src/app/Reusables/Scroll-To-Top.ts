@@ -70,7 +70,7 @@ import { Component, HostListener } from '@angular/core';
   `]
 })
 
-export class AppComponent {
+export class ScrollToTopComponent {
     isVisible = false; // Flag to show or hide the button
 
     // Listen to the scroll event

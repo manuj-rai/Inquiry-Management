@@ -2,13 +2,11 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AppComponent } from "../../../Reusables/Scroll-To-Top";
-
 
 @Component({
   selector: 'app-infinite-news',
   standalone: true,
-  imports: [CommonModule, AppComponent],
+  imports: [CommonModule],
   templateUrl: './infinite-news.component.html',
   styleUrl: './infinite-news.component.css'
 })

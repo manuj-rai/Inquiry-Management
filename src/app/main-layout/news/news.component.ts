@@ -6,12 +6,12 @@ import { NewsCategoriesComponent } from "./news-categories/news-categories.compo
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
 import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
-import { AppComponent } from "../../Reusables/Scroll-To-Top";
+import { ScrollToTopComponent } from "../../Reusables/Scroll-To-Top";
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent, AppComponent],
+  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent, ScrollToTopComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],
