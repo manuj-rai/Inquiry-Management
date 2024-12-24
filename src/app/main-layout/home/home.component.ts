@@ -18,8 +18,7 @@ export class HomeComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    // Trigger the thank-you notification on page load
-    this.notifyVisitor();
+
   }
 
   // Trigger the notification request
