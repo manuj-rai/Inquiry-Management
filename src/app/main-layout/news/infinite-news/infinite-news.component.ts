@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { AppComponent } from "../../../Reusables/ScrollToTop";
+import { AppComponent } from "../../../Reusables/Scroll-To-Top";
 
 
 @Component({

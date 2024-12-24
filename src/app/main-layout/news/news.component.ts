@@ -1,13 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NewsService } from '../../services/news.service';
-import { DatePipe } from '@angular/common';  // Import DatePipe
+import { DatePipe } from '@angular/common';  
 import { CommonModule } from "@angular/common";
 import { NewsCategoriesComponent } from "./news-categories/news-categories.component";
 import { CategorisedNewsComponent } from "./categorised-news/categorised-news.component";
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
-import { Router, NavigationEnd  } from '@angular/router';
 import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
-import { AppComponent } from "../../Reusables/ScrollToTop";
+import { AppComponent } from "../../Reusables/Scroll-To-Top";
 
 @Component({
   selector: 'app-news',
@@ -34,9 +33,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
   constructor(
-    private router: Router,
     private newsService: NewsService,
-    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
