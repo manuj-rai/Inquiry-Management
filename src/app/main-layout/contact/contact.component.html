@@ -73,6 +73,7 @@
           class="form-control"
           placeholder="Country"
           [(ngModel)]="selectedCountry"
+          (click)="fetchCountries()"
           (change)="onCountryChange(selectedCountry)"
         >
         <option value="" disabled selected>Select Country</option>

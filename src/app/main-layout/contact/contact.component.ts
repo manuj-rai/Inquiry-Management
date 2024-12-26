@@ -48,6 +48,7 @@ export class ContactComponent implements OnInit {
 
   selectedCountry: string = '';
   selectedState: string = '';
+  countriesFetched: boolean = false;
 
   constructor(
     private alertService: AlertService,
@@ -56,7 +57,7 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fetchCountries(); // Fetch countries when the component initializes
+   
   }
 
   // Submit the form
@@ -84,12 +85,14 @@ export class ContactComponent implements OnInit {
 
   // Fetch countries from REST Countries API
   fetchCountries(): void {
+    if (this.countriesFetched) return; // Skip fetching if countries are already loaded
+
     this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
       next: (response) => {
-        // Extract and sort country names
         this.countries = response
           .map((country) => country.name.common)
           .sort((a: string, b: string) => a.localeCompare(b));
+        this.countriesFetched = true; // Mark as fetched
       },
       error: (err) => console.error('Error fetching countries:', err)
     });
