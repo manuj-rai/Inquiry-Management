@@ -48,12 +48,7 @@ import { FormsModule } from '@angular/forms';
         border-radius: 4px;
         border: .0625rem solid #101426;
         transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
-        cursor: pointer;
       }
-      
-      /* .card:hover {
-         transform: scale(1.05);
-       }  */
       
       .container {
         width: 250px;

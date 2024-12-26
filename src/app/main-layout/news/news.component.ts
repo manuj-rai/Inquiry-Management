@@ -7,11 +7,12 @@ import { CategorisedNewsComponent } from "./categorised-news/categorised-news.co
 import { InfiniteNewsComponent } from "./infinite-news/infinite-news.component";
 import { DetailedNewsComponent } from "./detailed-news/detailed-news.component";
 import { ScrollToTopComponent } from "../../Reusables/Scroll-To-Top";
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent, ScrollToTopComponent],
+  imports: [LazyLoadImageModule, CommonModule, NewsCategoriesComponent, CategorisedNewsComponent, InfiniteNewsComponent, DetailedNewsComponent, ScrollToTopComponent],
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.css'],
   providers: [DatePipe],

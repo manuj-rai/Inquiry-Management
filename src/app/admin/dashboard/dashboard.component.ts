@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
-import { TodoComponent } from "../../Reusables/todo";
+import { TodoComponent } from "../../Reusables/Todo";
 import { WeatherAppComponent } from '../../Reusables/ModernWeather';
 
 @Component({

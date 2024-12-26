@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
-import { WeatherAppComponent } from "../../Reusables/ModernWeather";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WeatherAppComponent],
+  imports: [],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

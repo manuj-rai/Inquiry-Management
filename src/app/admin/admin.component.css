@@ -1,7 +1,6 @@
 .admin-layout {
     display: flex;
     height: 100%;
-    animation: fadeIn 1s ease-in-out;
 }
 
 .admin-content {
