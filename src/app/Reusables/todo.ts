@@ -151,6 +151,7 @@ styles: [`
   @media (max-width:786px) {
     .todo-container {
         padding: 5px;
+        height: 270px !important;
     }
   }
   `]

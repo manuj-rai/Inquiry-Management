@@ -71,13 +71,11 @@
   }
 
   .navbar-links li.active a {
-    color: #36b; 
-    font-size: .9125rem;
+    color: #36f; 
   }
   
   .navbar-login a.active {
-    color: #36b;
-    font-size: .9125rem;
+    color: #36f;
   }
     
   /* Responsive: Hamburger Menu */

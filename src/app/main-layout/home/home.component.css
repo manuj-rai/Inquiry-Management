@@ -469,6 +469,7 @@ img {
 .pricing-block .btn-box {
   position: relative;
   text-align: center;
+  cursor: pointer;
 }
 
 .pricing-block .btn-box a {
@@ -488,6 +489,7 @@ img {
   -ms-transition: all 400ms ease;
   -o-transition: all 400ms ease;
   transition: all 300ms ease;
+  cursor: pointer;
 }
 
 .pricing-block .btn-box a:hover {
