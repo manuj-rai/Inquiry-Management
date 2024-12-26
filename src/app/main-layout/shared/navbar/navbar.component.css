@@ -49,7 +49,6 @@
   
   .navbar-links a {
     font-size: .8125rem;
-    font-weight: 600;
     color: white;
     text-decoration: none;
     padding: 10px;
@@ -63,11 +62,20 @@
   
   .navbar-login a {
     font-size: .8125rem;
-    font-weight: 600;
     color: white;
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
+  }
+
+  .navbar-links li.active a {
+    color: #36b; 
+    font-size: .9125rem;
+  }
+  
+  .navbar-login a.active {
+    color: #36b;
+    font-size: .9125rem;
   }
     
   /* Responsive: Hamburger Menu */
