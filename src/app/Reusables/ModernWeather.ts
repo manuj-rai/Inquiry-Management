@@ -39,9 +39,14 @@ import { FormsModule } from '@angular/forms';
         height: 235px;
         position: relative;
         padding: 25px;
-        background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #222b45 0%, rgba(255, 255, 255, 0) 71.88%) , #222b45;
-        box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+        background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #222b45 0%, rgba(255, 255, 255, 0) 71.88%), #222b45;
+        box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 
+                    0px 87px 52px rgba(0, 0, 0, 0.05), 
+                    0px 39px 39px rgba(0, 0, 0, 0.09), 
+                    0px 10px 21px rgba(0, 0, 0, 0.1), 
+                    0px 0px 0px rgba(0, 0, 0, 0.1);
         border-radius: 4px;
+        border: .0625rem solid #101426;
         transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
         cursor: pointer;
       }

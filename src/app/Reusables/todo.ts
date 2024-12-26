@@ -42,7 +42,6 @@ import { FormsModule } from '@angular/forms';
 styles: [`
   .todo-container {
     height: 243px;
-    overflow-y: scroll;
     margin: 0 auto;
     background-color: #222b45;
     border-radius: 4px;
@@ -102,6 +101,8 @@ styles: [`
     list-style-type: none;
     padding: 0;
     margin: 0;
+    height: 115px;
+    overflow-y: scroll;
   }
   
   .todo-item {
@@ -109,6 +110,7 @@ styles: [`
     align-items: center;
     justify-content: space-between;
     padding: 8px;
+    margin-right: 20px;
     margin-bottom: 12px;
     background-color: #222b45;
     border-radius: 4px;
