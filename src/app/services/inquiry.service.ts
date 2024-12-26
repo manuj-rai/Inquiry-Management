@@ -15,11 +15,13 @@ export class InquiryService {
     pageSize: number,
     gender?: string,
     country?: string,
-    status?: string
+    status?: string,
+    sortDirection: string = 'ASC'
   ): Observable<any> {
     let params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
-      .set('pageSize', pageSize.toString());
+      .set('pageSize', pageSize.toString())
+      .set('sortDirection', sortDirection);
 
     // Add filters to the params if they are provided
     if (gender) params = params.set('gender', gender);

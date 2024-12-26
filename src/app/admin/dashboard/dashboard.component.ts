@@ -16,7 +16,6 @@ import { WeatherAppComponent } from '../../Reusables/ModernWeather';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-
 export class DashboardComponent implements OnInit {
   inquiries: any[] = [];
   currentPage: number = 1;
@@ -28,6 +27,8 @@ export class DashboardComponent implements OnInit {
     gender: string = '';
     country: string = '';
     status: string = '';
+    sortField: string = 'id'; // Default sort field
+    sortDirection: string = 'ASC'; // Default sort direction
 
   countries: string[] = []; 
   totalNewsCount: number = 0;
@@ -48,16 +49,25 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchInquiries(): void {
-    this.inquiryService.getPaginatedUsers(this.currentPage, this.pageSize, this.gender, this.country, this.status).subscribe({
-      next: (response) => {
-        this.inquiries = response.data;
-        this.totalItems = response.totalCount;
-        this.totalPages = Math.ceil(this.totalItems / this.pageSize);  // Set total pages
-      },
-      error: (err) => {
-        console.error('Error fetching inquiries:', err);
-      }
-    });
+    this.inquiryService
+      .getPaginatedUsers(
+        this.currentPage,
+        this.pageSize,
+        this.gender,
+        this.country,
+        this.status,
+        this.sortDirection // Pass sort direction
+      )
+      .subscribe({
+        next: (response) => {
+          this.inquiries = response.data;
+          this.totalItems = response.totalCount;
+          this.totalPages = Math.ceil(this.totalItems / this.pageSize); // Set total pages
+        },
+        error: (err) => {
+          console.error('Error fetching inquiries:', err);
+        }
+      });
   }
 
   confirmDelete(id: string): void {
@@ -79,9 +89,9 @@ export class DashboardComponent implements OnInit {
           title: '<strong>Deleted!</strong>',
           html: '<p style="color: #b5b5b5;">The inquiry has been successfully deleted.</p>',
           icon: 'success',
-          background: '#222b45', 
-          color: '#fff', 
-          confirmButtonColor: '#28a745', 
+          background: '#222b45', // Dark success background
+          color: '#fff', // Light text
+          confirmButtonColor: '#28a745', // Green confirm button
           customClass: {
             popup: 'swal-popup',
             title: 'swal-title',
@@ -94,6 +104,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  // Action handling methods (Approve, Unapprove, Delete)
   updateStatus(inquiryId: number, action: string): void {
     this.inquiryService.updateInquiryStatus(inquiryId, action).subscribe({
       next: () => {
@@ -123,6 +134,25 @@ export class DashboardComponent implements OnInit {
 
   applyFilters(): void {
     this.fetchInquiries();
+  }
+
+  toggleSort(field: string): void {
+    if (this.sortField === field) {
+      // Toggle direction if the same field is clicked
+      this.sortDirection = this.sortDirection === 'ASC' ? 'DESC' : 'ASC';
+    } else {
+      // Set to ascending for new field
+      this.sortField = field;
+      this.sortDirection = 'ASC';
+    }
+    this.fetchInquiries(); // Refetch inquiries with new sort
+  }
+  
+  getSortIcon(field: string): string {
+    if (this.sortField === field) {
+      return this.sortDirection === 'ASC' ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+    }
+    return 'fas fa-sort'; // Default icon
   }
 
   // Fetch countries from REST Countries API
@@ -168,11 +198,12 @@ export class DashboardComponent implements OnInit {
   }
 
   getProfilePictureUrl(user: any): string {
+    // Ensure user has a profilePicture property and replace '~/'
     if (user && user.profilePicture) {
-      const cleanedPath = user.profilePicture.replace('~/', '');  
-      return `${this.baseImageUrl}${cleanedPath}`;  
+      const cleanedPath = user.profilePicture.replace('~/', '');  // Remove '~/'
+      return `${this.baseImageUrl}${cleanedPath}`;  // Construct full URL
     }
-    return 'default-profile-picture-url';  
+    return 'default-profile-picture-url';  // Return a default image URL if no profile picture exists
   }
 
   // Method to format "CreatedDate" into a human-readable format like "X minutes ago"

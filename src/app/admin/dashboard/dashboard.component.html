@@ -53,7 +53,15 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
+        <th (click)="toggleSort('id')"> 
+          ID 
+          <i [class]="getSortIcon('id')" style="
+              margin-left: 5px;
+              font-size: 10px;
+              color: #101426;
+            ">
+          </i> 
+        </th>
         <th>Name</th>
         <th>
           Gender
