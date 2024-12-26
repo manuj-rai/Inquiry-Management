@@ -171,6 +171,7 @@ import { FormsModule } from '@angular/forms';
         display: flex;
         flex-direction: column;
         gap: 10px;
+        max-width: 250px;
       }
       
       .card-header span:first-child {
@@ -223,40 +224,63 @@ import { FormsModule } from '@angular/forms';
       `]
   })
   
-export class WeatherAppComponent implements OnInit {
-  city: string = 'Ahmedabad'; 
-  weatherData: any = null;
-  error: boolean = false;
-  loading: boolean = false;
-  apiKey: string = 'ebe4977f055defcccc75873566e531c1'; 
-  currentDate: Date = new Date(); 
-
-  constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    this.getWeather(); 
-  }
-
-  getWeather(): void {
-    if (!this.city.trim()) return;
-
-    this.loading = true;
-    this.error = false; 
-
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city.trim()}&appid=${this.apiKey}&units=metric`;
-
-    this.http.get(url).subscribe({
-      next: (data: any) => {
-        this.weatherData = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching weather data:', err);
-        this.weatherData = null;
+  export class WeatherAppComponent implements OnInit {
+    city: string = '';  // Empty for now, as we're using the user's location
+    weatherData: any = null;
+    error: boolean = false;
+    loading: boolean = false;
+    apiKey: string = 'ebe4977f055defcccc75873566e531c1';
+    currentDate: Date = new Date();
+    latitude: number | null = null;
+    longitude: number | null = null;
+  
+    constructor(private http: HttpClient) {}
+  
+    ngOnInit(): void {
+      this.getCurrentLocation();  // Get the user's current location
+    }
+  
+    // Get current location using the Geolocation API
+    getCurrentLocation(): void {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            this.latitude = position.coords.latitude;
+            this.longitude = position.coords.longitude;
+            this.getWeatherByLocation();  // Fetch weather for the user's current location
+          },
+          (error) => {
+            console.error('Error getting location:', error);
+            this.error = true;
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
         this.error = true;
-        this.loading = false;
       }
-    });
+    }
+  
+    // Fetch weather data using latitude and longitude
+    getWeatherByLocation(): void {
+      if (this.latitude === null || this.longitude === null) return;
+  
+      this.loading = true;
+      this.error = false;
+  
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&appid=${this.apiKey}&units=metric`;
+  
+      this.http.get(url).subscribe({
+        next: (data: any) => {
+          this.weatherData = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching weather data:', err);
+          this.weatherData = null;
+          this.error = true;
+          this.loading = false;
+        }
+      });
+    }
   }
-}
   
