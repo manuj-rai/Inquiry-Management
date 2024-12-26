@@ -36,26 +36,25 @@ import { FormsModule } from '@angular/forms';
     `,
     styles: [`
       .card {
-        width: 350px;
         height: 235px;
         position: relative;
         padding: 25px;
         background: radial-gradient(178.94% 106.41% at 26.42% 106.41%, #222b45 0%, rgba(255, 255, 255, 0) 71.88%) , #222b45;
         box-shadow: 0px 155px 62px rgba(0, 0, 0, 0.01), 0px 87px 52px rgba(0, 0, 0, 0.05), 0px 39px 39px rgba(0, 0, 0, 0.09), 0px 10px 21px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
-        border-radius: 23px;
+        border-radius: 4px;
         transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
         cursor: pointer;
       }
       
-      .card:hover {
-        transform: scale(1.05);
-      }
+      /* .card:hover {
+         transform: scale(1.05);
+       }  */
       
       .container {
         width: 250px;
         height: 250px;
         position: absolute;
-        right: -35px;
+        right: -28px;
         top: -50px;
         display: flex;
         align-items: center;
@@ -212,29 +211,32 @@ import { FormsModule } from '@angular/forms';
         font-size: 13px;
         line-height: 134.49%;
         color: #fff;
-      }`]
+      }
+      .front {
+        margin: 0;
+      }
+      `]
   })
   
 export class WeatherAppComponent implements OnInit {
-  city: string = 'Ahmedabad'; // Default city set to Ahmedabad
+  city: string = 'Ahmedabad'; 
   weatherData: any = null;
   error: boolean = false;
   loading: boolean = false;
-  apiKey: string = 'ebe4977f055defcccc75873566e531c1'; // Replace with your OpenWeather API key
-  currentDate: Date = new Date(); // Get the current date
+  apiKey: string = 'ebe4977f055defcccc75873566e531c1'; 
+  currentDate: Date = new Date(); 
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.getWeather(); // Fetch weather for Ahmedabad when the component loads
+    this.getWeather(); 
   }
 
-  // Fetch weather data
   getWeather(): void {
     if (!this.city.trim()) return;
 
     this.loading = true;
-    this.error = false; // Reset error flag before making request
+    this.error = false; 
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${this.city.trim()}&appid=${this.apiKey}&units=metric`;
 

@@ -7,18 +7,16 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { TodoComponent } from "../../Reusables/Todo";
-import { WeatherForecastComponent } from "../../Reusables/Weather";
-import { ReminderComponent } from "../../Reusables/Reminder";
-
-
+import { WeatherAppComponent } from '../../Reusables/ModernWeather';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, TodoComponent, WeatherForecastComponent, ReminderComponent],
+  imports: [CommonModule, FormsModule, TodoComponent, WeatherAppComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
+
 export class DashboardComponent implements OnInit {
   inquiries: any[] = [];
   currentPage: number = 1;
@@ -81,9 +79,9 @@ export class DashboardComponent implements OnInit {
           title: '<strong>Deleted!</strong>',
           html: '<p style="color: #b5b5b5;">The inquiry has been successfully deleted.</p>',
           icon: 'success',
-          background: '#222b45', // Dark success background
-          color: '#fff', // Light text
-          confirmButtonColor: '#28a745', // Green confirm button
+          background: '#222b45', 
+          color: '#fff', 
+          confirmButtonColor: '#28a745', 
           customClass: {
             popup: 'swal-popup',
             title: 'swal-title',
@@ -96,7 +94,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  // Action handling methods (Approve, Unapprove, Delete)
   updateStatus(inquiryId: number, action: string): void {
     this.inquiryService.updateInquiryStatus(inquiryId, action).subscribe({
       next: () => {
@@ -171,12 +168,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getProfilePictureUrl(user: any): string {
-    // Ensure user has a profilePicture property and replace '~/'
     if (user && user.profilePicture) {
-      const cleanedPath = user.profilePicture.replace('~/', '');  // Remove '~/'
-      return `${this.baseImageUrl}${cleanedPath}`;  // Construct full URL
+      const cleanedPath = user.profilePicture.replace('~/', '');  
+      return `${this.baseImageUrl}${cleanedPath}`;  
     }
-    return 'default-profile-picture-url';  // Return a default image URL if no profile picture exists
+    return 'default-profile-picture-url';  
   }
 
   // Method to format "CreatedDate" into a human-readable format like "X minutes ago"

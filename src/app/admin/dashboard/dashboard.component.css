@@ -59,6 +59,20 @@ p {
     animation: fadeIn 1s ease-in-out;
 
 }
+
+.weather-todo app-todo,
+.weather-todo app-weather {
+  display: inline-block;
+}
+
+/* Media query for smaller screens (max-width 600px) */
+@media (max-width: 768px) {
+  .weather-todo app-todo,
+  .weather-todo app-weather {
+    width: 100% !important;  /* Ensures both take 100% width */
+    display: block; /* Ensure elements stack vertically */
+  }
+}
   
 .total-inquiries, .total-news, .total-users {
     flex: 1;
@@ -303,6 +317,7 @@ th:hover {
 
     .weather-todo {
         flex-direction: column;
+        gap: 30px;
     }
 
     .progress-circle {
