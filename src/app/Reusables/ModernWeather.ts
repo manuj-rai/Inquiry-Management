@@ -10,11 +10,9 @@ import { FormsModule } from '@angular/forms';
     template: `
       <div class="card">
       <h2 class="title">Weather Forecast</h2>
-
-        <div class="container">
-          <div *ngIf="error" class="error-message">
+      <div *ngIf="error" class="error-message">
           <p>{{ errorMessage }}</p>
-          <!-- Show manual city input when location access is denied or unavailable -->
+          <!-- Show manual city input when location access is denied or unavailable
           <div *ngIf="!latitude && !longitude">
             <input
               type="text"
@@ -23,40 +21,40 @@ import { FormsModule } from '@angular/forms';
               placeholder="Enter city name"
               class="form-control"
             />
+          </div> -->
+        </div>
+        <!-- Weather Data Display -->
+        <div *ngIf="weatherData">
+          <div class="card-header">
+            <span>{{ weatherData.name }}, {{ weatherData.sys.country }}</span>
+            <span>{{ currentDate | date: 'short' }}</span>
+          </div>
+          <span class="temp">{{ weatherData.main.temp }}°C</span>
+          <div class="temp-scale">
+            <span>Celsius</span>
           </div>
         </div>
-          <!-- Loading message -->
-          <div *ngIf="loading">
-            <p>Loading weather data...</p>
-          </div>
-          <div class="cloud front">
-            <span class="left-front"></span>
-            <span class="right-front"></span>
-          </div>
-          <span class="sun sunshine"></span>
-          <span class="sun"></span>
-          <div class="cloud back">
-            <span class="left-back"></span>
-            <span class="right-back"></span>
-          </div>
+      <div class="container">
+        <!-- Loading message -->
+        <div *ngIf="loading">
+          <p>Loading weather data...</p>
         </div>
 
-        <div class="card-header">
-          <span>{{ weatherData.name }}, {{ weatherData.sys.country }}</span>
-          <span>{{ currentDate }}</span>
+
+
+        <div class="cloud front">
+          <span class="left-front"></span>
+          <span class="right-front"></span>
         </div>
-
-        <span class="temp">{{ weatherData.main.temp }}°C</span>
-
-        <div class="temp-scale">
-          <span>Celcius</span>
+        <span class="sun sunshine"></span>
+        <span class="sun"></span>
+        <div class="cloud back">
+          <span class="left-back"></span>
+          <span class="right-back"></span>
         </div>
       </div>
-      <!-- Loading message -->
-    <div *ngIf="loading">
-      <p>Loading weather data...</p>
     </div>
-    `,
+  `,
     styles: [`
       .card {
         height: 235px;
@@ -71,6 +69,10 @@ import { FormsModule } from '@angular/forms';
         border-radius: 4px;
         border: .0625rem solid #101426;
         transition: all 0.8s cubic-bezier(0.15, 0.83, 0.66, 1);
+      }
+
+      p {
+        max-width: 250px;
       }
       
       .container {
