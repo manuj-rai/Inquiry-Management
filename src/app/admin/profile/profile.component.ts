@@ -73,36 +73,69 @@ export class ProfileComponent implements OnInit{
     }
   }
 
+  // Validation Methods
+  isNameValid(): boolean {
+    return this.userDetails.name && this.userDetails.name.trim().length > 0;
+  }
+
+  isEmailValid(): boolean {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(this.userDetails.emailID);
+  }
+
+  isPhoneValid(): boolean {
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(this.userDetails.phoneNumber);
+  }
+
+  isPasswordValid(): boolean {
+    return this.userDetails.password && this.userDetails.password.length >= 4;
+  }
+
   saveChanges(): void {
-    // Ensure the form is valid (optional)
-    if (this.userDetails.name && this.userDetails.emailID && this.userDetails.phoneNumber && this.userDetails.password) {
-      const formData = new FormData();
-      formData.append('userID', this.userDetails.userID);
-      formData.append('UserName', this.username);
-      formData.append('Name', this.userDetails.name);
-      formData.append('EmailID', this.userDetails.emailID);
-      formData.append('PhoneNumber', this.userDetails.phoneNumber);
-      formData.append('Password', this.userDetails.password);
-  
-      // Append the profile picture file if selected
-      if (this.userDetails.profilePicture) {
-        formData.append('ProfilePicture', this.userDetails.profilePicture);
-      }
-  
-      // Send the formData to the backend
-      this.authService.updateUserDetails(formData).subscribe({
-        next: (response) => {
-          this.alertService.success('User details updated successfully:');
-          this.isEditing = false;  
-        },
-        error: (error) => {
-          console.error('Error updating user details:', error);
-          this.alertService.error('There was an error updating your details. Please try again later.');
-        }
-      });
-    } else {
-      this.alertService.error('Please fill in all the required fields.');
+    if (!this.isNameValid()) {
+      this.alertService.error('Please enter a valid name.');
+      return;
     }
+
+    if (!this.isEmailValid()) {
+      this.alertService.error('Please enter a valid email address.');
+      return;
+    }
+
+    if (!this.isPhoneValid()) {
+      this.alertService.error('Phone number must be 10 digits.');
+      return;
+    }
+
+    if (!this.isPasswordValid()) {
+      this.alertService.error('Password must be at least 4 characters.');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('userID', this.userDetails.userID);
+    formData.append('UserName', this.username);
+    formData.append('Name', this.userDetails.name);
+    formData.append('EmailID', this.userDetails.emailID);
+    formData.append('PhoneNumber', this.userDetails.phoneNumber);
+    formData.append('Password', this.userDetails.password);
+
+    // Append the profile picture file if selected
+    if (this.userDetails.profilePicture) {
+      formData.append('ProfilePicture', this.userDetails.profilePicture);
+    }
+
+    // Send the FormData to the backend
+    this.authService.updateUserDetails(formData).subscribe({
+      next: (response) => {
+        this.alertService.success('User details updated successfully.');
+        this.isEditing = false; // Disable editing after save
+      },
+      error: (error) => {
+        console.error('Error updating user details:', error);
+        this.alertService.error('There was an error updating your details. Please try again later.');
+      },
+    });
   }
 
   cancelEdit() {

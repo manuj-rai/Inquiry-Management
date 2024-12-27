@@ -52,11 +52,10 @@ styles: [`
   }
   
   .title {
-    text-align: center;
-    font-size: 2rem;
+    font-size: 1.2rem;
     color: #36b;
-    margin-bottom: 20px;
-    font-family: 'Roboto', sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
   }
   
   .add-todo {
@@ -101,7 +100,7 @@ styles: [`
     list-style-type: none;
     padding: 0;
     margin: 0;
-    height: 115px;
+    height: 160px;
     overflow-y: scroll;
   }
   

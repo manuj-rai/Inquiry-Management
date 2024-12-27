@@ -28,7 +28,7 @@ export class LoginComponent {
   ) {
     // Initialize the form group
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],  // Email field with validation
+      username: ['', [Validators.required, Validators.minLength(4)]],  // field with validation
       password: ['', [Validators.required, Validators.minLength(4)]],  // Password with min length
     });
   }
@@ -41,32 +41,38 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      // Simulate a login check
+      
+      // Call the login method in the service
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            this.alertService.success("Welcome back! You are now logged in!")
+            // Successful login
+            this.alertService.success("Welcome back! You are now logged in!");
             localStorage.setItem('user', JSON.stringify({ username }));
             localStorage.setItem('token', response.token);
             this.router.navigate(['/admin']);
+            
+            // Show login notification with the username
+            this.notificationService.showNotification('Welcome Back!', {
+              body: `Hello, ${username}! You have successfully logged in.`,
+              icon: 'assets/user.png', 
+              requireInteraction: true, 
+            });
           } else {
+            // Handle invalid credentials response from backend
             this.alertService.error('Invalid username or password!');
           }
-          // Show login notification with the username
-          this.notificationService.showNotification('Welcome Back!', {
-            body: `Hello, ${username}! You have successfully logged in.`,
-            icon: 'assets/user.png', // Optional: Add a user-specific icon
-            requireInteraction: true, // Keeps the notification visible until interaction
-          });
         },
         error: (err) => {
           console.error('Login error:', err);
-          this.alertService.error('Login failed. Please try again.');
+          // Handle actual error scenario, e.g., server issues
+          this.alertService.error('Invalid username or password!');
         },
       });
     }
   }
-
+  
+  
   alert() {
     this.alertService.warning("The service is currently unavailable. Please try logging in using an alternative method.")
   }

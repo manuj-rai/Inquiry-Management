@@ -5,6 +5,7 @@ import { NewsService } from '../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Editor } from 'tinymce';
+import { AlertService } from '../../services/alert.service';
 
 
 @Component({
@@ -20,10 +21,9 @@ export class NewsComponent implements OnInit {
   pageIndex: number = 1; // Current page index
   pageSize: number = 2; // Page size
   userDetails: any;
-  tagSuggestions: any[] = [];
-  selectedTags: string[] = [];
-  
-
+  tagSuggestions: { tagName: string }[] = [];
+  selectedTags: string[] = []; 
+  currentTag: string = '';
 
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
@@ -72,6 +72,7 @@ export class NewsComponent implements OnInit {
   
 
   constructor(
+    private alertService: AlertService,
     private authService: AuthService,
     private newsService: NewsService)
   {}
@@ -97,8 +98,44 @@ export class NewsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (!this.newsRequest.title || !this.newsRequest.shortDesc || !this.newsRequest.newsContent || !this.newsRequest.postingDate) {
-      alert('Please fill all the required fields!');
+    // Check each field individually and show a specific alert for the missing fields
+    if (!this.newsRequest.title) {
+      this.alertService.warning('Title is required!');
+      return;
+    }
+
+    if (!this.newsRequest.bigImage) {
+      this.alertService.warning('Big Image is required!');
+      return;
+    }
+
+    if (!this.newsRequest.smallImage) {
+      this.alertService.warning('Small Image is required!');
+      return;
+    }
+
+    if (!this.newsRequest.shortDesc) {
+      this.alertService.warning('Short Description is required!');
+      return;
+    }
+
+    if (!this.newsRequest.newsContent) {
+      this.alertService.warning('News Content is required!');
+      return;
+    }
+
+    if (!this.newsRequest.CopyWriteText) {
+      this.alertService.warning('CopyWrite Text is required!');
+      return;
+    }
+
+    if (!this.newsRequest.tagName) {
+      this.alertService.warning('Tag Name is required!');
+      return;
+    }
+
+    if (!this.newsRequest.postingDate) {
+      this.alertService.warning('Posting Date is required!');
       return;
     }
 
@@ -124,12 +161,12 @@ export class NewsComponent implements OnInit {
     this.newsService.addNews(formData).subscribe(
       response => {
         console.log('News added successfully', response);
-        alert('News added successfully');
+        this.alertService.success('News added successfully');
         this.loadActiveNews(); 
       },
       error => {
         console.error('Error adding news', error);
-        alert('Error adding news');
+        this.alertService.error('Error adding news');
       }
     );
   }
@@ -168,38 +205,39 @@ export class NewsComponent implements OnInit {
     return `${this.baseImageUrl}${cleanedPath}`;
   }
 
-  onTagInputChange(query: string) {
+  // Fetch suggestions dynamically as user types
+  onTagInputChange(query: string): void {
     if (query.length >= 1) {
       this.newsService.getTagSuggestions(query).subscribe({
-        next: (suggestions) => {
-          console.log(suggestions); // Log the response to verify its structure
+        next: (suggestions: any[]) => {
           this.tagSuggestions = suggestions;
         },
-        error: (error) => {
-          console.error('Error fetching tag suggestions', error);
-        },
-        complete: () => {
-          console.log('Tag suggestions fetching complete');
+        error: (err) => {
+          console.error('Error fetching tag suggestions:', err);
         }
       });
     } else {
-      this.tagSuggestions = [];
+      this.tagSuggestions = []; // Clear suggestions if input is empty
     }
-  } 
+  }
 
-    // Select a tag from the suggestions and add it to the input
-    addTag(tag: string) {
-      // Prevent adding the same tag again
-      if (tag && !this.selectedTags.includes(tag)) {
-        this.selectedTags.push(tag);
-        this.newsRequest.tagName = ''; // Clear input field
-        this.tagSuggestions = []; // Clear suggestions after adding tag
-      }
+  // Add a tag from suggestions to the list
+  addTag(tag: string): void {
+    if (tag && !this.selectedTags.includes(tag)) {
+      this.selectedTags.push(tag); // Add tag to selected list
+      this.updateTagNames(); // Update the tag names as a comma-separated string
+      this.currentTag = ''; // Clear input box for new search
+      this.tagSuggestions = []; // Clear suggestions
     }
-  
-    // Remove a tag from selectedTags list
-    removeTag(tag: string) {
-      this.selectedTags = this.selectedTags.filter(t => t !== tag);
-    }
+  }
 
+  // Remove a tag from the selected list
+  removeTag(tag: string): void {
+    this.selectedTags = this.selectedTags.filter((t) => t !== tag); // Remove the tag from the list
+    this.updateTagNames(); // Update the tag names as a comma-separated string
+  }
+
+  updateTagNames(): void {
+    this.newsRequest.tagName = this.selectedTags.join(',');
+  }
 }

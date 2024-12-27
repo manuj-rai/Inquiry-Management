@@ -98,7 +98,7 @@
       </div>
 
         <!-- State Textbox (shown for other countries) -->
-      <div class="col-md-6 form-group" *ngIf="selectedCountry !== 'India' && selectedCountry">
+      <div class="col-md-6 form-group" *ngIf="selectedCountry !== 'India' && !selectedCountry">
         <input
           type="text"
           id="state"

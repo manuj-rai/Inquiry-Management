@@ -66,11 +66,10 @@
           type="text" 
           placeholder="News Tag" 
           id="tags" 
-          [(ngModel)]="newsRequest.tagName" 
+          [(ngModel)]="currentTag" 
+          (input)="onTagInputChange(currentTag)"
           name="tags" 
           class="form-control"
-          
-          (input)="onTagInputChange(newsRequest.tagName)"
           (keydown.enter)="addTag(newsRequest.tagName)" />
       
         <!-- Suggestions List -->

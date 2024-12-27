@@ -113,10 +113,18 @@ p {
     resize: vertical;
   }
 
+  .suggestions-list {
+    max-height: 98px;
+    overflow: hidden;
+  }
+
   .suggestion-item {
+    list-style: none;
     cursor: pointer;
     font-size: 14px;
     color:#ffffff9c;
+    max-height: 100px;
+    overflow: hidden;
   }
 
   .suggestion-item:hover {
@@ -254,3 +262,5 @@ p {
       transform: translateY(0);
     }
   }
+
+  

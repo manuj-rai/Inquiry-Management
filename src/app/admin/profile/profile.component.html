@@ -95,18 +95,23 @@
               <span *ngIf="!isEditing">{{ userDetails.phoneNumber }}</span>
               <input
                 *ngIf="isEditing"
-                type="tel"
+                type="number"
                 id="phone"
                 name="phone"
                 [(ngModel)]="userDetails.phoneNumber"
                 class="form-control"
                 placeholder="Enter Phone Number"
+                pattern="^\d{10}$"  
+                inputmode="tel"      
+                required
+                minlength="10"       
+                maxlength="10"       
               />
             </p>
 
             <!-- Password field -->
             <p class="profile-password">
-              <span *ngIf="!isEditing"></span> <!-- Hide password in view mode -->
+              <span *ngIf="!isEditing"></span> 
               <input
                 *ngIf="isEditing"
                 type="password"
@@ -115,6 +120,8 @@
                 [(ngModel)]="userDetails.password"
                 class="form-control"
                 placeholder="Enter Password"
+                required
+                minlength="4"
               />
             </p>
 

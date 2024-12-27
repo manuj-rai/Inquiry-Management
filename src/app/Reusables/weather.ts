@@ -53,6 +53,7 @@ import { FormsModule } from '@angular/forms';
     font-family: 'Roboto', sans-serif;
   }
   
+  
   .title {
     text-align: center;
     font-size: 2rem;

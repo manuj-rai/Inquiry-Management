@@ -9,7 +9,26 @@ import { FormsModule } from '@angular/forms';
     imports: [CommonModule, FormsModule],
     template: `
       <div class="card">
+      <h2 class="title">Weather Forecast</h2>
+
         <div class="container">
+          <div *ngIf="error" class="error-message">
+          <p>{{ errorMessage }}</p>
+          <!-- Show manual city input when location access is denied or unavailable -->
+          <div *ngIf="!latitude && !longitude">
+            <input
+              type="text"
+              [(ngModel)]="manualCityInput"
+              (input)="onCityInputChange()"
+              placeholder="Enter city name"
+              class="form-control"
+            />
+          </div>
+        </div>
+          <!-- Loading message -->
+          <div *ngIf="loading">
+            <p>Loading weather data...</p>
+          </div>
           <div class="cloud front">
             <span class="left-front"></span>
             <span class="right-front"></span>
@@ -33,6 +52,10 @@ import { FormsModule } from '@angular/forms';
           <span>Celcius</span>
         </div>
       </div>
+      <!-- Loading message -->
+    <div *ngIf="loading">
+      <p>Loading weather data...</p>
+    </div>
     `,
     styles: [`
       .card {
@@ -60,6 +83,24 @@ import { FormsModule } from '@angular/forms';
         align-items: center;
         justify-content: center;
         transform: scale(0.7);
+      }
+
+      .title {
+        font-size: 1.2rem;
+        color: #36b;
+        margin-top: 0;
+        margin-bottom: 30px;
+      }
+
+      .error-message {
+        color: red;
+        font-weight: bold;
+      }
+
+      input.form-control {
+        margin-top: 10px;
+        padding: 8px;
+        width: 200px;
       }
       
       .cloud {
@@ -228,6 +269,8 @@ import { FormsModule } from '@angular/forms';
     currentDate: Date = new Date();
     latitude: number | null = null;
     longitude: number | null = null;
+    errorMessage: string = '';
+    manualCityInput: string = '';  // For manual city input
   
     constructor(private http: HttpClient) {}
   
@@ -247,11 +290,23 @@ import { FormsModule } from '@angular/forms';
           (error) => {
             console.error('Error getting location:', error);
             this.error = true;
+  
+            // Handle specific geolocation errors and set error messages
+            if (error.code === error.PERMISSION_DENIED) {
+              this.errorMessage = 'Location access was denied. Please enable location access to get weather information.';
+            } else if (error.code === error.POSITION_UNAVAILABLE) {
+              this.errorMessage = 'Location information is unavailable. Please try again later.';
+            } else if (error.code === error.TIMEOUT) {
+              this.errorMessage = 'The request to get your location timed out. Please try again.';
+            } else {
+              this.errorMessage = 'An error occurred while retrieving your location.';
+            }
           }
         );
       } else {
         console.error('Geolocation is not supported by this browser.');
         this.error = true;
+        this.errorMessage = 'Geolocation is not supported by this browser. Please enable location services or enter the city manually.';
       }
     }
   
@@ -274,8 +329,39 @@ import { FormsModule } from '@angular/forms';
           this.weatherData = null;
           this.error = true;
           this.loading = false;
+          this.errorMessage = 'Failed to fetch weather data. Please try again later.';
         }
       });
     }
-  }
   
+    // Fetch weather data based on manual city input
+    getWeatherByCity(city: string): void {
+      if (!city) return;
+  
+      this.loading = true;
+      this.error = false;
+  
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}&units=metric`;
+  
+      this.http.get(url).subscribe({
+        next: (data: any) => {
+          this.weatherData = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error fetching weather data:', err);
+          this.weatherData = null;
+          this.error = true;
+          this.loading = false;
+          this.errorMessage = 'Could not fetch weather data for the entered city. Please try again.';
+        }
+      });
+    }
+  
+    // Handle manual city input change
+    onCityInputChange(): void {
+      if (this.manualCityInput) {
+        this.getWeatherByCity(this.manualCityInput);
+      }
+    }
+  }

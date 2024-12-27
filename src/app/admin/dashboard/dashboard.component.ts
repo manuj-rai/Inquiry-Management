@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
-import { TodoComponent } from "../../Reusables/Todo";
+import { TodoComponent } from "../../Reusables/todo";
 import { WeatherAppComponent } from '../../Reusables/ModernWeather';
 
 @Component({
@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
         this.gender,
         this.country,
         this.status,
-        this.sortDirection // Pass sort direction
+        this.sortDirection 
       )
       .subscribe({
         next: (response) => {
@@ -124,13 +124,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-    // Reset filters and fetch data
-    resetFilters(): void {
-      this.gender = '';
-      this.country = '';
-      this.status = '';
-      this.fetchInquiries();
-    }
+  // Reset filters and fetch data
+  resetFilters(): void {
+    this.gender = '';
+    this.country = '';
+    this.status = '';
+    this.fetchInquiries();
+  }
 
   applyFilters(): void {
     this.fetchInquiries();

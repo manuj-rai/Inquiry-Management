@@ -70,8 +70,10 @@ h5 {
   /* Error messages */
   .invalid-feedback {
     color: #e74c3c;
-    font-size: 14px;
-    margin-top: 5px;
+    font-size: 11px;
+    margin-top: 3px;
+    text-align: left;
+    margin-left: 10px;
   }
   
   /* Submit button styling */
@@ -92,10 +94,18 @@ h5 {
     transition: background-color 0.3s ease;
   }
   
-  button[type="submit"]:hover {
-    background-color: #3366ff6b;
-    border-color: #36f;
-    color: #36f;
+  .btn-disabled {
+    background-color: #8f9bb329;
+    border-color: #8f9bb33d;
+    color: #8f9bb37a;
+    cursor: not-allowed;
+  }
+  
+  .btn-disabled:hover {
+    background-color: #8f9bb329;
+    border-color: #8f9bb33d;
+    color: #8f9bb37a;
+    cursor: not-allowed;
   }
   
   input[type="file"]:hover {
