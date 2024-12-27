@@ -59,15 +59,23 @@ export class LoginComponent {
               requireInteraction: true, 
             });
           } else {
-            // Handle invalid credentials response from backend
-            this.alertService.error('Invalid username or password!');
+            // Handle invalid credentials
+            if (response.message === 'Invalid credentials') {
+              this.alertService.error('Invalid username or password!');
+            } else {
+              // Handle unexpected response message
+              this.alertService.error('An error occurred. Please try again.');
+            }
           }
         },
         error: (err) => {
           console.error('Login error:', err);
-          // Handle actual error scenario, e.g., server issues
-          this.alertService.error('Invalid username or password!');
-        },
+          if (err.status === 401) {
+            this.alertService.error('Invalid username or password!');
+          } else {
+            this.alertService.error('An error occurred. Please try again.');
+          }
+        }
       });
     }
   }
