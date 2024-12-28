@@ -77,7 +77,7 @@ h5 {
   }
   
   /* Submit button styling */
-  button[type="submit"] {
+   button {
     width: 100%;
     padding: .6875rem 1.125rem;
     font-size: .875rem;
@@ -92,22 +92,15 @@ h5 {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+  } 
   
-  .btn-disabled {
+  .new-user-btn-disabled {
     background-color: #8f9bb329;
     border-color: #8f9bb33d;
     color: #8f9bb37a;
     cursor: not-allowed;
   }
-  
-  .btn-disabled:hover {
-    background-color: #8f9bb329;
-    border-color: #8f9bb33d;
-    color: #8f9bb37a;
-    cursor: not-allowed;
-  }
-  
+    
   input[type="file"]:hover {
     border-color: #007bff;
   }
@@ -126,6 +119,10 @@ h5 {
   
   label[for="profilePic"] {
     padding: .6875rem 1.125rem;
+    background-color: #0057b37e;
+    border-color: #36f;
+    border-width: .0625rem;
+    color: #fff;
     font-size: .875rem;
     line-height: 1rem;
     font-weight: 700;

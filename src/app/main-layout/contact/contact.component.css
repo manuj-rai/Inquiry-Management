@@ -64,6 +64,11 @@
     resize: vertical;
   }
 
+  .text-danger {
+    color: red;
+    font-size: 0.875rem;
+  }
+
   .form-control:hover {
     background-color: #121525;
   }
