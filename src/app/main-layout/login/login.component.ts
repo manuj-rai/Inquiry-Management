@@ -42,39 +42,20 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       
-      // Call the login method in the service
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            // Successful login
             this.alertService.success("Welcome back! You are now logged in!");
             localStorage.setItem('user', JSON.stringify({ username }));
             localStorage.setItem('token', response.token);
             this.router.navigate(['/admin']);
-            
-            // Show login notification with the username
-            this.notificationService.showNotification('Welcome Back!', {
-              body: `Hello, ${username}! You have successfully logged in.`,
-              icon: 'assets/user.png', 
-              requireInteraction: true, 
-            });
           } else {
-            // Handle invalid credentials
-            if (response.message === 'Invalid credentials') {
-              this.alertService.error('Invalid username or password!');
-            } else {
-              // Handle unexpected response message
-              this.alertService.error('An error occurred. Please try again.');
-            }
+            this.alertService.error('Login failed. Please try again.');
           }
         },
         error: (err) => {
-          console.error('Login error:', err);
-          if (err.status === 401) {
-            this.alertService.error('Invalid username or password!');
-          } else {
-            this.alertService.error('An error occurred. Please try again.');
-          }
+          // Display the error message from the backend
+          this.alertService.error(err.message || 'An unexpected error occurred.');
         }
       });
     }
