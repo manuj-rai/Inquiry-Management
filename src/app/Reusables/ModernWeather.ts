@@ -12,16 +12,16 @@ import { FormsModule } from '@angular/forms';
       <h2 class="title">Weather Forecast</h2>
       <div *ngIf="error" class="error-message">
           <p>{{ errorMessage }}</p>
-          <!-- Show manual city input when location access is denied or unavailable
+          <!-- Show manual city input when location access is denied or unavailable -->
           <div *ngIf="!latitude && !longitude">
             <input
               type="text"
               [(ngModel)]="manualCityInput"
-              (input)="onCityInputChange()"
+              (keyup.enter)="getWeatherByCity(manualCityInput)"
               placeholder="Enter city name"
               class="form-control"
             />
-          </div> -->
+          </div> 
         </div>
         <!-- Weather Data Display -->
         <div *ngIf="weatherData">
@@ -100,9 +100,18 @@ import { FormsModule } from '@angular/forms';
       }
 
       input.form-control {
-        margin-top: 10px;
-        padding: 8px;
-        width: 200px;
+        width: 95%;
+        padding: 10px;
+        flex: 1;
+        background-color:rgba(16, 20, 38, 0.45);
+        border: 1px solid #101426;
+        border-radius: 4px;
+        font-size: 1rem;
+        color: #fff;
+        outline: none;
+        margin-right: 10px;
+        margin-top: 45px;
+        transition: border 0.3s ease;
       }
       
       .cloud {
@@ -295,7 +304,7 @@ import { FormsModule } from '@angular/forms';
   
             // Handle specific geolocation errors and set error messages
             if (error.code === error.PERMISSION_DENIED) {
-              this.errorMessage = 'Location access was denied. Please enable location access to get weather information.';
+              this.errorMessage = 'Location access was denied. Please enable location access to get weather information, or enter city manually.';
             } else if (error.code === error.POSITION_UNAVAILABLE) {
               this.errorMessage = 'Location information is unavailable. Please try again later.';
             } else if (error.code === error.TIMEOUT) {

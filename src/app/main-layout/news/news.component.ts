@@ -52,7 +52,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   // Fetch top news for the slider
   fetchTopNews(): void {
     const take = 5;
-    const skip = 0;
+    const skip = 5;
   
     this.newsService.getTopNews(take, skip).subscribe({
       next: (response: any) => { 

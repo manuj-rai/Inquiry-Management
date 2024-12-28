@@ -161,15 +161,14 @@ export class TodoComponent {
     newTask: string = '';
   
     constructor() {
-      this.loadTodos(); // Load todos from local storage when the component initializes
+      this.todos = this.loadTodos();
+      this.todos.reverse(); 
     }
   
     // Load todos from local storage
-    loadTodos(): void {
+    loadTodos(): { id: number; task: string; done: boolean }[] {
       const savedTodos = localStorage.getItem('todos');
-      if (savedTodos) {
-        this.todos = JSON.parse(savedTodos);
-      }
+      return savedTodos ? JSON.parse(savedTodos) : [];  // Return parsed todos or an empty array if none
     }
   
     // Save todos to local storage
@@ -180,30 +179,30 @@ export class TodoComponent {
     // Add a new todo
     addTodo(): void {
       if (this.newTask.trim()) {
-        const newTodo = {
-          id: this.todos.length + 1,
-          task: this.newTask.trim(),
+        const newTodo = { 
+          id: Date.now(),  // Generate a unique id using timestamp
+          task: this.newTask,
           done: false
         };
-        this.todos.push(newTodo);
-        this.saveTodos(); // Save updated todos to local storage
-        this.newTask = ''; // Clear the input field
+        this.todos.unshift(newTodo);  // Add new task to the beginning of the list
+        this.newTask = '';  // Clear the input
+        this.saveTodos();  // Save the updated todos list to local storage
       }
     }
   
     // Mark a todo as done
     toggleTodoStatus(id: number): void {
-      const todo = this.todos.find(todo => todo.id === id);
+      const todo = this.todos.find(t => t.id === id);
       if (todo) {
-        todo.done = !todo.done;
-        this.saveTodos(); // Save updated todos to local storage
+        todo.done = !todo.done;  // Toggle the 'done' status
+        this.saveTodos();  // Save the updated todos list
       }
     }
   
-    // Delete a todo
+    // Delete a task
     deleteTodo(id: number): void {
-      this.todos = this.todos.filter(todo => todo.id !== id);
-      this.saveTodos(); // Save updated todos to local storage
+      this.todos = this.todos.filter(t => t.id !== id);  // Remove task by id
+      this.saveTodos();  // Save the updated todos list
     }
   }
   
