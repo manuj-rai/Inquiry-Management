@@ -111,7 +111,11 @@ import { FormsModule } from '@angular/forms';
         outline: none;
         margin-right: 10px;
         margin-top: 45px;
-        transition: border 0.3s ease;
+        transition: 0.3s ease-in-out;
+      }
+
+      input.form-control:hover {
+        background-color: #101426;
       }
       
       .cloud {

@@ -80,6 +80,10 @@ styles: [`
   .todo-input:focus {
     border-color: #101426;
   }
+
+  .todo-input:hover {
+    background-color: #101426;
+  }
   
   .add-btn {
     padding: 10px 15px;
