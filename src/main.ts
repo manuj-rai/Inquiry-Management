@@ -26,7 +26,7 @@ bootstrapApplication(AppComponent, {
         },
       })
     ),
-    ...appConfig.providers, provideAnimationsAsync(),  // Include additional providers from appConfig
+    ...appConfig.providers, provideAnimationsAsync(), provideAnimationsAsync(),  // Include additional providers from appConfig
   ],
 })
   .catch((err) => console.error(err));
