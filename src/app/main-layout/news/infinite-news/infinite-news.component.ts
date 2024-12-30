@@ -2,11 +2,12 @@ import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-infinite-news',
   standalone: true,
-  imports: [CommonModule],
+  imports: [LazyLoadImageModule, CommonModule],
   templateUrl: './infinite-news.component.html',
   styleUrl: './infinite-news.component.css'
 })

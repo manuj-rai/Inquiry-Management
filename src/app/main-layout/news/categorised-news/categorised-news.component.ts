@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { NewsService } from '../../../services/news.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @Component({
   selector: 'app-categorised-news',
   standalone: true,
-  imports: [CommonModule],
+  imports: [LazyLoadImageModule, CommonModule],
   templateUrl: './categorised-news.component.html',
   styleUrl: './categorised-news.component.css'
 })

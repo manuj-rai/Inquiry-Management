@@ -9,7 +9,10 @@
 </div>
 
 <div class="news-image">
-    <img [src]="getImageUrl(news.bigImage)" alt="{{ news.title }}" />
+    <img       
+    [lazyLoad]="getImageUrl(news.bigImage)" 
+    [defaultImage]="'/assets/placeholder.jpg'"  
+    [errorImage]="'/assets/error.jpg'" [alt]="news.title" />
 </div>
 
 <div class="news-content">
