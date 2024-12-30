@@ -6,6 +6,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
 import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 // Factory function for loading translation files
 export function HttpLoaderFactory(http: HttpClient) {
@@ -25,7 +26,7 @@ bootstrapApplication(AppComponent, {
         },
       })
     ),
-    ...appConfig.providers,  // Include additional providers from appConfig
+    ...appConfig.providers, provideAnimationsAsync(),  // Include additional providers from appConfig
   ],
 })
   .catch((err) => console.error(err));

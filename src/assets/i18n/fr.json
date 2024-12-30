@@ -3,6 +3,55 @@
     "NEWS": "Actualités",
     "CONTACT": "Contact",
     "ABOUT": "À propos",
-    "LOGIN": "Connexion"
+    "LOGIN": "Connexion",
+
+    "WELCOME": "Bienvenue sur notre plateforme",
+  "WELCOME_DESC": "Découvrez une expérience fluide avec notre plateforme, où vous pouvez gérer vos demandes, nous contacter et accéder facilement à des services personnalisés.",
+  "GET_IN_TOUCH": "Prenez contact",
+  "WHAT_WE_OFFER": "Ce que nous offrons",
+  "QUICK_INQUIRY": "Demande rapide",
+  "QUICK_INQUIRY_DESC": "Utilisez notre formulaire de demande pour nous contacter pour toute question, commentaire ou assistance.",
+  "INQUIRY_FORM": "formulaire de demande",
+  "NEWS_PORTAL": "Portail d'actualités",
+  "NEWS_PORTAL_DESC": "Restez informé des dernières nouvelles et mises à jour. Explorez notre portail d'actualités pour vous connecter au monde.",
+  "ADMIN_DASHBOARD": "Tableau de bord de l'administrateur",
+  "ADMIN_DASHBOARD_DESC": "Gérez toutes vos données efficacement sur notre tableau de bord utilisateur facile à utiliser.",
+  "START_JOURNEY": "Commencez votre voyage aujourd'hui",
+  "READY_TO_TAKE_NEXT_STEP": "Prêt à faire le prochain pas ? Connectez-vous à votre compte ou contactez-nous pour plus de détails.",
+  "LOG_IN": "Se connecter",
+  "CONTACT_US": "Nous contacter",
+  "DAILY_PLAN": "Plan quotidien",
+  "DAILY_PLAN_PRICE": "₹500/-",
+  "DAILY_PLAN_FEATURES": [
+    "Gestion des demandes en temps réel",
+    "Tableau de bord convivial",
+    "Mises à jour quotidiennes des actualités",
+    "Connexion sécurisée et protection des données",
+    "Rapports personnalisables"
+  ],
+  "MONTHLY_PLAN": "Plan mensuel",
+  "MONTHLY_PLAN_PRICE": "₹12,000/-",
+  "MONTHLY_PLAN_FEATURES": [
+    "Gestion des demandes en temps réel",
+    "Tableau de bord convivial",
+    "Mises à jour quotidiennes des actualités",
+    "Connexion sécurisée et protection des données",
+    "Rapports personnalisables"
+  ],
+  "YEARLY_PLAN": "Plan annuel",
+  "YEARLY_PLAN_PRICE": "₹1,40,000/-",
+  "YEARLY_PLAN_FEATURES": [
+    "Gestion des demandes en temps réel",
+    "Tableau de bord convivial",
+    "Mises à jour quotidiennes des actualités",
+    "Connexion sécurisée et protection des données",
+    "Rapports personnalisables"
+  ],
+  "SIGNUP_NEWSLETTER": "Inscrivez-vous à la newsletter F2F",
+  "SIGNUP_NEWSLETTER_DESC": "Abonnez-vous et restez informé.",
+  "EMAIL_PLACEHOLDER": "Entrez votre e-mail",
+  "SUBSCRIBE": "S'abonner",
+  "TERMS": "Conditions d'utilisation",
+  "PRIVACY_POLICY": "Politique de confidentialité"
   }
   

@@ -1,53 +1,39 @@
 <div class="home-container">
-    <!-- Welcome Section -->
-    <section class="welcome-section">
-      <h1>Welcome to Our Platform</h1>
-      <p>
-        Discover a seamless experience with our platform, where you can manage your inquiries,
-        connect with us, and access personalized services with ease.
-      </p>
-      <a style="cursor: pointer;" (click)="notifyVisitor()" class="btn btn-primary">Get in Touch</a>
-    </section>
-  
-    <!-- <app-weather></app-weather> -->
-    <!-- Features Section -->
-    <section class="features-section">
-      <h2>What We Offer</h2>
-      <div class="features-grid">
-        <div class="feature">
-          <h3>Quick Inquiry</h3>
-          <p>
-            Use our <a href="contact">Inquiry Form</a> to reach out to us for any questions,
-            feedback, or assistance.
-          </p>
-        </div>
-        <div class="feature">
-          <h3>News Portal</h3>
-          <p>
-            Stay updated with the latest news and updates. Explore our <a href="news">News Portal</a> to connect with the world.
-          </p>
-        </div>
-        <div class="feature">
-          <h3>Admin Dashboard</h3>
-          <p>
-            Manage all your data efficiently on our user-friendly <a href="admin">Admin Dashboard</a>.
-          </p>
-        </div>
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <h1>{{ 'WELCOME' | translate }}</h1>
+    <p>{{ 'WELCOME_DESC' | translate }}</p>
+    <a style="cursor: pointer;" (click)="notifyVisitor()" class="btn btn-primary">{{ 'GET_IN_TOUCH' | translate }}</a>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section">
+    <h2>{{ 'WHAT_WE_OFFER' | translate }}</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>{{ 'QUICK_INQUIRY' | translate }}</h3>
+        <p>{{ 'QUICK_INQUIRY_DESC' | translate }} <a href="contact">{{ 'INQUIRY_FORM' | translate }}</a></p>
       </div>
-    </section>
-  
-    <!-- Call to Action -->
-    <section class="cta-section">
-      <h2>Start Your Journey Today</h2>
-      <p>
-        Ready to take the next step? Log in to your account or contact us for more details.
-      </p>
-      <div class="cta-buttons">
-        <a href="login" class="btn btn-secondary">Log In</a>
-        <a href="contact" class="btn btn-primary">Contact Us</a>
+      <div class="feature">
+        <h3>{{ 'NEWS_PORTAL' | translate }}</h3>
+        <p>{{ 'NEWS_PORTAL_DESC' | translate }} <a href="news">{{ 'NEWS_PORTAL' | translate }}</a></p>
       </div>
-    </section>
-  </div>
+      <div class="feature">
+        <h3>{{ 'ADMIN_DASHBOARD' | translate }}</h3>
+        <p>{{ 'ADMIN_DASHBOARD_DESC' | translate }} <a href="admin">{{ 'ADMIN_DASHBOARD' | translate }}</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta-section">
+    <h2>{{ 'START_JOURNEY' | translate }}</h2>
+    <p>{{ 'READY_TO_TAKE_NEXT_STEP' | translate }}</p>
+    <div class="cta-buttons">
+      <a href="login" class="btn btn-secondary">{{ 'LOG_IN' | translate }}</a>
+      <a href="contact" class="btn btn-primary">{{ 'CONTACT_US' | translate }}</a>
+    </div>
+  </section>
 
   <!-- Pricing table -->
   <section class="pricing-section">
@@ -132,24 +118,22 @@
     </div>
   </section>
   
+  <!-- Signup Newsletter -->
   <div class="signup-newsletter">
     <div class="signup-newsletter-text">
-        <div class="signup-newsletter-title">
-            Sign Up for F2F Newsletters
-        </div>
-        <div class="signup-newsletter-pera">
-            Subscribe and stay updated.
-        </div>
+      <div class="signup-newsletter-title">{{ 'SIGNUP_NEWSLETTER' | translate }}</div>
+      <div class="signup-newsletter-pera">{{ 'SIGNUP_NEWSLETTER_DESC' | translate }}</div>
     </div>
-    
-
     <div class="signup-newsletter-form">
-        <div class="form-form">
-            <input type="email" placeholder="Enter your email" class="email-input" />
-            <button (click)="alert()" class="subscribe-btn">Subscribe</button> 
-        </div> 
-        <div class="signup-newsletter-form-text">                  
-            By submitting, you agree to our <a href="https://www.fibre2fashion.com/terms">Terms of use </a> and <a href="https://www.fibre2fashion.com/policy"> Privacy Policy. </a>
-        </div> 
+      <div class="form-form">
+        <input type="email" placeholder="{{ 'EMAIL_PLACEHOLDER' | translate }}" class="email-input" />
+        <button (click)="alert()" class="subscribe-btn">{{ 'SUBSCRIBE' | translate }}</button>
+      </div>
+      <div class="signup-newsletter-form-text">
+        {{ 'TERMS' | translate }} <a href="https://www.fibre2fashion.com/terms">{{ 'TERMS' | translate }}</a> and 
+        {{ 'PRIVACY_POLICY' | translate }} <a href="https://www.fibre2fashion.com/policy">{{ 'PRIVACY_POLICY' | translate }}</a>.
+      </div>
     </div>
   </div>
+  
+</div>

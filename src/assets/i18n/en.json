@@ -3,5 +3,54 @@
     "NEWS": "News",
     "CONTACT": "Contact",
     "ABOUT": "About",
-    "LOGIN": "Login"
+    "LOGIN": "Login",
+
+    "WELCOME": "Welcome to Our Platform",
+  "WELCOME_DESC": "Discover a seamless experience with our platform, where you can manage your inquiries, connect with us, and access personalized services with ease.",
+  "GET_IN_TOUCH": "Get in Touch",
+  "WHAT_WE_OFFER": "What We Offer",
+  "QUICK_INQUIRY": "Quick Inquiry",
+  "QUICK_INQUIRY_DESC": "Use our Inquiry Form to reach out to us for any questions, feedback, or assistance.",
+  "INQUIRY_FORM": "Inquiry Form",
+  "NEWS_PORTAL": "News Portal",
+  "NEWS_PORTAL_DESC": "Stay updated with the latest news and updates. Explore our News Portal to connect with the world.",
+  "ADMIN_DASHBOARD": "Admin Dashboard",
+  "ADMIN_DASHBOARD_DESC": "Manage all your data efficiently on our user-friendly Admin Dashboard.",
+  "START_JOURNEY": "Start Your Journey Today",
+  "READY_TO_TAKE_NEXT_STEP": "Ready to take the next step? Log in to your account or contact us for more details.",
+  "LOG_IN": "Log In",
+  "CONTACT_US": "Contact Us",
+  "DAILY_PLAN": "Daily Plan",
+  "DAILY_PLAN_PRICE": "₹500/-",
+  "DAILY_PLAN_FEATURES": [
+    "Real-Time Inquiry Management",
+    "User-Friendly Dashboard",
+    "Daily News Updates",
+    "Secure Login and Data Protection",
+    "Customizable Reports"
+  ],
+  "MONTHLY_PLAN": "Monthly Plan",
+  "MONTHLY_PLAN_PRICE": "₹12,000/-",
+  "MONTHLY_PLAN_FEATURES": [
+    "Real-Time Inquiry Management",
+    "User-Friendly Dashboard",
+    "Daily News Updates",
+    "Secure Login and Data Protection",
+    "Customizable Reports"
+  ],
+  "YEARLY_PLAN": "Yearly Plan",
+  "YEARLY_PLAN_PRICE": "₹1,40,000/-",
+  "YEARLY_PLAN_FEATURES": [
+    "Real-Time Inquiry Management",
+    "User-Friendly Dashboard",
+    "Daily News Updates",
+    "Secure Login and Data Protection",
+    "Customizable Reports"
+  ],
+  "SIGNUP_NEWSLETTER": "Sign Up for F2F Newsletters",
+  "SIGNUP_NEWSLETTER_DESC": "Subscribe and stay updated.",
+  "EMAIL_PLACEHOLDER": "Enter your email",
+  "SUBSCRIBE": "Subscribe",
+  "TERMS": "Terms of use",
+  "PRIVACY_POLICY": "Privacy Policy"
   }

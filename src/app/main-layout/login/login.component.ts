@@ -7,19 +7,25 @@ import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ForgetPasswordDialogComponent } from './forget-password-dialog/forget-password-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatDialogModule],
 })
 export class LoginComponent {
   loginForm: FormGroup;
   passwordFieldType: string = 'password';
 
   constructor(
+    private dialog: MatDialog,
     private notificationService: NotificationService,
     private alertService: AlertService,
     private fb: FormBuilder,
@@ -60,7 +66,14 @@ export class LoginComponent {
       });
     }
   }
-  
+
+  openForgetPasswordDialog() {
+    this.dialog.open(ForgetPasswordDialogComponent, {
+      width: '400px',
+      height: 'auto',
+      panelClass: ['custom-dialog-container', 'custom-backdrop'],
+    });
+  }
   
   alert() {
     this.alertService.warning("The service is currently unavailable. Please try logging in using an alternative method.")

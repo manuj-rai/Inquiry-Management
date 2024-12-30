@@ -1,20 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
+import { TranslationService } from '../../services/translate.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  translationService = inject(TranslationService);
+  currentLanguage: string = 'en';
 
   constructor(
     private notificationService: NotificationService,
     private alertServic : AlertService
-  ){}
+  ){
+    this.translationService.initLanguage();
+    this.currentLanguage = this.translationService.getCurrentLanguage();
+  }
 
   ngOnInit(): void {
 
