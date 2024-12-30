@@ -309,7 +309,6 @@ img {
 }
 .pricing-section {
   position: relative;
-  width: 81%;
   animation: fadeIn 1s ease-in-out;
   margin: auto;
   margin-top: 90px;
@@ -321,14 +320,12 @@ img {
 }
 
 .pricing-section .row {
-  margin: 0 -30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .pricing-block {
   position: relative;
-  padding: 0 20px;
   margin-bottom: 40px;
   width: 28.5%;
   transition: 0.5s ease-in-out;
