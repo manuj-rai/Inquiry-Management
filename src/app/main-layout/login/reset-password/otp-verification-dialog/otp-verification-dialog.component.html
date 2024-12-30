@@ -1,0 +1,35 @@
+<div class="dialog-header">
+    <h2 mat-dialog-title>Verify OTP</h2>
+  </div>
+  
+  <mat-dialog-content>
+    <p class="dialog-description">
+      Enter the OTP sent to your phone number to verify your identity.
+    </p>
+    <form #otpForm="ngForm" (ngSubmit)="verifyOtp()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>OTP</mat-label>
+        <input
+          matInput
+          type="text"
+          name="otp"
+          [(ngModel)]="otp"
+          required
+          maxlength="6"
+        />
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!otpForm.valid"
+      (click)="verifyOtp()"
+    >
+      Verify
+    </button>
+  </mat-dialog-actions>
+  

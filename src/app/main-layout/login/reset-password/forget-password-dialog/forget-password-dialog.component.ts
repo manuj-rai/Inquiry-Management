@@ -7,11 +7,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../../../services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-forget-password-dialog',
   standalone: true,
-  imports: [
+  imports: [CommonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -23,27 +25,33 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './forget-password-dialog.component.css'
 })
 export class ForgetPasswordDialogComponent {
-  phone: string = '';
+  email: string = '';
+  errorMessage: string = '';
+  successMessage: string = '';
 
   constructor(
+    private authService: AuthService,
     private dialogRef: MatDialogRef<ForgetPasswordDialogComponent>,
     private http: HttpClient
   ) {}
 
   onSubmit() {
-    if (!this.phone || !/^\d{10}$/.test(this.phone)) {
-      alert('Please enter a valid 10-digit phone number.');
-      return;
-    }
+    // Reset messages
+    this.errorMessage = '';
+    this.successMessage = '';
 
-    const payload = { phone: this.phone };
-    this.http.post('/api/auth/send-reset-code', payload).subscribe(
-      () => {
-        alert('Password reset code sent to your phone!');
-        this.dialogRef.close();
+    // Call the AuthService to send OTP
+    this.authService.sendOtp(this.email).subscribe(
+      (response) => {
+        // Handle success
+        this.successMessage = 'OTP sent successfully to your email!';
+        setTimeout(() => {
+          this.dialogRef.close(); // Close dialog after a successful request
+        }, 3000);
       },
-      () => {
-        alert('Error sending reset code. Please try again.');
+      (error) => {
+        // Handle error
+        this.errorMessage = 'Failed to send OTP. Please check your email and try again.';
       }
     );
   }
