@@ -20,6 +20,31 @@
     height: 30px; 
     margin-right: 10px; 
   }
+
+  .navbar select {
+    font-family: Open Sans,sans-serif;
+    font-size: .9375rem;
+    border: 1px solid #101426;
+    border-radius: .25rem;
+    color: #fff;
+    padding: 4px;
+    background-color: #161a2f;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, border-color 0.3s ease; 
+  }
+
+  .navbar select:focus {
+    outline: none; 
+  }
+
+  .navbar select option {
+    background-color: #161a2f;
+    color: #fff; 
+  }
+
+  .navbar select option:hover {
+    background-color: #101426;
+  }
   
   .navbar-toggle {
     display: none; 
