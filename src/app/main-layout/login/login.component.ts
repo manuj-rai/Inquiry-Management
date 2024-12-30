@@ -55,6 +55,11 @@ export class LoginComponent {
         next: (response: any) => {
           if (response.isAuthenticated) {
             this.alertService.success("Welcome back! You are now logged in!");
+            this.notificationService.showNotification(`Welcome! ${username}`, {
+              body: 'We appreciate you visiting our Inquiry Management and News Portal. Explore more!',
+              icon: 'assets/user.png',
+              requireInteraction: true
+            });
             localStorage.setItem('user', JSON.stringify({ username }));
             localStorage.setItem('token', response.token);
             this.router.navigate(['/admin']);
@@ -72,21 +77,21 @@ export class LoginComponent {
 
   openForgetPasswordDialog() {
     const forgetDialog = this.dialog.open(ForgetPasswordDialogComponent, {
-      width: '400px',
+      width: '500px',
     });
   
-    forgetDialog.afterClosed().subscribe((phone) => {
-      if (phone) {
+    forgetDialog.afterClosed().subscribe((email) => {
+      if (email) {
         const otpDialog = this.dialog.open(OtpVerificationDialogComponent, {
-          width: '400px',
-          data: { phone },
+          width: '500px',
+          data: { email },
         });
   
         otpDialog.afterClosed().subscribe((status) => {
           if (status === 'OTP_VERIFIED') {
             this.dialog.open(SetNewPasswordDialogComponent, {
-              width: '400px',
-              data: { phone },
+              width: '500px',
+              data: { email },
             });
           }
         });
