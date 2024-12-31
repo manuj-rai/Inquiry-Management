@@ -4,8 +4,8 @@
     <div *ngFor="let news of newsList" class="news-item" (click)="viewNewsDetails(news)">
       <img                 
       [lazyLoad]="getImageUrl(news.bigImage)" 
-      [defaultImage]="'/assets/placeholder.jpg'"  
-      [errorImage]="'/assets/error.jpg'" [alt]="news.title" />
+      [defaultImage]="'/assets/images/placeholder.jpg'"  
+      [errorImage]="'/assets/images/error.jpg'" [alt]="news.title" />
       <div class="news-content">
       <h3>{{ news.title }}</h3>
       <!-- <p>{{ news.shortDesc }}</p> -->

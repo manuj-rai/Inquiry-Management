@@ -57,7 +57,7 @@ export class LoginComponent {
             this.alertService.success("Welcome back! You are now logged in!");
             this.notificationService.showNotification(`Welcome! ${username}`, {
               body: 'We appreciate you visiting our Inquiry Management and News Portal. Explore more!',
-              icon: 'assets/user.png',
+              icon: 'assets/images/user.png',
               requireInteraction: true
             });
             localStorage.setItem('user', JSON.stringify({ username }));
