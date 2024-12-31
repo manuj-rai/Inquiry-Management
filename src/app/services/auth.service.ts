@@ -2,20 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private readonly apiUrl = 'https://localhost:7158';
+  private baseUrl = environment.apiBaseUrl;
 
   constructor(private http: HttpClient) { }
 
   // Method to call the login API
   login(userName: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { userName, password }).pipe(
+    return this.http.post<any>(`${this.baseUrl}/login`, { userName, password }).pipe(
       map(response => {
         if (response && response.token) {
           return { isAuthenticated: true, token: response.token };
@@ -39,30 +39,30 @@ export class AuthService {
   
 
   getUserDetails(username: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/GetUserDetails`, {
+    return this.http.get(`${this.baseUrl}/GetUserDetails`, {
       params: { userName: username }
     });
   }
 
   // Method to get top 5 recent users
   getRecentUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/recent-users`);
+    return this.http.get<any[]>(`${this.baseUrl}/recent-users`);
   }
 
   // Method to update user details
   updateUserDetails(formData: FormData): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/UpdateUserDetails`, formData);
+    return this.http.post<any>(`${this.baseUrl}/UpdateUserDetails`, formData);
   }
 
   sendOtp(email: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/send-otp`, { email });
+    return this.http.post(`${this.baseUrl}/send-otp`, { email });
   }
 
   verifyOtp(email: string, otp: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/verify-otp`, { email, otp });
+    return this.http.post(`${this.baseUrl}/verify-otp`, { email, otp });
   }
 
   resetPassword(email: string, newPassword: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reset-password`, { email, newPassword });
+    return this.http.post(`${this.baseUrl}/reset-password`, { email, newPassword });
   }
 }
