@@ -19,7 +19,9 @@
     </div>
     <!-- Template for no news -->
 <ng-template #noNews>
-    <p>No news available.</p>
+    <div *ngIf="!isLoading">
+       <p>No news available.</p>
+    </div>
   </ng-template>
   
   <!-- Loading indicator -->
