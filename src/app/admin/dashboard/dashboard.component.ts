@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     sortField: string = 'id'; // Default sort field
     sortDirection: string = 'ASC'; // Default sort direction
 
-  countries: string[] = []; 
+  countries: any[] = []; 
   totalNewsCount: number = 0;
   totalUsers: number = 0;
   users: any[] = [];
@@ -157,14 +157,13 @@ export class DashboardComponent implements OnInit {
 
   // Fetch countries from REST Countries API
   fetchCountries(): void {
-    this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
+    this.inquiryService.getCountries().subscribe({
       next: (response) => {
-        // Extract and sort country names
-        this.countries = response
-          .map((country) => country.name.common)
-          .sort((a: string, b: string) => a.localeCompare(b));
+        this.countries = response.data; // Assign the array of country objects to 'countries'
       },
-      error: (err) => console.error('Error fetching countries:', err)
+      error: (error) => {
+        console.error('Error fetching countries:', error);
+      },
     });
   }
 

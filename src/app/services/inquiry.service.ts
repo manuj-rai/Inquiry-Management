@@ -46,4 +46,8 @@ export class InquiryService {
     return this.http.post(`${this.baseUrl}/InsertInquiry`, inquiry); 
   }
 
+  getCountries(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/GetCountryList`);
+  }
+
 }

@@ -76,8 +76,8 @@
           Country
           <select id="country" [(ngModel)]="country" (change)="applyFilters()">
             <option value="" selected>All</option>
-            <option *ngFor="let country of countries" [value]="country">
-              {{ country }}
+            <option *ngFor="let country of countries" [value]="country.name">
+              {{ country.name }}
             </option>
             <!-- Add more countries as needed -->
           </select>
