@@ -258,6 +258,24 @@
       width: 100%;
     }
 
+    .skeleton-container {
+      flex-direction: column;
+      gap: 30px;
+      padding: 0;
+    }
+
+    .skeleton-slider {
+      width: 100%; 
+    }
+
+    .skeleton-image {
+      margin: 0;
+    }
+
+    .skeleton-right-side {
+      width: 100%;
+    }
+
     .slide img{
       width: 100%;
       height: 220px;
