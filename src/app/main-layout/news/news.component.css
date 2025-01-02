@@ -1,8 +1,125 @@
+/* Skeleton Loader */
+.skeleton-loader {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Skeleton Container for Slider and Right Side News */
+.skeleton-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+
+.skeleton-slider {
+  width: 70%; /* Set width for the slider */
+}
+
+.skeleton-right-side {
+  width: 30%; 
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between each skeleton item */
+}
+
+.skeleton-item {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+}
+
+/* Skeleton Image for Slider */
+.skeleton-image {
+  width: 100%;
+  height: 326px; /* Match image height in the slider */
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton Title for Slider */
+.skeleton-title {
+  width: 70%;
+  height: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton Text for Slider */
+.skeleton-text {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton Right Side News */
+.skeleton-right-image {
+  width: 100px;
+  height: 70px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite linear;
+  border-radius: 4px;
+  margin-right: 30px;
+}
+
+/* Skeleton Title for Right Side News */
+.skeleton-right-title {
+  width: 60%;
+  height: 15px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 2s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton animation effect */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+/* Stagger effect for the skeleton items */
+.skeleton-item:nth-child(odd) .skeleton-image {
+  animation-delay: 0.2s;
+}
+.skeleton-item:nth-child(odd) .skeleton-title {
+  animation-delay: 0.4s;
+}
+.skeleton-item:nth-child(odd) .skeleton-text {
+  animation-delay: 0.6s;
+}
+
+.skeleton-item:nth-child(even) .skeleton-image {
+  animation-delay: 0.4s;
+}
+.skeleton-item:nth-child(even) .skeleton-title {
+  animation-delay: 0.6s;
+}
+.skeleton-item:nth-child(even) .skeleton-text {
+  animation-delay: 0.8s;
+}
+
+
 .news-container {
   color: #fff;
   max-width: 90%;
   margin: 10px auto;
-  animation: fadeIn 1s ease-in-out;
 }
 
 .top-news-section {

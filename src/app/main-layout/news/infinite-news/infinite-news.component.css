@@ -1,3 +1,74 @@
+/* Skeleton Loader */
+.skeleton-loader {
+  background: #2c2f3f;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Skeleton item structure */
+.skeleton-item {
+  display: flex;
+  flex-direction: row; /* Arrange image and content side by side */
+  align-items: center; /* Vertically align content */
+  margin-bottom: 20px;
+}
+
+/* Skeleton image */
+.skeleton-image {
+  width: 250px; 
+  height: 150px; 
+  margin-right: 20px; /* Add margin to separate image from text */
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton title */
+.skeleton-title {
+  width: 70%; 
+  height: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton text */
+.skeleton-text {
+  width: 100%;
+  height: 15px;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* Skeleton animation effect */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+
+/* Add margin and spacing */
+.skeleton-content {
+  flex-grow: 1;
+}
+
+.skeleton-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+
   /*Active News*/
   .news-item {
     display: flex;

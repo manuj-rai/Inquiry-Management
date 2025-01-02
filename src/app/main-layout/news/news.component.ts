@@ -51,17 +51,22 @@ export class NewsComponent implements OnInit, OnDestroy {
 
   // Fetch top news for the slider
   fetchTopNews(): void {
+    this.isLoading = true; // Start loading
     const take = 5;
     const skip = 2;
   
     this.newsService.getTopNews(take, skip).subscribe({
       next: (response: any) => { 
         if (response?.data) {
+          setTimeout(() => {
           this.topNews = response.data;
           this.startAutoSlide();
           this.rightSideNews = response.data.slice(0, 3); // News for the right-hand side
+          this.isLoading = false;
+        }, 1000); // Delay of 1 second (1000 ms)
         } else {
           console.error('No data found in the response');
+          this.isLoading = false;
         }
       },
       error: (err) => console.error('Error fetching top news:', err)

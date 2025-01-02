@@ -1,33 +1,46 @@
 <h2>Latest News</h2>
 <div class="news-items">
-    <!-- Check if the newsList has items -->
+<!-- Skeleton loader for news item -->
+<div *ngIf="isLoading; else newsListContent">
+    <div *ngFor="let _ of [1,2,3,4,5]" class="skeleton-item">
+      <div class="skeleton-image skeleton-loader"></div>
+      <div class="skeleton-content">
+        <div class="skeleton-title skeleton-loader"></div>
+        <div class="skeleton-text skeleton-loader"></div>
+        <div class="skeleton-text skeleton-loader"></div>
+        <div class="skeleton-text skeleton-loader"></div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #newsListContent>
+    <!-- Display news items once they are loaded -->
     <div *ngIf="newsList.length > 0; else noNews">
-        <div *ngFor="let news of newsList" class="news-item" (click)="viewNewsDetails(news)">
-            <div class="news-img">
-                <img       
-                [lazyLoad]="getImageUrl(news.bigImage)" 
-                class="news-image"
-                [defaultImage]="'/assets/images/placeholder.jpg'"  
-                [errorImage]="'/assets/images/error.jpg'" [alt]="news.title" />
-            </div>
-            <div class="news-content">
-                <h3>{{ news.title }}</h3>
-                <p>{{ news.shortDesc }}</p>  
-                <p style="color: #36b;">{{ news.tagNames }}</p>
-            </div> 
+      <div *ngFor="let news of newsList" class="news-item" (click)="viewNewsDetails(news)">
+        <div class="news-img">
+          <img [lazyLoad]="getImageUrl(news.bigImage)" 
+               class="news-image"
+               [defaultImage]="'/assets/images/placeholder.jpg'" 
+               [errorImage]="'/assets/images/error.jpg'" 
+               [alt]="news.title" />
         </div>
+        <div class="news-content">
+          <h3>{{ news.title }}</h3>
+          <p>{{ news.shortDesc }}</p>
+          <p style="color: #36b;">{{ news.tagNames }}</p>
+        </div>
+      </div>
     </div>
-    <!-- Template for no news -->
-<ng-template #noNews>
-    <div *ngIf="!isLoading">
-       <p>No news available.</p>
-    </div>
+
+    <ng-template #noNews>
+      <div *ngIf="!isLoading">
+        <p>No news available.</p>
+      </div>
+    </ng-template>
   </ng-template>
   
-  <!-- Loading indicator -->
+  <!-- Loading indicator when fetching more news -->
   <div *ngIf="isLoading" class="loading-indicator">
-      <p>loading more news...</p>
+    <p>Loading more news...</p>
   </div>
 </div>
-
-

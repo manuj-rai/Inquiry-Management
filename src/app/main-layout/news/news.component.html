@@ -2,9 +2,48 @@
 <app-categorised-news [tagName]="selectedTag" (newsClicked)="viewNewsDetails($event)"></app-categorised-news>
 <div #newsContainer class="news-container">
 
+    <h2>Top News</h2>
+<!-- Skeleton Loader for Top News Section -->
+<div *ngIf="isLoading" class="skeleton-loader">
+    <div class="skeleton-container">
+      <!-- Skeleton for Slider -->
+        <div class="skeleton-slider">
+            <div class="skeleton-item">
+                <div class="skeleton-image"></div>
+            </div>
+        </div>
+            <!-- Skeleton for Right Side News -->
+            <div class="skeleton-right-side">
+                <div class="skeleton-item">
+                <div class="skeleton-right-image"></div>
+                <div class="skeleton-right-title">
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                </div>
+                </div>
+                <div class="skeleton-item">
+                <div class="skeleton-right-image"></div>
+                <div class="skeleton-right-title">
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                </div>                </div>
+                <div class="skeleton-item">
+                <div class="skeleton-right-image"></div>
+                <div class="skeleton-right-title">
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                    <div class="skeleton-text skeleton-loader"></div>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+ 
+
 <!-- Top News Slider -->
-<div *ngIf="showTopNews">
-<h2>Top News</h2>
+<div *ngIf="!isLoading && showTopNews">
 <div class="top-news-section">
 
     <div class="slider-container">

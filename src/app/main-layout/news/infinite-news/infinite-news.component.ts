@@ -3,11 +3,12 @@ import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { delay } from 'rxjs/operators';
 @Component({
   selector: 'app-infinite-news',
   standalone: true,
-  imports: [LazyLoadImageModule, CommonModule],
+  imports: [LazyLoadImageModule, CommonModule, NgxSkeletonLoaderModule],
   templateUrl: './infinite-news.component.html',
   styleUrl: './infinite-news.component.css'
 })
@@ -34,11 +35,15 @@ export class InfiniteNewsComponent implements OnInit  {
   }
 
   fetchPaginatedNews(pageIndex: number = this.pageIndex, pageSize: number = this.pageSize): void {
-    if (this.isLoading) return; // Prevent multiple calls
+    if (this.isLoading) {
+      return; // Prevent multiple calls or unnecessary calls after all news is loaded
+    }
   
     this.isLoading = true;
-  
-    this.newsService.getActiveNews(pageIndex, pageSize).subscribe({
+
+    this.newsService.getActiveNews(pageIndex, pageSize).pipe(
+      delay(1000)
+    ).subscribe({
       next: (response: any) => {
         if (response?.data?.newsContent && Array.isArray(response.data.newsContent)) {
           
@@ -55,6 +60,7 @@ export class InfiniteNewsComponent implements OnInit  {
           }
         } else {
           console.error('Invalid response structure:', response);
+          this.isLoading = false;
         }
       },
       error: (error) => {
