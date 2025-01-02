@@ -11,11 +11,12 @@
   display: flex;
   width: 100%;
   margin-bottom: 30px;
+  padding: 20px;
 }
 
 
 .skeleton-slider {
-  width: 70%; /* Set width for the slider */
+  width: 69%; /* Set width for the slider */
 }
 
 .skeleton-right-side {
