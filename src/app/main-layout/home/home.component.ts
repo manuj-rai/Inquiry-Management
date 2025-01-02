@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       if (permission === 'granted') {
         this.notificationService.showNotification('Thank You!', {
           body: 'We appreciate you visiting our Inquiry Management and News Portal. Explore more!',
-          icon: 'assets/welcome.png',
+          icon: 'assets/images/welcome.png',
           requireInteraction: true
         });
       }
