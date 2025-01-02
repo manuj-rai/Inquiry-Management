@@ -1,10 +1,16 @@
 <div class="tags">
-  <ul class="tag-list">
-    <li 
-      *ngFor="let tag of tags" 
-      (click)="selectTag(tag.tagName)" 
-      [class.active]="tag.tagName === selectedTag">
-      {{ tag.tagName }}
-    </li>
+  <ul class="tag-list" *ngIf="isLoading; else tagContent">
+    <li *ngFor="let skeleton of skeletonTags" class="skeleton-tag"></li>
   </ul>
+
+  <ng-template #tagContent>
+    <ul class="tag-list">
+      <li 
+        *ngFor="let tag of tags" 
+        (click)="selectTag(tag.tagName)" 
+        [class.active]="tag.tagName === selectedTag">
+        {{ tag.tagName }}
+      </li>
+    </ul>
+  </ng-template>
 </div>

@@ -1,3 +1,20 @@
+.skeleton-tag {
+  min-width: 125px; 
+  height: 10px; 
+  border-radius: 5px;
+  background: linear-gradient(90deg, #2c2f3f 25%, #3a4154 50%, #2c2f3f 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
 
 .tags {
     max-width: 90%;
