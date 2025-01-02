@@ -60,28 +60,28 @@ export class ContactComponent implements OnInit {
    
   }
 
-  // Submit the form
   onSubmit(form: any): void {
     if (form.valid) {
       // Get the form data
       const formData = form.value;
+  
       // Call the service to submit the data
       this.inquiryService.submitInquiry(formData).subscribe({
         next: (response) => {
           console.log('Inquiry submitted successfully', response);
-          // Optionally, reset the form after successful submission
-          alert('Inquiry submitted successfully!');
-          form.reset();
+          this.alertService.success('Inquiry submitted successfully!');
+          form.reset(); // Reset the form after successful submission
         },
         error: (err) => {
-          console.log('Inquiry submitted successfully', err);
-          // Optionally, reset the form after successful submission
-          this.alertService.success('Inquiry submitted successfully!');
-          form.reset();
-        }
+          console.error('Error submitting inquiry', err);
+          this.alertService.error('An error occurred while submitting the inquiry. Please try again.');
+        },
       });
+    } else {
+      this.alertService.error('Please fill out the form correctly before submitting.');
     }
   }
+  
 
   // Fetch countries from REST Countries API
   fetchCountries(): void {
