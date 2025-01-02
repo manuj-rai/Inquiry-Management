@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private notificationService: NotificationService,
-    private alertServic : AlertService
+    private alertService : AlertService
   ){
     this.translationService.initLanguage();
     this.currentLanguage = this.translationService.getCurrentLanguage();
@@ -29,18 +29,25 @@ export class HomeComponent implements OnInit {
 
   // Trigger the notification request
   notifyVisitor(): void {
-    this.notificationService.requestNotificationPermission().then(permission => {
+    // Check the current permission state before requesting
+    Notification.requestPermission().then(permission => {
       if (permission === 'granted') {
         this.notificationService.showNotification('Thank You!', {
           body: 'We appreciate you visiting our Inquiry Management and News Portal. Explore more!',
           icon: 'assets/images/welcome.png',
           requireInteraction: true
         });
+      } else if (permission === 'denied') {
+        this.alertService.error('Notification permission has been denied by the user.');
+      } else if (permission === 'default') {
+        this.alertService.error('Notification permission request was not granted or denied yet.');
       }
+    }).catch(error => {
+      console.error('Error while requesting notification permission:', error);
     });
   }
-
+  
   alert() {
-  this.alertServic.warning("Currently unavailable. Please check back later.")
+  this.alertService.warning("Currently unavailable. Please check back later.")
   }
 }
