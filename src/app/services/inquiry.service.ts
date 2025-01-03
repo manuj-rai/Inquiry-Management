@@ -50,4 +50,8 @@ export class InquiryService {
     return this.http.get<any>(`${this.baseUrl}/GetCountryList`);
   }
 
+  getGender(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/GetGenderOptions`);
+  }
+
 }

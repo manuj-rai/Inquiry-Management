@@ -88,6 +88,7 @@
     box-shadow: 0 .5rem 1rem #1a1f33;
     color: white;
     cursor: pointer;
+    position: relative;
   }
   
   .news-item:hover {

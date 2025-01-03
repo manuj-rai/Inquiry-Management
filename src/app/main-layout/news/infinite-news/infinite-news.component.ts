@@ -75,17 +75,14 @@ export class InfiniteNewsComponent implements OnInit  {
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    if (this.isLoading) return;  // Prevent scroll triggering while loading
-
-    // Add a delay before checking the scroll position and loading more news
-    setTimeout(() => {
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        // Check if not all news are loaded and then fetch more
-        if (this.newsList.length < this.totalNewsCount) {
-          this.fetchPaginatedNews();
-        }
-      }
-    }, 2000);  // 1000ms (2 second) delay before loading more news
+    if (this.isLoading) return;  // Prevent trigger while loading
+  
+    // Use a buffer threshold, for example 80% of the page height
+    const threshold = document.body.scrollHeight;
+    if ((window.innerHeight + window.scrollY) >= threshold) {
+      // Trigger data load
+      this.fetchPaginatedNews();
+    }
   }
 
   getImageUrl(imagePath: string): string {

@@ -14,6 +14,7 @@ import { AlertService } from '../../services/alert.service';
 export class ContactComponent implements OnInit {
   countries: string[] = []; 
   states: string[] = [];
+  genderOptions: any[] = [];
   countryStateMap: { [key: string]: string[] } = {
     India: [
     'Andhra Pradesh',
@@ -57,7 +58,7 @@ export class ContactComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
+    this.fetchGenderOptions();
   }
 
   onSubmit(form: any): void {
@@ -102,5 +103,20 @@ export class ContactComponent implements OnInit {
     this.selectedCountry = country;
     this.states = this.countryStateMap[country] || [];
     this.selectedState = ''; // Reset state when country changes
+  }
+
+  fetchGenderOptions(): void {
+    this.inquiryService.getGender().subscribe(
+      (response) => {
+        if (response.header.statusCode === 200) {
+          this.genderOptions = response.data;
+        } else {
+          console.error('Error:', response.Header.Desc);
+        }
+      },
+      (error) => {
+        console.error('API Error:', error);
+      }
+    );
   }
 }
