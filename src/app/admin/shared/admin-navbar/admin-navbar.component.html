@@ -1,39 +1,44 @@
 
 <div class="navbar">
     <span class="logo"><span class="email" style="color:#36f;">Blue</span>Admin
-     <button (click)="toggleSidebar()" class="toggle-button">
-      <span class="material-icons">menu</span>
-    </button>
-  <div class="search-container">
-      <span class="material-icons search-icon">search</span>
-      <input type="text" placeholder="Search for..." class="search-box" />    
-    </div></span>
+      <button (click)="toggleSidebar()" class="toggle-button">
+        <span class="material-icons">menu</span>
+      </button>
+      <div class="search-container">
+        <span class="material-icons search-icon">search</span>
+        <input type="text" placeholder="Search for..." class="search-box" />    
+      </div>
+    </span>
+
     <div class="user-info">
+      <div class="home-link">
+        <a href="/home">Home</a> 
+      </div>
       <span>Welcome! <span class="user-name">{{userDetails.name}}</span></span>
    
     <!-- Profile Image with Dropdown -->
     <div class="profile-dropdown">
       <img [src]="getProfilePictureUrl()" 
-           alt="User Profile" 
-           class="user-img" 
-           (click)="toggleDropdown()" />
-           <span 
-           class="active-icon material-icons" 
-           *ngIf="!isDropdownVisible">
-           circle
-         </span>
+        alt="User Profile" 
+        class="user-img" 
+        (click)="toggleDropdown()" />
+          <span 
+          class="active-icon material-icons" 
+          *ngIf="!isDropdownVisible">
+          circle
+          </span>
   
-     <!-- Dropdown Menu -->
-      <div class="dropdown-menu" *ngIf="isDropdownVisible">
-      <a href="admin/profile" class="dropdown-item">
-          <span class="material-icons">account_circle</span> Profile
-      </a>
-      <a href="admin/profile" class="dropdown-item">
-          <span class="material-icons">settings</span> Settings
-      </a>
-      <a href="/login" class="dropdown-item">
-          <span class="material-icons">logout</span> Logout
-      </a>
-      </div>
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" *ngIf="isDropdownVisible">
+          <a href="admin/profile" class="dropdown-item">
+            <span class="material-icons">account_circle</span> Profile
+          </a>
+          <a href="admin/profile" class="dropdown-item">
+            <span class="material-icons">settings</span> Settings
+          </a>
+          <a href="/login" class="dropdown-item">
+            <span class="material-icons">logout</span> Logout
+          </a>
+        </div>
     </div>
   </div>

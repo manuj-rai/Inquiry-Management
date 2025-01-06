@@ -57,6 +57,22 @@
     outline: 1px solid #161a2f;
   }
 
+  .home-link a {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    border-right: 1px solid #151a30;  
+    cursor: pointer;
+    margin: 0 10px;
+  }
+
+  .home-link a:hover {
+    color: #36f;
+  }
+
   a {
     color: #36f;
   }

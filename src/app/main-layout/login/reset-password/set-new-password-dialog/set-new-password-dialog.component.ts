@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule, MatIconButton } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AlertService } from '../../../../services/alert.service';
-
+import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-set-new-password-dialog',
   standalone: true,
@@ -17,6 +17,8 @@ import { AlertService } from '../../../../services/alert.service';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconButton,
+    MatIconModule,
     FormsModule,
     CommonModule
   ],

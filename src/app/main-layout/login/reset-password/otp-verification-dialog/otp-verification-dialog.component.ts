@@ -1,14 +1,16 @@
-import { Component, Inject  } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy  } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA  } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../../services/auth.service';
 import { NotificationService } from '../../../../services/notification.service';
 import { CommonModule } from '@angular/common';
-
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-otp-verification-dialog',
   standalone: true,
@@ -17,17 +19,21 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
     FormsModule,
     CommonModule
   ],
   templateUrl: './otp-verification-dialog.component.html',
   styleUrls: ['./otp-verification-dialog.component.css'],
 })
-export class OtpVerificationDialogComponent {
+export class OtpVerificationDialogComponent implements OnInit, OnDestroy {
   otp: string = '';
   email: string = ''; // Pass this from the previous step
   errorMessage: string = '';
   successMessage: string = '';
+
+  remainingTime: number = 300; // 5 minutes (in seconds)
+  timerSubscription: Subscription | null = null; // Initialize with null
 
   constructor(
     private notificationService : NotificationService,
@@ -36,6 +42,16 @@ export class OtpVerificationDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {this.email = data.email;
     this.successMessage = data.successMessage;
+  }
+
+  ngOnInit() {
+    this.startOtpTimer();
+  }
+
+  ngOnDestroy() {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 
   verifyOtp() {
@@ -66,5 +82,26 @@ export class OtpVerificationDialogComponent {
       }
     );
   }
+
+    // Start the OTP expiry timer
+    startOtpTimer() {
+      this.timerSubscription = new Subscription();
+      const interval = setInterval(() => {
+        if (this.remainingTime > 0) {
+          this.remainingTime--;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1000);
+    }
+  
+    // Resend OTP method
+    resendOtp() {
+      this.notificationService.showOtpSuccessNotification(this.successMessage, '123456'); // Example OTP
+      this.remainingTime = 300; // Reset timer
+      this.startOtpTimer();
+      alert('OTP has been resent!');
+    }
+  
 }
 

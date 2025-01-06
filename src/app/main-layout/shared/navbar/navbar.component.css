@@ -102,6 +102,72 @@
   .navbar-login a.active {
     color: #36f;
   }
+
+  .profile-img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+  }
+
+  .profile-dropdown {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+  }
+
+  .dropdown-btn {
+    background-color: transparent;
+    border: none;
+    font-size: .8125rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222b45;
+    border-radius: .25rem;
+    min-width: 70px;
+    z-index: 1;
+    top: 30px;
+    right: 0;
+
+  }
+
+  .profile-dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    color: #fff;
+    border-radius: 0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .dropdown-content a:first-child {
+    padding-top: 25px;
+  }
+
+  .dropdown-content a:hover {
+    color: #36f;
+  }
+
+  .dropdown-content a:last-child:hover {
+    color: red;
+  }
     
   /* Responsive: Hamburger Menu */
   @media (max-width: 768px) {

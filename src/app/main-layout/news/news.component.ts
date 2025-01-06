@@ -53,7 +53,7 @@ export class NewsComponent implements OnInit, OnDestroy {
   fetchTopNews(): void {
     this.isLoading = true; // Start loading
     const take = 5;
-    const skip = 2;
+    const skip = 11;
   
     this.newsService.getTopNews(take, skip).subscribe({
       next: (response: any) => { 

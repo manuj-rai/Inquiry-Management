@@ -54,10 +54,16 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            this.alertService.success("Welcome back! You are now logged in!");
             localStorage.setItem('user', JSON.stringify({ username }));
-            localStorage.setItem('token', response.token);
-            this.router.navigate(['/admin']);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+            this.notificationService.showNotification('Welcom Back!', {
+              body: 'You have been LoggedIn Successfully!',
+              icon: 'assets/images/welcome.png',
+              requireInteraction: true
+            });
+            this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
           } else {
             this.alertService.error(response.message || 'Login failed. Please try again.');
           }

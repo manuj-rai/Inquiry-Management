@@ -1,13 +1,17 @@
 <div class="dialog-header">
-    <h2 mat-dialog-title style="color: #36f !important;
-    border-bottom: 1px solid #151a30 !important;">Verify OTP</h2>
+  <div class="dialog-header-header">
+    <h2 mat-dialog-title style="color: #36f !important;">Verify OTP</h2>
+      <button mat-icon-button mat-dialog-close aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
     <p style=" color:#5cb85c; padding-left: 24px;">{{ successMessage }} </p>
     <p style=" color:#36f; padding-left: 24px;">{{ email }} </p>
 
   </div>
   
   <mat-dialog-content>
-    <p class="dialog-description">
+    <p class="dialog-description"  style="color:#5c5c5c;">
       Enter the OTP sent to your email to verify your identity.
     </p>
     <form #otpForm="ngForm" (ngSubmit)="verifyOtp()">
@@ -23,6 +27,15 @@
         />
       </mat-form-field>
     </form>
+
+    <!-- OTP Expiry Timer -->
+    <div *ngIf="remainingTime > 0" class="timer"  style="color:#5c5c5c;">
+      <p>OTP expires in: {{ remainingTime }} seconds</p>
+    </div>
+  
+    <div *ngIf="remainingTime === 0" class="resend-otp">
+      <button mat-raised-button color="accent" (click)="resendOtp()">Resend OTP</button>
+    </div>
   </mat-dialog-content>
 
   <div *ngIf="errorMessage" class="error-message">

@@ -3,11 +3,18 @@ import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  private checkLoginStatus(): boolean {
+    return !!localStorage.getItem('authToken'); // Or any other condition
+  }
 
   private baseUrl = environment.apiBaseUrl;
 
@@ -20,9 +27,11 @@ export class AuthService {
       map(response => {
         // Check for successful login (statusCode 100)
         if (response?.header?.statusCode === 100 && response.data?.isAuthenticated) {
+          this.isLoggedInSubject.next(true);
+          localStorage.setItem('authToken', response.data.token);
           return { isAuthenticated: true, token: response.data.token };
         } 
-        // Handle invalid login (statusCode 4001)
+        // Handle invalid login (statusCode 401)
         if (response?.header?.statusCode === 401) {
           return {
             isAuthenticated: false,
@@ -46,7 +55,12 @@ export class AuthService {
         return throwError(() => new Error(errorMessage));
       })
     );
-  }   
+  }
+  
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('authToken');
+    return !!token; // Return true if token exists, otherwise false
+  }
 
   getUserDetails(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/GetUserDetails`, {

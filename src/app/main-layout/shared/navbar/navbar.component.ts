@@ -1,24 +1,51 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslationService } from '../../../services/translate.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { CommonModule } from '@angular/common';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   standalone:true,
-  imports:[TranslateModule]
+  imports:[TranslateModule, CommonModule]
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean = false; 
+  userDetails: any = {};
+  baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
+
   menuOpen = false;
   translationService = inject(TranslationService);
   currentLanguage: string = 'en';
 
-  constructor(private router: Router) {
+  constructor(
+    private authService : AuthService,
+    private router: Router) {
     this.translationService.initLanguage();
     this.currentLanguage = this.translationService.getCurrentLanguage();
+  }
+
+  ngOnInit() {
+    // Subscribe to login status
+    this.authService.isLoggedIn$.subscribe(status => {
+      this.isLoggedIn = status;
+    });
+
+    const user = JSON.parse(localStorage.getItem('user')!); // Retrieve logged-in user details
+    if (user && user.username) {
+      this.authService.getUserDetails(user.username).subscribe({
+        next: (response) => {
+          this.userDetails = response.data;
+        },
+        error: (err) => {
+          console.error('Error fetching user details:', err);
+        }
+      });
+    }
   }
 
   toggleMenu() {
@@ -36,6 +63,17 @@ export class NavbarComponent {
       this.translationService.switchLanguage(language);
       this.currentLanguage = language; // Update the current language in the UI
     }
+  }
+
+  logout(): void {
+    localStorage.removeItem('authToken'); 
+    localStorage.removeItem('user'); 
+    window.location.reload(); 
+  }
+
+  getProfilePictureUrl(): string {
+    const cleanedPath = this.userDetails.profilePicture.replace('~/', '');
+    return `${this.baseImageUrl}${cleanedPath}`;
   }
 }
 

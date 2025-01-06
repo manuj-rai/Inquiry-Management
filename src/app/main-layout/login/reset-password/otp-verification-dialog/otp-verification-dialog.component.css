@@ -5,7 +5,14 @@
     min-width: 100% !important;
 }
 
-.mat-mdc-dialog-container .mat-mdc-dialog-title {
-    color: #36f !important;
-    border-bottom: 1px solid #151a30 !important;
+.mat-mdc-dialog-title::before {
+    display: none !important;
 }
+
+.dialog-header-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #151a30;
+    padding: 0;
+  }

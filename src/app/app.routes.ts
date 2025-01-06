@@ -17,8 +17,12 @@ export const routes: Routes = [
       { path: 'news/category/:tagName', loadComponent: () => import('./main-layout/news/news.component').then(m => m.NewsComponent) },
       { path: 'contact', loadComponent: () => import('./main-layout/contact/contact.component').then(m => m.ContactComponent) },
       { path: 'about', loadComponent: () => import('./main-layout/about/about.component').then(m => m.AboutComponent) },
-      { path: 'login', loadComponent: () => import('./main-layout/login/login.component').then(m => m.LoginComponent) },
-    ]
+      { path: 'login', loadComponent: () => import('./main-layout/login/login.component').then(m => m.LoginComponent), canActivate: [AuthGuard] },
+      { 
+        path: 'profile', 
+        loadComponent: () => import('./main-layout/profile/profile.component').then(m => m.UserProfileComponent), 
+        canActivate: [AuthGuard] 
+      },    ]
   },
 
   /*Admin Layout*/
