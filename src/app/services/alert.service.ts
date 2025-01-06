@@ -26,7 +26,7 @@ export class AlertService {
   
   // Success Alert
   success(message: string, options?: { duration?: number }): void {
-    Swal.fire({
+    const swalInstance = Swal.fire({
       title: 'Success',
       text: message,
       icon: 'success',

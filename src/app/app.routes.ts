@@ -2,8 +2,10 @@ import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './auth.guard';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 export const routes: Routes = [
+  { path: 'error', component: ErrorPageComponent },
 
   /*Main Layout*/
   {
