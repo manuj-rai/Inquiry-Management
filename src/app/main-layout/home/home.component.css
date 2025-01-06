@@ -1,6 +1,6 @@
 .home-container {
     color: #fff;
-    max-width: 1045px;
+    max-width: 90%;
     margin: 50px auto;
     animation: fadeIn 1s ease-in-out;
   }
@@ -124,7 +124,6 @@
     border-radius: 4px;
     display: flex;
     justify-content: space-between;
-    max-width: 950px;
     margin: auto;
     border: .0625rem solid #101426;
     box-shadow: 0 .5rem 1rem #1a1f33;
@@ -545,7 +544,7 @@ img {
     }
 
     .signup-newsletter-form {
-      width: 340px;
+      width: 300px;
       height: 90px;
     }
 

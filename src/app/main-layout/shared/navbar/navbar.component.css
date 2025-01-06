@@ -63,6 +63,7 @@
     list-style: none;
     display: flex;
     margin: 0;
+    align-items: center;
   }
   
   .navbar-links li {
@@ -104,8 +105,8 @@
   }
 
   .profile-img {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin: 0 0 0 10px;
     cursor: pointer;
@@ -139,7 +140,7 @@
     border-radius: .25rem;
     min-width: 70px;
     z-index: 1;
-    top: 30px;
+    top: 35px;
     right: 0;
 
   }
