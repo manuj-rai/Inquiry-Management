@@ -21,8 +21,8 @@ export class AdminNavbarComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user')!); // Retrieve logged-in user details
     if (user && user.username) {
       this.authService.getUserDetails(user.username).subscribe({
-        next: (details) => {
-          this.userDetails = details;
+        next: (response) => {
+          this.userDetails = response.data;
         },
         error: (err) => {
           console.error('Error fetching user details:', err);

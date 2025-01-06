@@ -69,11 +69,18 @@ export class ContactComponent implements OnInit {
       // Call the service to submit the data
       this.inquiryService.submitInquiry(formData).subscribe({
         next: (response) => {
-          console.log('Inquiry submitted successfully', response);
-          this.alertService.success('Inquiry submitted successfully!');
-          form.reset(); // Reset the form after successful submission
+          // Check the status code or response header for success or error
+          if (response && response.header?.statusCode === 100) {
+            console.log('Inquiry submitted successfully', response);
+            this.alertService.success('Inquiry submitted successfully!');
+            form.reset(); // Reset the form after successful submission
+          } else {
+            console.error('Error in response:', response);
+            this.alertService.error(response.header?.desc || 'Failed to submit the inquiry. Please try again.');
+          }
         },
         error: (err) => {
+          // Handle HTTP or network errors
           console.error('Error submitting inquiry', err);
           this.alertService.error('An error occurred while submitting the inquiry. Please try again.');
         },
@@ -82,6 +89,7 @@ export class ContactComponent implements OnInit {
       this.alertService.error('Please fill out the form correctly before submitting.');
     }
   }
+  
   
 
   // Fetch countries from REST Countries API
@@ -108,7 +116,7 @@ export class ContactComponent implements OnInit {
   fetchGenderOptions(): void {
     this.inquiryService.getGender().subscribe(
       (response) => {
-        if (response.header.statusCode === 200) {
+        if (response.header.statusCode === 100) {
           this.genderOptions = response.data;
         } else {
           console.error('Error:', response.Header.Desc);

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Observable, throwError  } from 'rxjs';
 import { environment } from '../../environments/environment';
 
@@ -14,29 +14,39 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   // Method to call the login API
-  login(userName: string, password: string): Observable<any> {
+  login(userName: string, password: string): Observable<any> {  
     return this.http.post<any>(`${this.baseUrl}/login`, { userName, password }).pipe(
+      tap(() => console.log('Login request sent')), 
       map(response => {
-        if (response && response.token) {
-          return { isAuthenticated: true, token: response.token };
-        } else {
-          return { isAuthenticated: false, message: response.message || 'Login failed' };
+        // Check for successful login (statusCode 100)
+        if (response?.header?.statusCode === 100 && response.data?.isAuthenticated) {
+          return { isAuthenticated: true, token: response.data.token };
+        } 
+        // Handle invalid login (statusCode 4001)
+        if (response?.header?.statusCode === 401) {
+          return {
+            isAuthenticated: false,
+            message: response.header?.desc || 'Login failed'
+          };
         }
+        // Default message for other failure scenarios
+        return {
+          isAuthenticated: false,
+          message: response.header?.desc || 'Login failed'
+        };
       }),
       catchError((error) => {
-        let errorMessage = 'An error occurred during login. Please try again.';
-        
-        // Extract the message from the backend if available
-        if (error.error && error.error.message) {
-          errorMessage = error.error.message;
+        let errorMessage = 'An error occurred during login. Please try again.'; 
+        // Handle specific error message from backend if present
+        if (error.error && error.error.header?.desc) {
+          errorMessage = error.error.header.desc;  
+        } else if (error.status === 0) {
+          errorMessage = 'Network error. Please check your connection.';
         }
-  
-        console.error('Login error:', errorMessage);
         return throwError(() => new Error(errorMessage));
       })
     );
-  }
-  
+  }   
 
   getUserDetails(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/GetUserDetails`, {
@@ -54,15 +64,13 @@ export class AuthService {
     return this.http.post<any>(`${this.baseUrl}/UpdateUserDetails`, formData);
   }
 
-  sendOtp(email: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/send-otp`, { email });
+  generateOtp(email: string): Observable<any> {
+    const payload = { email };
+    return this.http.post<any>(`${this.baseUrl}/generateOTP`, payload );
   }
 
-  verifyOtp(email: string, otp: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/verify-otp`, { email, otp });
-  }
-
-  resetPassword(email: string, newPassword: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/reset-password`, { email, newPassword });
+  // Validate OTP
+  validateOtp(payload: { email: string, otp: string }): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/validateOTP`, payload);
   }
 }

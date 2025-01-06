@@ -1,13 +1,17 @@
 <div class="dialog-header">
-    <h2 mat-dialog-title>Verify OTP</h2>
+    <h2 mat-dialog-title style="color: #36f !important;
+    border-bottom: 1px solid #151a30 !important;">Verify OTP</h2>
+    <p style=" color:#5cb85c; padding-left: 24px;">{{ successMessage }} </p>
+    <p style=" color:#36f; padding-left: 24px;">{{ email }} </p>
+
   </div>
   
   <mat-dialog-content>
     <p class="dialog-description">
-      Enter the OTP sent to your phone number to verify your identity.
+      Enter the OTP sent to your email to verify your identity.
     </p>
     <form #otpForm="ngForm" (ngSubmit)="verifyOtp()">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline" class="full-width" style="width: 100%;">
         <mat-label>OTP</mat-label>
         <input
           matInput
@@ -20,7 +24,11 @@
       </mat-form-field>
     </form>
   </mat-dialog-content>
-  
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p style=" color:red; padding-left: 24px;">{{ errorMessage }} </p>
+  </div>
+
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancel</button>
     <button

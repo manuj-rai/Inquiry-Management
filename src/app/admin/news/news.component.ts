@@ -82,8 +82,8 @@ export class NewsComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('user')!); 
     if (user && user.username) {
       this.authService.getUserDetails(user.username).subscribe({
-        next: (details) => {
-          this.userDetails = details; // Store user details
+        next: (response) => {
+          this.userDetails = response.data; // Store user details
           console.log(this.userDetails); // You can log the details for debugging
 
           // After fetching user details, update authorID and createdBy
@@ -209,20 +209,26 @@ export class NewsComponent implements OnInit {
   onTagInputChange(query: string): void {
     if (query.length >= 1) {
       this.newsService.getTagSuggestions(query).subscribe({
-        next: (suggestions: any[]) => {
-          this.tagSuggestions = suggestions;
+        next: (response: any) => {
+          if (response && response.data) {
+            // Map response data to tag names (strings)
+            this.tagSuggestions = response.data.map((suggestion: any) => suggestion.tagName);
+          } else {
+            this.tagSuggestions = [];  // Clear suggestions if no data is returned
+          }
         },
         error: (err) => {
           console.error('Error fetching tag suggestions:', err);
         }
       });
     } else {
-      this.tagSuggestions = []; // Clear suggestions if input is empty
+      this.tagSuggestions = [];  // Clear suggestions if input is empty
     }
   }
+  
 
   // Add a tag from suggestions to the list
-  addTag(tag: string): void {
+  addTag(tag: any): void {
     if (tag && !this.selectedTags.includes(tag)) {
       this.selectedTags.push(tag); // Add tag to selected list
       this.updateTagNames(); // Update the tag names as a comma-separated string

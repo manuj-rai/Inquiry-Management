@@ -50,30 +50,27 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      
+  
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
             this.alertService.success("Welcome back! You are now logged in!");
-            this.notificationService.showNotification(`Welcome! ${username}`, {
-              body: 'We appreciate you visiting our Inquiry Management and News Portal. Explore more!',
-              icon: 'assets/images/user.png',
-              requireInteraction: true
-            });
             localStorage.setItem('user', JSON.stringify({ username }));
             localStorage.setItem('token', response.token);
             this.router.navigate(['/admin']);
           } else {
-            this.alertService.error('Login failed. Please try again.');
+            this.alertService.error(response.message || 'Login failed. Please try again.');
           }
         },
         error: (err) => {
-          // Display the error message from the backend
+          // Handle errors here
           this.alertService.error(err.message || 'An unexpected error occurred.');
         }
       });
     }
   }
+  
+  
 
   openForgetPasswordDialog() {
     const forgetDialog = this.dialog.open(ForgetPasswordDialogComponent, {

@@ -21,4 +21,24 @@ export class NotificationService {
       new Notification(title, options);
     }
   }
+
+    // Show a success notification with OTP
+  showOtpSuccessNotification(message: string, otp: string): void {
+    const options: NotificationOptions = {
+      body: `${message} OTP: ${otp}`, 
+      icon: 'assets/images/otp.png', // You can provide an icon here
+    };
+
+    this.showNotification('OTP Sent Successfully!', options);
+  }
+
+  // Show an error notification
+  showErrorNotification(message: string): void {
+    const options: NotificationOptions = {
+      body: message,
+      icon: 'path_to_error_icon.png', // You can provide an error icon here
+    };
+
+    this.showNotification('Error', options);
+  }
 }

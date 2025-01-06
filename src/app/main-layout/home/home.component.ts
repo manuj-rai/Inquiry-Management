@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
           requireInteraction: true
         });
       } else if (permission === 'denied') {
-        this.alertService.error('Notification permission has been denied by the user.');
+        this.alertService.error('Notification permission has been denied by the user or browser, Please access location permission.');
       } else if (permission === 'default') {
         this.alertService.error('Notification permission request was not granted or denied yet.');
       }

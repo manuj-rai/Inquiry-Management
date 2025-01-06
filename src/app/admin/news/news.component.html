@@ -76,9 +76,9 @@
         <div *ngIf="tagSuggestions.length > 0" class="suggestions-list">
           <ul>
             <li *ngFor="let tag of tagSuggestions" 
-                (click)="addTag(tag.tagName)" 
+                (click)="addTag(tag)" 
                 class="suggestion-item">
-              {{ tag.tagName }}
+              {{ tag }}
             </li>
           </ul>
         </div>

@@ -14,7 +14,7 @@ import { AlertService } from '../../services/alert.service';
   styleUrl: './profile.component.css'
 })
 export class ProfileComponent implements OnInit{
-  userDetails: any = {};
+  userDetails: any = [];
   username: string = '';
   isEditing = false;
   selectedFile: string | null = null;
@@ -28,28 +28,43 @@ export class ProfileComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    // Ensure that localStorage is available before accessing
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      this.username = user.username || 'Default Username';
-
-      // Now, fetch the user details from the API
-      if (user && user.username) {
-        this.authService.getUserDetails(user.username).subscribe({
-          next: (details) => {
-            this.userDetails = details;
-            console.log('User details fetched:', this.userDetails);
-          },
-          error: (err) => {
-            console.error('Error fetching user details:', err);
-          }
-        });
+    // Check if localStorage is available
+    if (typeof window !== 'undefined' && localStorage) {
+      const storedUser = localStorage.getItem('user');
+  
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        this.username = user.username || 'Default Username';  // Default username in case it's missing
+  
+        // Fetch user details from the API
+        if (user && user.username) {
+          this.authService.getUserDetails(user.username).subscribe({
+            next: (response) => {
+              console.log('Full response:', response); // Log the full response to inspect its structure
+  
+              // Since `data` directly contains the user details, assign it here
+              if (response && response.data) {
+                this.userDetails = response.data;  // Assign the entire `data` object
+                console.log('User details fetched:', this.userDetails);
+              } else {
+                // Handle case where `data` is missing
+                console.warn('User details are missing in the response:', response);
+              }
+            },
+            error: (err) => {
+              console.error('Error fetching user details:', err);
+            }
+          });
+        }
+      } else {
+        console.log('No user found in localStorage.');
       }
     } else {
-      console.log('No user found in localStorage in ngOnInit');
+      console.error('localStorage is not available.');
     }
   }
+  
+  
 
   getProfilePictureUrl(): string {
     const cleanedPath = this.userDetails.profilePicture.replace('~/', '');

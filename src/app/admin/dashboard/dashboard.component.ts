@@ -60,8 +60,8 @@ export class DashboardComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          this.inquiries = response.data;
-          this.totalItems = response.totalCount;
+          this.inquiries = response.data.data;
+          this.totalItems = response.data.totalCount;
           this.totalPages = Math.ceil(this.totalItems / this.pageSize); // Set total pages
         },
         error: (err) => {
@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
             htmlContainer: 'swal-html-container',
             confirmButton: 'swal-confirm-button',
           },
-          buttonsStyling: false,
+          buttonsStyling: true,
         });
       }
     });
@@ -159,7 +159,12 @@ export class DashboardComponent implements OnInit {
   fetchCountries(): void {
     this.inquiryService.getCountries().subscribe({
       next: (response) => {
-        this.countries = response.data; // Assign the array of country objects to 'countries'
+        if (response?.header?.statusCode === 100 && Array.isArray(response.data)) {
+          this.countries = response.data;
+          console.log('Countries:', this.countries);
+        } else {
+          console.error('Failed to fetch countries:', response?.header?.desc || 'Unknown error');
+        }
       },
       error: (error) => {
         console.error('Error fetching countries:', error);
@@ -183,18 +188,22 @@ export class DashboardComponent implements OnInit {
   // Method to get the top 5 recent users from the API
   getRecentUsers(): void {
     this.authService.getRecentUsers().subscribe(
-      (data) => {
-        this.users = data;  // Store the API response in the users array
-        if (this.users.length > 0 && this.users[0].totalUsers !== undefined) {
-          this.totalUsers = this.users[0].totalUsers;  // Extract totalUsers from the first item
+      (response: any) => {  // Use 'any' to handle the unknown structure of the response
+        if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+          this.users = response.data;  // Store the API response data in users array
+          this.totalUsers = response.data[0].totalUsers;  // Extract totalUsers from the first item
+          console.log(this.users);  // Log the users data
+          console.log('Total Users:', this.totalUsers);  // Log the totalUsers
+        } else {
+          console.warn('No users found in the response.');
         }
-        console.log(this.users);
       },
       (error) => {
         console.error('Error fetching users:', error);
       }
     );
   }
+  
 
   getProfilePictureUrl(user: any): string {
     // Ensure user has a profilePicture property and replace '~/'
