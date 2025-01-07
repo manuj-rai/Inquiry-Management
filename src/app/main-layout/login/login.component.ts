@@ -54,7 +54,6 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-
             const redirectUrl = response.isAdmin ? '/profile' : '/admin/profile';
             console.log(redirectUrl);
             this.router.navigate([redirectUrl]).then(() => {
@@ -63,7 +62,11 @@ export class LoginComponent {
                 window.location.reload(); // This reloads the page
               }
             });
-
+            this.notificationService.showNotification('Welcome Back!',  {
+              body: 'You have been LoggedIn Successfully!',
+              icon: 'assets/images/welcome.png',
+              requireInteraction: true
+            });
             this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
 
           } else {
