@@ -109,7 +109,9 @@
     <div class="news-list">
         <div *ngFor="let news of newsList" class="news-card">
             <div class="news-image">
-                <img [src]="getImageUrl(news.bigImage)" alt="News Image" />
+                <img [lazyLoad]="getImageUrl(news.bigImage)" 
+                [defaultImage]="'/assets/images/placeholder.jpg'"
+                alt="News Image" />
             </div>
             <div class="news-content">
                 <h3 class="news-title">{{ news.title }}</h3>

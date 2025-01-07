@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { Editor } from 'tinymce';
 import { AlertService } from '../../services/alert.service';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, EditorModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, LazyLoadImageModule, EditorModule, CommonModule],
   templateUrl: './news.component.html',
   styleUrl: './news.component.css'
 })
