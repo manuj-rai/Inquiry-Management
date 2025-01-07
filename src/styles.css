@@ -61,7 +61,42 @@ body {
 
   .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: #fff !important;
+  }
 
+
+  .tox-tinymce {
+    border: 1px solid #161f29 !important;
+    border-radius: 4px !important;
+    width: 99.5% !important;
+  }
+
+  .tox:not(.tox-tinymce-inline) .tox-editor-header {
+    background-color: #161a2f !important;
+  }
+
+  .tox-toolbar__primary {
+    background-color: #161a2f !important;
+  }
+
+  .tox .tox-menubar+.tox-toolbar, .tox .tox-menubar+.tox-toolbar-overlord {
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .tox .tox-mbtn {
+    background: #222b45 !important;
+  }
+
+  .tox .tox-tbtn {
+    background: #222b45 !important;
+  }
+
+  .tox .tox-menubar {
+    background-color: #161a2f !important;
+  }
+
+  .tox .tox-statusbar {
+    background-color: #161a2f !important;
   }
 
   @media (max-width: 600px) {

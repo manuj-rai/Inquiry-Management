@@ -60,17 +60,22 @@ export class NewsComponent implements OnInit {
         background-color: #161a2f !important;
         color: #fff;
       }
+      .tox-tinymce .mce-content-body::before {
+        content: 'Enter your text here...'; 
+        color: #fff; 
+        font-style: italic;
+      }
     `,
     branding: false, 
     skin: 'oxide-dark', 
     content_css: '//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css', 
+    placeholder: 'Enter news content here...',
     setup: function (editor: Editor) {
       editor.on('init', function () {
-        editor.getDoc().body.style.backgroundColor = '#161a2f';
+        editor.getDoc().body.style.backgroundColor = '#161a2f'; 
       });
     }
-  };
-  
+  }; 
 
   constructor(
     private alertService: AlertService,
