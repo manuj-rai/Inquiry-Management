@@ -27,9 +27,9 @@
       <!-- Conditionally show Profile or Login based on user login status -->
       <div class="navbar-login" *ngIf="isLoggedIn;">
           <div class="profile-dropdown">
-            <img *ngIf="userDetails?.profilePicture" [src]="getProfilePictureUrl()" alt="Profile" class="profile-img">
+            <div class="dropdown-btn">{{ userDetails?.name }}</div>  
+            <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
             <div class="dropdown-content">
-              <!-- <li class="dropdown-btn">{{ userDetails?.name }}</li>  -->
               <a href="profile">Profile</a>
               <a href="profile">Settings</a>
               <a (click)="logout()">Logout</a>

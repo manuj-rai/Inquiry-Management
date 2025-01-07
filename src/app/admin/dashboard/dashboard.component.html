@@ -34,7 +34,7 @@
   <div class="user-list">
     <!-- Loop through users array and display each user -->
     <div class="user" *ngFor="let user of users">
-      <img [src]="getProfilePictureUrl(user)" alt="User Profile">
+      <img [lazyLoad]="getProfilePictureUrl(user)" [defaultImage]="'/assets/images/profile-placeholder.jpg'" alt="User Profile">
       <h5>{{ user.name }}</h5>
       <p>{{ getTimeAgo(user.createdDate) }}</p>
     </div>

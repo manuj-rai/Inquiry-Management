@@ -42,9 +42,9 @@ export class AdminSidebarComponent implements OnInit {
     } else if (menu === 'pages') {
       this.router.navigate(['admin/pages']);
     } else if (menu === 'logout') {
-      localStorage.removeItem('token'); 
+      localStorage.removeItem('authToken'); 
       localStorage.removeItem('user'); 
-      this.router.navigate(['/login']);
+      window.location.reload(); 
     }
   }
 }

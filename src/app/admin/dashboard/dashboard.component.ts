@@ -8,11 +8,12 @@ import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
 import { TodoComponent } from "../../Reusables/todo";
 import { WeatherAppComponent } from '../../Reusables/ModernWeather';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, TodoComponent, WeatherAppComponent],
+  imports: [CommonModule, FormsModule, TodoComponent, WeatherAppComponent, LazyLoadImageModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

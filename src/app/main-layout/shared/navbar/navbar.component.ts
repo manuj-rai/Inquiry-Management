@@ -4,13 +4,13 @@ import { TranslationService } from '../../../services/translate.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth.service';
-
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   standalone:true,
-  imports:[TranslateModule, CommonModule]
+  imports:[TranslateModule, CommonModule, LazyLoadImageModule]
 })
 
 export class NavbarComponent implements OnInit {
