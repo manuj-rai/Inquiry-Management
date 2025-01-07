@@ -95,6 +95,10 @@ body {
     background-color: #161a2f !important;
   }
 
+  .tox .tox-edit-area::before {
+    border: none !important;
+  }
+
   .tox .tox-statusbar {
     background-color: #161a2f !important;
   }

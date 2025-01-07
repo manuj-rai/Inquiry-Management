@@ -31,7 +31,7 @@
           <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
           <div class="dropdown-content">
             <a [routerLink]="isAdmin ? '/admin/profile' : '/profile'"><span class="material-icons">account_circle</span>Profile</a>
-            <a [routerLink]="isAdmin ? '/admin/settings' : '/settings'"><span class="material-icons">settings</span>Settings</a>
+            <a [routerLink]="isAdmin ? '/admin/profile' : '/profile'"><span class="material-icons">settings</span>Settings</a>
             <a (click)="logout()"><span class="material-icons">logout</span>Logout</a>
           </div>
         </div>      
