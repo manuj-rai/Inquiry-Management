@@ -26,10 +26,22 @@ export class NotificationService {
   showOtpSuccessNotification(message: string, otp: string): void {
     const options: NotificationOptions = {
       body: `${message} OTP: ${otp}`, 
-      icon: 'assets/images/otp.png', // You can provide an icon here
+      icon: 'assets/images/otp.png', 
+      requireInteraction: true
     };
 
-    this.showNotification('OTP Sent Successfully!', options);
+    // Show the notification
+    const notification = new Notification('OTP Sent Successfully!', options);
+
+    // Listen for the notification click event
+    notification.onclick = () => {
+      // Copy OTP to clipboard
+      navigator.clipboard.writeText(otp).then(() => {
+        alert('OTP copied to clipboard!');
+      }).catch((err) => {
+        console.error('Failed to copy OTP:', err);
+      });
+    };
   }
 
   // Show an error notification

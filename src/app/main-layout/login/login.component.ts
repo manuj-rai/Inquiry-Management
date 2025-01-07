@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,7 +23,7 @@ import { SetNewPasswordDialogComponent } from './reset-password/set-new-password
   styleUrls: ['./login.component.css'],
   imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatDialogModule],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   passwordFieldType: string = 'password';
 
@@ -42,6 +42,13 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      const redirectUrl = this.authService.isAdmin() ? '/admin/dashboard' : '/profile';
+      this.router.navigate([redirectUrl]);
+    }
+  }
+
   togglePasswordVisibility() {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
@@ -54,12 +61,12 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            const redirectUrl = response.isAdmin ? '/profile' : '/admin/profile';
-            console.log(redirectUrl);
+            const redirectUrl = response.isAdmin ? 'admin/profile' : '/login';
+            console.log('Is Admin:', response.isAdmin); // Logs isAdmin status
+            console.log('Redirecting to:', redirectUrl);
             this.router.navigate([redirectUrl]).then(() => {
-              // Reload the page if navigating to /profile (you can change this logic to fit your needs)
-              if (redirectUrl === '/profile') {
-                window.location.reload(); // This reloads the page
+              if (redirectUrl === '/login') {
+                window.location.reload(); 
               }
             });
             this.notificationService.showNotification('Welcome Back!',  {

@@ -30,7 +30,10 @@ export class AuthService {
           this.isLoggedInSubject.next(true);
           localStorage.setItem('authToken', response.data.token);
           localStorage.setItem('user', JSON.stringify(response.data));
-          return { isAuthenticated: true, token: response.data.token };
+          return { 
+            isAuthenticated: true, 
+            token: response.data.token, 
+            isAdmin: response.data.isAdmin };
         } 
         // Handle invalid login (statusCode 401)
         if (response?.header?.statusCode === 401) {
@@ -92,5 +95,9 @@ export class AuthService {
   // Validate OTP
   validateOtp(payload: { email: string, otp: string }): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/validateOTP`, payload);
+  }
+
+  resetPassword(payload: { email: string, newPassword: string }): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/reset`, payload);
   }
 }
