@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NewUserComponent } from "./new-user/new-user.component";
 import { AlertService } from '../../services/alert.service';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule, NewUserComponent],
+  imports: [CommonModule, FormsModule, LazyLoadImageModule, NewUserComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'
 })

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Output, EventEmitter, HostListener, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './admin-navbar.component.html',
   styleUrl: './admin-navbar.component.css',
   standalone:true,
-  imports:[CommonModule]
+  imports:[CommonModule, LazyLoadImageModule]
 })
 
 export class AdminNavbarComponent implements OnInit {

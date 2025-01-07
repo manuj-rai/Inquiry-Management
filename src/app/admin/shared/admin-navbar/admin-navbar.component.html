@@ -18,7 +18,8 @@
    
     <!-- Profile Image with Dropdown -->
     <div class="profile-dropdown">
-      <img [src]="getProfilePictureUrl()" 
+      <img [lazyLoad]="getProfilePictureUrl()" 
+      [defaultImage]="'/assets/images/profile-placeholder.jpg'" 
         alt="User Profile" 
         class="user-img" 
         (click)="toggleDropdown()" />
