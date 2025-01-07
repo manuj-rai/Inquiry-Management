@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { TranslationService } from '../../../services/translate.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
@@ -10,11 +11,12 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   standalone:true,
-  imports:[TranslateModule, CommonModule, LazyLoadImageModule]
+  imports:[TranslateModule, CommonModule, RouterModule, LazyLoadImageModule]
 })
 
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean = false; 
+  isAdmin: boolean = false;
   userDetails: any = {};
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
@@ -35,9 +37,10 @@ export class NavbarComponent implements OnInit {
       this.isLoggedIn = status;
     });
 
-    const user = JSON.parse(localStorage.getItem('user')!); // Retrieve logged-in user details
-    if (user && user.username) {
-      this.authService.getUserDetails(user.username).subscribe({
+    const user = JSON.parse(localStorage.getItem('user')!); 
+    this.isAdmin = user.isAdmin || false;
+    if (user && user.userName) {
+      this.authService.getUserDetails(user.userName).subscribe({
         next: (response) => {
           this.userDetails = response.data;
         },

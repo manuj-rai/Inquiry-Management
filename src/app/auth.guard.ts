@@ -9,28 +9,20 @@ import { AuthService } from './services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    const token = localStorage.getItem('authToken'); // Check if a token exists
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    const isLoggedIn = this.authService.isLoggedIn();
+    const isAdminRoute = route.data['isAdmin'] || false;
 
-    if (token) {
-      const isLoginPage = route.routeConfig?.path === 'login'; // Check if navigating to login page
-
-      if (isLoginPage) {
-        this.router.navigate(['/profile']); // Redirect logged-in users from login page
-        return false;
-      }
-
-      // Allow access if authenticated and not navigating to login page
-      return true;
-    } else {
-      if (route.routeConfig?.path !== 'login') {
-        // Redirect unauthenticated users to login page if accessing a restricted route
-        this.router.navigate(['/login']);
-        return false;
-      }
-
-      // Allow access to the login page if not authenticated
-      return true;
+    if (!isLoggedIn) {
+      this.router.navigate(['/login']);
+      return false;
     }
+
+    if (isAdminRoute && !this.authService.isAdmin()) {
+      this.router.navigate(['/profile']); // Redirect normal users
+      return false;
+    }
+    return true;
+
   }
 }

@@ -35,20 +35,15 @@ export class ProfileComponent implements OnInit{
   
       if (storedUser) {
         const user = JSON.parse(storedUser);
-        this.username = user.username || 'Default Username';  // Default username in case it's missing
+        this.username = user.userName || 'undefined'; 
   
-        // Fetch user details from the API
-        if (user && user.username) {
-          this.authService.getUserDetails(user.username).subscribe({
-            next: (response) => {
-              console.log('Full response:', response); // Log the full response to inspect its structure
-  
-              // Since `data` directly contains the user details, assign it here
-              if (response && response.data) {
-                this.userDetails = response.data;  // Assign the entire `data` object
+        if (user.userName) {
+          this.authService.getUserDetails(user.userName).subscribe({
+            next: (response) => { 
+              if (response?.data) {
+                this.userDetails = response.data; 
                 console.log('User details fetched:', this.userDetails);
               } else {
-                // Handle case where `data` is missing
                 console.warn('User details are missing in the response:', response);
               }
             },
@@ -59,11 +54,13 @@ export class ProfileComponent implements OnInit{
         }
       } else {
         console.log('No user found in localStorage.');
+        this.router.navigate(['/login']); 
       }
     } else {
       console.error('localStorage is not available.');
     }
   }
+  
   
   
 

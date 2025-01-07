@@ -20,8 +20,8 @@ export class AdminNavbarComponent implements OnInit {
 
   ngOnInit(): void {
     const user = JSON.parse(localStorage.getItem('user')!); // Retrieve logged-in user details
-    if (user && user.username) {
-      this.authService.getUserDetails(user.username).subscribe({
+    if (user && user.userName) {
+      this.authService.getUserDetails(user.userName).subscribe({
         next: (response) => {
           this.userDetails = response.data;
         },

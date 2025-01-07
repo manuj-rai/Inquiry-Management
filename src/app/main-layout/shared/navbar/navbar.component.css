@@ -136,15 +136,19 @@
     position: absolute;
     background-color: #222b45;
     border-radius: .25rem;
-    min-width: 120px;
+    min-width: 130px;
     z-index: 1;
     top: 35px;
     right: 0;
-
   }
 
   .profile-dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  span.material-icons {
+    font-size: 14px;
+    margin-right: 10px;
   }
 
   .dropdown-content a {
@@ -153,8 +157,8 @@
     border-bottom: 1px solid #151a30; 
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
-    text-align: center;
+    display: flex;
+    align-items: center;
   }
 
   .dropdown-content a:first-child {

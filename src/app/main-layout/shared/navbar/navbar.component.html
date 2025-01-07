@@ -26,21 +26,20 @@
 
       <!-- Conditionally show Profile or Login based on user login status -->
       <div class="navbar-login" *ngIf="isLoggedIn;">
-          <div class="profile-dropdown">
-            <div class="dropdown-btn">{{ userDetails?.name }}</div>  
-            <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
-            <div class="dropdown-content">
-              <a href="profile">Profile</a>
-              <a href="profile">Settings</a>
-              <a (click)="logout()">Logout</a>
-            </div>
-          </div>      
-        </div>
-        <div class="navbar-login" *ngIf="!isLoggedIn">
-          <a href="login" [class.active]="isActive('login')">{{ 'LOGIN' | translate }}</a>
-        </div>
+        <div class="profile-dropdown">
+          <div class="dropdown-btn">{{ userDetails?.name }}</div>  
+          <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
+          <div class="dropdown-content">
+            <a [routerLink]="isAdmin ? '/admin/profile' : '/profile'"><span class="material-icons">account_circle</span>Profile</a>
+            <a [routerLink]="isAdmin ? '/admin/settings' : '/settings'"><span class="material-icons">settings</span>Settings</a>
+            <a (click)="logout()"><span class="material-icons">logout</span>Logout</a>
+          </div>
+        </div>      
+      </div>
+      <div class="navbar-login" *ngIf="!isLoggedIn">
+        <a href="login" [class.active]="isActive('login')">{{ 'LOGIN' | translate }}</a>
+      </div>
     </ul>
-  
 
   </nav>
   

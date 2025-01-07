@@ -29,6 +29,7 @@ export class AuthService {
         if (response?.header?.statusCode === 100 && response.data?.isAuthenticated) {
           this.isLoggedInSubject.next(true);
           localStorage.setItem('authToken', response.data.token);
+          localStorage.setItem('user', JSON.stringify(response.data));
           return { isAuthenticated: true, token: response.data.token };
         } 
         // Handle invalid login (statusCode 401)
@@ -60,6 +61,11 @@ export class AuthService {
   isLoggedIn(): boolean {
     const token = localStorage.getItem('authToken');
     return !!token; // Return true if token exists, otherwise false
+  }
+
+  isAdmin(): boolean {
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user.isAdmin || false;
   }
 
   getUserDetails(username: string): Observable<any> {

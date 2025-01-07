@@ -54,25 +54,30 @@ export class LoginComponent {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            localStorage.setItem('user', JSON.stringify({ username }));
-            setTimeout(() => {
-              window.location.reload();
-            }, 1000);
-            this.notificationService.showNotification('Welcom Back!', {
-              body: 'You have been LoggedIn Successfully!',
-              icon: 'assets/images/welcome.png',
-              requireInteraction: true
+
+            const redirectUrl = response.isAdmin ? '/profile' : '/admin/profile';
+            console.log(redirectUrl);
+            this.router.navigate([redirectUrl]).then(() => {
+              // Reload the page if navigating to /profile (you can change this logic to fit your needs)
+              if (redirectUrl === '/profile') {
+                window.location.reload(); // This reloads the page
+              }
             });
+
             this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
+
           } else {
             this.alertService.error(response.message || 'Login failed. Please try again.');
           }
         },
+        
         error: (err) => {
-          // Handle errors here
           this.alertService.error(err.message || 'An unexpected error occurred.');
         }
       });
+
+    } else {
+      this.alertService.error('Please fill out all required fields correctly.');
     }
   }
   
