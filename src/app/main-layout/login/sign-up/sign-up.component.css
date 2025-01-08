@@ -70,6 +70,57 @@
     .form-group {
       margin-bottom: 25px;
     }
+
+    .profile-pic-container {
+      position: relative;
+      display: inline-block;
+      height: 120px;
+      margin-bottom: 20px;
+    }
+    
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #101426;
+      transition: filter 0.3s ease;
+      display: flex;
+    }
+  
+    .profile-pic.blurred {
+      cursor: pointer;
+    }
+  
+    .btn-add-pic {
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.250);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 12px;
+      transition: 0.1s ease-in-out;
+    }
+  
+    .btn-add-pic:hover {
+      background-color: rgba(0, 0, 0, 0.500);
+    }
+  
+    i.fa.fa-camera {
+      font-size: 26px;
+      color: #fff;
+    }
+
+    .mat-mdc-tooltip-surface.mdc-tooltip__surface {
+      background-color: #101426 !important;
+    }
     
     .form-control {
       font-family: Open Sans,sans-serif;

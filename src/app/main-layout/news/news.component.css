@@ -211,7 +211,7 @@
   flex-direction: column;
   align-items: center;
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   text-align: center;
   color: white;
   font-family: Open Sans,sans-serif;
@@ -221,11 +221,16 @@
   padding: 20px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
 }
+/* 
+h2, p {
+  background-color: #161a2f;
+  padding: 5px;
+} */
 
 /* Slide Indicators */
 .indicators {
   position: absolute;
-  bottom: 10%;
+  bottom: 1%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -235,14 +240,14 @@
 .indicator {
   width: 10px;
   height: 10px;
-  background-color: #222b45;
+  background-color: #000;
   border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 .indicator.active {
-  background-color: #fff;
+  background-color: #36f;
 }
 
 

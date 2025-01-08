@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AlertService } from '../../../services/alert.service';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-sign-up',
   standalone: true,
@@ -19,6 +19,7 @@ import { AlertService } from '../../../services/alert.service';
     MatButtonModule, 
     MatInputModule, 
     MatIconModule,
+    MatTooltipModule,
     FormsModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.css'
@@ -31,23 +32,24 @@ export class SignUpComponent {
   ];
   fileName: string = '';
   selectedDepartment: string = '';
-  selectedFile: File | null = null;;
+  selectedFilePreview: string | null = null; // For Base64 preview
+  originalFile: File | null = null;
 
   constructor(private fb: FormBuilder, private http: HttpClient, private alertService : AlertService) {
   }
 
   onFileChange(event: any): void {
-    const file = event.target.files[0];  
+    const file = event.target.files[0];
     if (file) {
-      this.fileName = file.name; 
-      this.selectedFile = file; 
+      this.fileName = file.name;
+      this.originalFile = file;
     }
   }
 
   // Submit the form
   onSubmit(userForm: NgForm): void {
     if (userForm.valid) {
-      if (!this.selectedFile) {
+      if (!this.originalFile) {
         this.alertService.warning('Please select a profile picture.');
         return;
       }
@@ -61,7 +63,7 @@ export class SignUpComponent {
       formData.append('email', userForm.value.email);
       formData.append('password', userForm.value.password);
       formData.append('phoneNumber', userForm.value.phoneNumber);
-      formData.append('ProfilePicture', this.selectedFile);
+      formData.append('ProfilePicture', this.originalFile);
 
 
     
@@ -78,6 +80,20 @@ export class SignUpComponent {
       });
       }else {
         this.alertService.error("Please fill in all required details.");
+      }
+    }
+
+    onProfilePictureChange(event: any): void {
+      const input = event.target as HTMLInputElement;
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        this.originalFile = file; // Store the original file
+    
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.selectedFilePreview = reader.result as string; // Store the Base64 preview
+        };
+        reader.readAsDataURL(file);
       }
     }
 
