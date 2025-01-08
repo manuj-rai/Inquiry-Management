@@ -327,6 +327,10 @@
         width: 95%;
       }
 
+      input#phoneNumber[_ngcontent-ng-c3791431318] {
+        width: 92%;
+      }
+
     }
   
   @media (max-width: 600px) {
