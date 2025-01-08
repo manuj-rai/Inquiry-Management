@@ -83,6 +83,13 @@
       padding: 10px;
       transition: 0.1s ease-in;
     }
+
+    .form-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      width: 96.5%;
+    }
   
     .form-control:hover {
       background-color: #121525;
@@ -263,6 +270,10 @@
 
       input#name[_ngcontent-ng-c18187278], input#username[_ngcontent-ng-c18187278], input#email[_ngcontent-ng-c18187278], input#phoneNumber[_ngcontent-ng-c18187278], input#password[_ngcontent-ng-c18187278] {
         width: 92.1%;
+      }
+
+      .form-row {
+        width: 95%;
       }
 
     }

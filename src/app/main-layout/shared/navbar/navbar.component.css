@@ -169,7 +169,7 @@
     color: #36f;
   }
 
-  .dropdown-content a:last-child:hover {
+  .dropdown-content a:nth-child(4):hover {
     color: red;
   }
     

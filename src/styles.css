@@ -31,7 +31,6 @@ body {
     overflow: hidden;
     padding: 20px;
     border-radius: 4px !important;
-    width: 500px !important;
   }
 
   .mat-mdc-dialog-container .mat-mdc-dialog-title {

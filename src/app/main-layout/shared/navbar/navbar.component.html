@@ -30,6 +30,9 @@
           <div class="dropdown-btn">{{ userDetails?.name }}</div>  
           <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
           <div class="dropdown-content">
+            <div *ngIf="isAdmin;">
+              <a href="/admin/dashboard"><span class="material-icons">dashboard</span>Dashboard</a>
+            </div>
             <a [routerLink]="isAdmin ? '/admin/profile' : '/profile'"><span class="material-icons">account_circle</span>Profile</a>
             <a [routerLink]="isAdmin ? '/admin/profile' : '/profile'"><span class="material-icons">settings</span>Settings</a>
             <a (click)="logout()"><span class="material-icons">logout</span>Logout</a>
