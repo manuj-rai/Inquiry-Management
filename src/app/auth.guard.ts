@@ -17,6 +17,7 @@ export class AuthGuard implements CanActivate {
       this.router.navigate(['/login'], { queryParams: { message: 'Unauthorized access' } });
       return false;
     }
+    
 
     if (isAdminRoute && !this.authService.isAdmin()) {
       this.router.navigate(['/error'], { queryParams: { message: 'Unauthorized access' } });

@@ -1,38 +1,33 @@
 <button class="back-to-top-btn" (click)="backToTopNews()">Back to Home</button>
 
 <div class="detailed-news-section">
+    <div class="news-details-container" *ngIf="news; else noDetails">
+        <div class="news-header">
+            <h1 class="news-title">{{ news.title }}</h1>
+            <p class="news-date">{{ news.postingDate | date: 'longDate' }}</p>
+        </div>
+        <div class="news-image">
+            <img       
+            [lazyLoad]="getImageUrl(news.bigImage)" 
+            [defaultImage]="'/assets/images/placeholder.jpg'"  
+            [errorImage]="'/assets/images/error.jpg'" [alt]="news.title" />
+        </div>
+        <div class="news-content">
+            <h4>{{ news.shortDesc }}</h4>
+            <div class="news-full-content" [innerHTML]="news.newsContent"></div>
+        </div>
+        <div class="news-footer">
+            <p class="news-tag">
+            <strong>Category:</strong> {{ news.tagNames }}
+            </p>
+            <p class="news-author">
+            <strong>Copyright:</strong> {{ news.copywriteText }}
+            </p>
+        </div>       
+    </div>
 
-<div class="news-details-container" *ngIf="news; else noDetails">
-<div class="news-header">
-    <h1 class="news-title">{{ news.title }}</h1>
-    <p class="news-date">{{ news.postingDate | date: 'longDate' }}</p>
-</div>
-
-<div class="news-image">
-    <img       
-    [lazyLoad]="getImageUrl(news.bigImage)" 
-    [defaultImage]="'/assets/images/placeholder.jpg'"  
-    [errorImage]="'/assets/images/error.jpg'" [alt]="news.title" />
-</div>
-
-<div class="news-content">
-    <h4>{{ news.shortDesc }}</h4>
-    <div class="news-full-content" [innerHTML]="news.newsContent"></div>
-</div>
-
-<div class="news-footer">
-    <p class="news-tag">
-    <strong>Category:</strong> {{ news.tagNames }}
-    </p>
-    <p class="news-author">
-    <strong>Copyright:</strong> {{ news.copywriteText }}
-    </p>
-</div>
-</div>
-
-<ng-template #noDetails>
-<p class="no-news-message">No news details available.</p>
-</ng-template>
-  
+    <ng-template #noDetails>
+        <p class="no-news-message">No news details available.</p>
+    </ng-template>
  </div>
   

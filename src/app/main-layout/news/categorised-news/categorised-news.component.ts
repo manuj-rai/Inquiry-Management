@@ -14,10 +14,9 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
   styleUrl: './categorised-news.component.css'
 })
 export class CategorisedNewsComponent implements OnInit {
-  @Input() tagName: string = '';  // Tag passed from parent
+  @Input() tagName: string = '';  
   @Output() newsClicked: EventEmitter<any> = new EventEmitter();
-  newsList: any[] = [];  // Array to hold the news list
-
+  newsList: any[] = [];  
 
   constructor(
     private router: Router,
@@ -37,19 +36,18 @@ export class CategorisedNewsComponent implements OnInit {
     }
   }
 
-  // Fetch news for the selected tag
   fetchNewsByTag(tagName: string): void {
     this.newsService.getNewsByTag(tagName).subscribe({
       next: (response: any) => {
         console.log('Loaded News:', response.data);
-        this.newsList = response.data; // Adjust based on API response structure
+        this.newsList = response.data; 
       },
       error: (err) => console.error('Error fetching news by tag:', err)
     });
   }
 
   getImageUrl(imagePath: string): string {
-    const baseUrl = 'http://www.local.com/NewsPortal/';  // Your base image URL
+    const baseUrl = 'http://www.local.com/NewsPortal/';  
     return `${baseUrl}${imagePath.replace('~/', '')}`;
   }
   

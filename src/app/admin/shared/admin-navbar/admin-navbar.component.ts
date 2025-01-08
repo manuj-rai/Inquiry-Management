@@ -56,4 +56,10 @@ export class AdminNavbarComponent implements OnInit {
       this.isDropdownVisible = false;
     }
   }
+
+  logout(): void {
+    localStorage.removeItem('authToken'); 
+    localStorage.removeItem('user'); 
+    window.location.reload(); 
+  }
 }

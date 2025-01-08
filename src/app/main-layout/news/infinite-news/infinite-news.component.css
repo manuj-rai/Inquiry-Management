@@ -1,4 +1,3 @@
-/* Skeleton Loader */
 .skeleton-loader {
   background: #2c2f3f;
   position: relative;
@@ -7,16 +6,14 @@
   margin-bottom: 20px;
 }
 
-/* Skeleton item structure */
 .skeleton-item {
   display: flex;
-  flex-direction: row; /* Arrange image and content side by side */
-  align-items: center; /* Vertically align content */
+  flex-direction: row; 
+  align-items: center; 
   margin-bottom: 70px;
   
 }
 
-/* Skeleton image */
 .skeleton-image {
   width: 250px; 
   height: 170px; 
@@ -27,7 +24,6 @@
   border-radius: 4px;
 }
 
-/* Skeleton title */
 .skeleton-title {
   width: 70%; 
   height: 20px;
@@ -38,7 +34,6 @@
   border-radius: 4px;
 }
 
-/* Skeleton text */
 .skeleton-text {
   width: 100%;
   height: 15px;
@@ -60,7 +55,6 @@
   border-radius: 4px;
 }
 
-/* Skeleton animation effect */
 @keyframes skeleton-loading {
   0% {
     background-position: -200px 0;
@@ -70,12 +64,10 @@
   }
 }
 
-/* Add margin and spacing */
 .skeleton-content {
   flex-grow: 1;
 }
 
-  /*Active News*/
   .news-item {
     display: flex;
     flex-direction: row;
@@ -127,7 +119,6 @@
     color: #777;
   }
   
-  /* Loading indicator styles */
   .loading-indicator {
     text-align: center;
     font-size: 1.2rem;
@@ -135,7 +126,6 @@
     margin: 20px;
   }
 
-  /* Responsive Design */
   @media screen and (max-width: 768px) {
 
     .news-item {

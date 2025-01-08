@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, Output, EventEmitter } from '@angular/core';
 import { NewsService } from '../../../services/news.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { delay } from 'rxjs/operators';
@@ -26,7 +25,6 @@ export class InfiniteNewsComponent implements OnInit  {
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
   constructor(
-    private router: Router,
     private newsService: NewsService,
   ) {}
 
@@ -36,7 +34,7 @@ export class InfiniteNewsComponent implements OnInit  {
 
   fetchPaginatedNews(pageIndex: number = this.pageIndex, pageSize: number = this.pageSize): void {
     if (this.isLoading) {
-      return; // Prevent multiple calls or unnecessary calls after all news is loaded
+      return; 
     }
   
     this.isLoading = true;
@@ -47,14 +45,11 @@ export class InfiniteNewsComponent implements OnInit  {
       next: (response: any) => {
         if (response?.data?.newsContent && Array.isArray(response.data.newsContent)) {
           
-          // Append new data for infinite scroll
           this.newsList = [...this.newsList, ...response.data.newsContent];
-          this.pageIndex++; // Increment the page index for the next API call
+          this.pageIndex++; 
   
-          // Update total news count
           this.totalNewsCount = response.data.totalCount || 0;
   
-          // Check if all news are loaded
           if (this.newsList.length >= this.totalNewsCount) {
             this.isLoading = false;
           }
@@ -75,12 +70,10 @@ export class InfiniteNewsComponent implements OnInit  {
 
   @HostListener('window:scroll', [])
   onScroll(): void {
-    if (this.isLoading) return;  // Prevent trigger while loading
+    if (this.isLoading) return;  
   
-    // Use a buffer threshold, for example 80% of the page height
     const threshold = document.body.scrollHeight;
     if ((window.innerHeight + window.scrollY) >= threshold) {
-      // Trigger data load
       this.fetchPaginatedNews();
     }
   }

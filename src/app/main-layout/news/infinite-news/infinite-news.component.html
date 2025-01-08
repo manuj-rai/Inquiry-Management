@@ -1,16 +1,16 @@
 <h2>Latest News</h2>
 <div class="news-items">
-<!-- Skeleton loader for news item -->
-<div *ngIf="isLoading; else newsListContent">
+  <!-- Skeleton loader for news item -->
+  <div *ngIf="isLoading; else newsListContent">
     <div *ngFor="let _ of [1,2,3,4,5]" class="skeleton-item">
       <div class="skeleton-image skeleton-loader"></div>
-      <div class="skeleton-content">
-        <div class="skeleton-title skeleton-loader"></div>
-        <div class="skeleton-text skeleton-loader"></div>
-        <div class="skeleton-text skeleton-loader"></div>
-        <div class="skeleton-text skeleton-loader"></div>
-        <div class="skeleton-tag skeleton-loader"></div>
-      </div>
+        <div class="skeleton-content">
+          <div class="skeleton-title skeleton-loader"></div>
+          <div class="skeleton-text skeleton-loader"></div>
+          <div class="skeleton-text skeleton-loader"></div>
+          <div class="skeleton-text skeleton-loader"></div>
+          <div class="skeleton-tag skeleton-loader"></div>
+        </div>
     </div>
   </div>
 

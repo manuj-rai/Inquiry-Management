@@ -14,8 +14,8 @@ export class NewsCategoriesComponent implements OnInit {
   tags: any[] = [];
   selectedTag: string = '';  
   newsList: any[] = [];  
-  isLoading: boolean = true; // Set this to false when the tags are loaded
-  skeletonTags: number[] = Array(6).fill(0); // Number of placeholder tags    
+  isLoading: boolean = true; 
+  skeletonTags: number[] = Array(6).fill(0);   
 
   constructor(private newsService: NewsService) {}
 
@@ -25,19 +25,16 @@ export class NewsCategoriesComponent implements OnInit {
   }, 1000);
   }
 
-  // Fetch all tags
-fetchAllTags(): void {
-  this.newsService.getAllTags().subscribe({
-    next: (response: any) => {
-      this.tags = response.data;  // Assuming response has a 'data' property containing the tags
-      this.isLoading = false;
-    },
-    error: (err) => console.error('Error fetching tags:', err)
-  });
-}
+  fetchAllTags(): void {
+    this.newsService.getAllTags().subscribe({
+      next: (response: any) => {
+        this.tags = response.data;  
+        this.isLoading = false;
+      },
+      error: (err) => console.error('Error fetching tags:', err)
+    });
+  }
 
-
-    // Fetch news based on the selected tag
   fetchNewsByTag(tagName: string): void {
     this.selectedTag = tagName;
     this.newsService.getNewsByTag(tagName).subscribe({
@@ -48,8 +45,7 @@ fetchAllTags(): void {
     });
   }
   
-// Emit selected tag to parent component
-selectTag(tagName: string): void {
-  this.selectedTagEvent.emit(tagName);  // Emit the selected tag
-}
+  selectTag(tagName: string): void {
+    this.selectedTagEvent.emit(tagName);  
+  }
 }

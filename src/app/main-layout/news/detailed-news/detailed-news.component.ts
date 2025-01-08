@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @Component({
@@ -18,7 +18,6 @@ export class DetailedNewsComponent implements OnInit {
   baseImageUrl = 'http://www.local.com/NewsPortal/';
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router
   ) {
     // Retrieve the passed news data from state
