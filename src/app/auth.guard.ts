@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     const isAdminRoute = route.data['isAdmin'] || false;
 
     if (!isLoggedIn) {
-      this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
+      this.router.navigate(['/login'], { queryParams: { message: 'Unauthorized access' } });
       return false;
     }
 

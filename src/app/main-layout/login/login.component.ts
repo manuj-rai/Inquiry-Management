@@ -6,14 +6,13 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
-
 import { MatDialog } from '@angular/material/dialog';
 import { ForgetPasswordDialogComponent } from './reset-password/forget-password-dialog/forget-password-dialog.component';
-
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { OtpVerificationDialogComponent } from './reset-password/otp-verification-dialog/otp-verification-dialog.component';
 import { SetNewPasswordDialogComponent } from './reset-password/set-new-password-dialog/set-new-password-dialog.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 @Component({
@@ -67,6 +66,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate([redirectUrl]).then(() => {
               if (redirectUrl === '/login') {
                 window.location.reload(); 
+              } else {
+                this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
               }
             });
             this.notificationService.showNotification('Welcome Back!',  {
@@ -74,7 +75,6 @@ export class LoginComponent implements OnInit {
               icon: 'assets/images/welcome.png',
               requireInteraction: true
             });
-            this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
 
           } else {
             this.alertService.error(response.message || 'Login failed. Please try again.');
@@ -119,6 +119,10 @@ export class LoginComponent implements OnInit {
   
   alert() {
     this.alertService.warning("The service is currently unavailable. Please try logging in using an alternative method.")
+  }
+
+  openSignupDialog() {
+    this.dialog.open(SignUpComponent);
   }
 
   signupAlert() {

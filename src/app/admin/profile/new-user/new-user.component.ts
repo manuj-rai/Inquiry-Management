@@ -58,7 +58,7 @@ export class NewUserComponent {
 
   
         
-          this.http.post('https://localhost:7158/register', formData)
+      this.http.post('https://localhost:7158/register', formData)
           .subscribe({
             next: (response) => this.alertService.success('User registered successfully!'),
             error: (error) => console.error('Error:', error)
