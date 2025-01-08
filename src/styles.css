@@ -108,4 +108,8 @@ body {
       width: 90%;
       margin: 0 auto;
     }
+
+    .mat-mdc-dialog-surface {
+      padding: 0 !important;
+    }
   }

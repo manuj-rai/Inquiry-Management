@@ -85,5 +85,9 @@
         max-width: 100%;
         padding: 8px;
     }
+
+    .tag-list {
+      gap: 10px;
+    }
   }
   
