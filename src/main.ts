@@ -8,12 +8,10 @@ import { AppComponent } from './app/app.component';
 import { appConfig } from './app/app.config';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-// Factory function for loading translation files
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-// Bootstrap the application with translation module configured
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
@@ -26,7 +24,7 @@ bootstrapApplication(AppComponent, {
         },
       })
     ),
-    ...appConfig.providers, provideAnimationsAsync(), provideAnimationsAsync(),  // Include additional providers from appConfig
+    ...appConfig.providers, provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 })
   .catch((err) => console.error(err));

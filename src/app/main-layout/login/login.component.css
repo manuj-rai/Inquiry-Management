@@ -160,13 +160,11 @@ p{
   }
   
 
-/* From Uiverse.io by lenin55 */ 
 .cl-checkbox {
   position: relative;
   display: inline-block;
  }
  
- /* Input */
  .cl-checkbox > input {
   appearance: none;
   -moz-appearance: none;
@@ -189,7 +187,6 @@ p{
   transition: opacity 0.3s, transform 0.2s;
  }
  
- /* Span */
  .cl-checkbox > span {
   display: flex;
   align-items: center;
@@ -197,14 +194,12 @@ p{
   cursor: pointer;
  }
  
- /* Box */
  .cl-checkbox > span::before {
   content: "";
   display: inline-block;
   box-sizing: border-box;
   margin: 3px 11px 3px 1px;
   border: solid 2px;
-  /* Safari */
   border-color: #161a2f;
   border-radius: 2px;
   width: 16px;
@@ -213,7 +208,6 @@ p{
   transition: border-color 0.2s, background-color 0.2s;
  }
  
- /* Checkmark */
  .cl-checkbox > span::after {
   content: "";
   display: block;
@@ -228,7 +222,6 @@ p{
   transform: translate(3px, 4px) rotate(-45deg);
  }
  
- /* Checked, Indeterminate */
  .cl-checkbox > input:checked,
  .cl-checkbox > input:indeterminate {
   background-color: #598bff;
@@ -250,7 +243,6 @@ p{
   transform: translate(4px, 3px);
  }
  
- /* Hover, Focus */
  .cl-checkbox:hover > input {
   opacity: 0.04;
  }
@@ -263,7 +255,6 @@ p{
   opacity: 0.16;
  }
  
- /* Active */
  .cl-checkbox > input:active {
   opacity: 1;
   transform: scale(0);
@@ -279,7 +270,6 @@ p{
   background-color: rgba(0, 0, 0, 0.6);
  }
  
- /* Disabled */
  .cl-checkbox > input:disabled {
   opacity: 0;
  }
@@ -506,7 +496,6 @@ p{
     }
   }
   
-  /* Slide-in from the right */
   @keyframes slideInFromRight {
     from {
       opacity: 0;

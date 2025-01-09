@@ -28,25 +28,7 @@
   <app-weather style="width: 48%;"></app-weather>
 </div> 
 
-<!-- New Users Section -->
-<div class="new-users">
-  <h2>New Users</h2>
-  <div class="user-list">
-    <!-- Loop through users array and display each user -->
-    <div class="user" *ngFor="let user of users">
-      <img [lazyLoad]="getProfilePictureUrl(user)" [defaultImage]="'/assets/images/profile-placeholder.jpg'" alt="User Profile">
-      <h5>{{ user.name }}</h5>
-      <p>{{ getTimeAgo(user.createdDate) }}</p>
-    </div>
-    <div class="user" *ngIf="users.length < 6">
-      <a href="admin/profile" class="more-link">
-      <img src="assets/images/plus.png" alt="More">
-      <h5>More</h5>
-      <p>New User</p>
-      </a>
-    </div>
-  </div>
-</div>
+<app-user-list></app-user-list>
 
 <header>Inquiry Table</header>
 <div class="table-container">

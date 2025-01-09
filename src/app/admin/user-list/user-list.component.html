@@ -1,0 +1,43 @@
+
+<!-- New Users Section -->
+<div class="new-users">
+    <h2>New Users</h2>
+    <div class="users-list">
+        <button class="pagination-btn prev-btn"  
+            (click)="changePage(currentPage - 1)" 
+            [disabled]="currentPage === 1">
+            <span class="arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i></span>
+        </button>
+        <div class="user-list">
+            <!-- Loop through users array and display each user -->
+            <div class="user" *ngFor="let user of users">
+                <div class="profile-container">
+                    <img [lazyLoad]="getProfilePictureUrl(user)" [defaultImage]="'/assets/images/profile-placeholder.jpg'" alt="User Profile">
+                    <span *ngIf="user.isAdmin" 
+                        (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
+                        class="admin-badge">Admin
+                    </span>
+                    <span *ngIf="!user.isAdmin" 
+                        (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
+                        class="notadmin-badge">!Admin
+                    </span>               
+                </div>
+                <h5>{{ user.name }}</h5>
+                <p>{{ getTimeAgo(user.createdDate) }}</p>
+            </div>
+            <div class="user" *ngIf="users.length < 6">
+                <a href="admin/profile" class="more-link">
+                <img src="assets/images/plus.png" alt="More">
+                <h5>More</h5>
+                <p>New User</p>
+                </a>
+            </div>
+        </div>
+        <button class="pagination-btn next-btn"
+            (click)="changePage(currentPage + 1)" 
+            [disabled]="users.length < pageSize">
+            <span class="arrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>
+        </button>
+    </div>
+</div>
+  

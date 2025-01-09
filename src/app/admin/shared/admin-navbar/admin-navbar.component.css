@@ -165,6 +165,10 @@
     .dropdown-menu {
       top: 35px;
     }
+
+    .home-link{
+      display: none;
+    }
   }
   
   @media (max-width: 480px) {

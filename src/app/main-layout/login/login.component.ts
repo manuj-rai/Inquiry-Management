@@ -22,6 +22,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
   styleUrls: ['./login.component.css'],
   imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatDialogModule],
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   passwordFieldType: string = 'password';
@@ -34,10 +35,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    // Initialize the form group
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],  // field with validation
-      password: ['', [Validators.required, Validators.minLength(4)]],  // Password with min length
+      username: ['', [Validators.required, Validators.minLength(4)]],  
+      password: ['', [Validators.required, Validators.minLength(4)]],  
     });
   }
 
@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
-  // Submit the login form
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
@@ -61,7 +60,7 @@ export class LoginComponent implements OnInit {
         next: (response: any) => {
           if (response.isAuthenticated) {
             const redirectUrl = response.isAdmin ? 'admin/profile' : '/login';
-            console.log('Is Admin:', response.isAdmin); // Logs isAdmin status
+            console.log('Is Admin:', response.isAdmin); 
             console.log('Redirecting to:', redirectUrl);
             this.router.navigate([redirectUrl]).then(() => {
               if (redirectUrl === '/login') {
@@ -91,8 +90,6 @@ export class LoginComponent implements OnInit {
     }
   }
   
-  
-
   openForgetPasswordDialog() {
     const forgetDialog = this.dialog.open(ForgetPasswordDialogComponent, {
       width: '500px',

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InquiryService } from '../../services/inquiry.service';
 import { AlertService } from '../../services/alert.service';
 @Component({
@@ -63,24 +63,20 @@ export class ContactComponent implements OnInit {
 
   onSubmit(form: any): void {
     if (form.valid) {
-      // Get the form data
       const formData = form.value;
   
-      // Call the service to submit the data
       this.inquiryService.submitInquiry(formData).subscribe({
         next: (response) => {
-          // Check the status code or response header for success or error
           if (response && response.header?.statusCode === 100) {
             console.log('Inquiry submitted successfully', response);
             this.alertService.success('Inquiry submitted successfully!');
-            form.reset(); // Reset the form after successful submission
+            form.reset(); 
           } else {
             console.error('Error in response:', response);
             this.alertService.error(response.header?.desc || 'Failed to submit the inquiry. Please try again.');
           }
         },
         error: (err) => {
-          // Handle HTTP or network errors
           console.error('Error submitting inquiry', err);
           this.alertService.error('An error occurred while submitting the inquiry. Please try again.');
         },
@@ -90,18 +86,14 @@ export class ContactComponent implements OnInit {
     }
   }
   
-  
-
-  // Fetch countries from REST Countries API
   fetchCountries(): void {
-    if (this.countriesFetched) return; // Skip fetching if countries are already loaded
-
+    if (this.countriesFetched) return; 
     this.http.get<any[]>('https://restcountries.com/v3.1/all').subscribe({
       next: (response) => {
         this.countries = response
           .map((country) => country.name.common)
           .sort((a: string, b: string) => a.localeCompare(b));
-        this.countriesFetched = true; // Mark as fetched
+        this.countriesFetched = true; 
       },
       error: (err) => console.error('Error fetching countries:', err)
     });
@@ -110,7 +102,7 @@ export class ContactComponent implements OnInit {
   onCountryChange(country: string): void {
     this.selectedCountry = country;
     this.states = this.countryStateMap[country] || [];
-    this.selectedState = ''; // Reset state when country changes
+    this.selectedState = ''; 
   }
 
   fetchGenderOptions(): void {

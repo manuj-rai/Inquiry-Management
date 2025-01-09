@@ -42,7 +42,6 @@
         </div>
       </div>
 
-      <!-- Remember Me and Forgot Password Section -->
       <div class="form-footer">
         <label class="cl-checkbox">
           <input checked="" type="checkbox" />
@@ -56,34 +55,27 @@
       </button>
     </form>
 
-
     <hr>
-    <!-- Alternative Login Methods -->
     <div class="social-login">
         <button (click)="alert()" class="social-btn google"><i class="fab fa-fw fa-google"></i>Login with Google</button>
         <button (click)="alert()" class="social-btn facebook"><i class="fab fa-fw fa-facebook-f"></i>Login with Facebook</button>
     </div>
 
-    <!-- Sign Up Link -->
     <p class="signup-link">
         Don't have an account? <a style="cursor: pointer;" (click)="openSignupDialog()">Sign Up</a>
     </p>
   </div>
 
-    <!-- Left Side: Additional Content -->
-    <div class="login-side-content">
-      <h1>What Our Users Say</h1>
-      <blockquote>
-        "This platform has revolutionized the way I manage my projects. Highly recommend!"
-      </blockquote>
-      <cite>- Alex Johnson</cite>
-      <h1>New Here?</h1>
-      <p>Sign up now to access exclusive data and seamlessly manage your profile.</p>
-      <a style="cursor: pointer;" (click)="openSignupDialog()" class="btn btn-primary">Create an Account</a>
-      <a href="/about" class="btn btn-secondary">Learn More</a>
-    </div>
-    
+  <div class="login-side-content">
+    <h1>What Our Users Say</h1>
+    <blockquote>
+      "This platform has revolutionized the way I manage my projects. Highly recommend!"
+    </blockquote>
+    <cite>- Alex Johnson</cite>
+    <h1>New Here?</h1>
+    <p>Create an account now to access exclusive data and seamlessly manage your profile.</p>
+    <a style="cursor: pointer;" (click)="openSignupDialog()" class="btn btn-primary">Create an Account</a>
+    <a href="/about" class="btn btn-secondary">Learn More</a>
   </div>
-
-
-  
+    
+</div>

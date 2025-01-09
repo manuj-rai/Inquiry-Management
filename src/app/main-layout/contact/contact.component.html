@@ -39,7 +39,6 @@
           placeholder="Email"
           #email="ngModel"
         />
-        <!-- Validation messages -->
         <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
           <small *ngIf="email.errors?.['required']">Email is required.</small>
           <small *ngIf="email.errors?.['email']">Please enter a valid email address.</small>
@@ -59,7 +58,6 @@
           placeholder="Phone Number"
           #phoneNumber="ngModel"
         />
-        <!-- Validation messages -->
         <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="text-danger">
           <small *ngIf="phoneNumber.errors?.['required']">Phone number is required.</small>
           <small *ngIf="phoneNumber.errors?.['pattern']">Phone number must be exactly 10 digits only numbers.</small>
@@ -111,7 +109,6 @@
       </select>
       </div>
 
-        <!-- State Textbox (shown for other countries) -->
       <div class="col-md-6 form-group" *ngIf="selectedCountry && selectedCountry !== 'India'">
         <input
           type="text"
@@ -181,5 +178,3 @@
   <p><strong>Phone:</strong> +1 234 567 890</p>
   <p><strong>Address:</strong> 123 Main Street, San Francisco, CA</p>
 </div>
-
-  

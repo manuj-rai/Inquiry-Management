@@ -82,6 +82,19 @@ export class AuthService {
     return this.http.get<any[]>(`${this.baseUrl}/recent-users`);
   }
 
+  // Method to get paginated users
+  getPaginatedUsers(pageNumber: number, pageSize: number): Observable<any> {
+    const url = `${this.baseUrl}/GetPaginatedUsers?pageNumber=${pageNumber}&pageSize=${pageSize}`;
+    return this.http.get<any>(url); // Sending GET request to fetch users
+  }
+
+  // Method to update isAdmin status
+  updateIsAdmin(Id: number, isAdmin: boolean): Observable<any> {
+    const url = `${this.baseUrl}/${Id}/isAdmin`;
+    const body = { isAdmin }; // Request body containing isAdmin value
+    return this.http.put<any>(url, body); // Sending PUT request
+  }
+
   // Method to update user details
   updateUserDetails(formData: FormData): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/UpdateUserDetails`, formData);

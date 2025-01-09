@@ -126,9 +126,9 @@ span {
 .user-list{
     margin-top: 1rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 1.4rem;
+    gap: 1rem;
     transition: all 0.3s ease;
 }
 

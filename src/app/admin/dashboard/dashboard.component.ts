@@ -9,11 +9,12 @@ import Swal from 'sweetalert2';
 import { TodoComponent } from "../../Reusables/todo";
 import { WeatherAppComponent } from '../../Reusables/ModernWeather';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { UserListComponent } from "../user-list/user-list.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, TodoComponent, WeatherAppComponent, LazyLoadImageModule],
+  imports: [CommonModule, FormsModule, TodoComponent, WeatherAppComponent, LazyLoadImageModule, UserListComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -162,7 +163,6 @@ export class DashboardComponent implements OnInit {
       next: (response) => {
         if (response?.header?.statusCode === 100 && Array.isArray(response.data)) {
           this.countries = response.data;
-          console.log('Countries:', this.countries);
         } else {
           console.error('Failed to fetch countries:', response?.header?.desc || 'Unknown error');
         }
@@ -193,8 +193,6 @@ export class DashboardComponent implements OnInit {
         if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
           this.users = response.data;  // Store the API response data in users array
           this.totalUsers = response.data[0].totalUsers;  // Extract totalUsers from the first item
-          console.log(this.users);  // Log the users data
-          console.log('Total Users:', this.totalUsers);  // Log the totalUsers
         } else {
           console.warn('No users found in the response.');
         }
