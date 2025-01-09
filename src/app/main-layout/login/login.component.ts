@@ -43,7 +43,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
-      const redirectUrl = this.authService.isAdmin() ? '/admin/dashboard' : '/profile';
+      const role = this.authService.getRole(); 
+      let redirectUrl: string;
+
+      if (role === 21) {
+        redirectUrl = '/admin/dashboard';  
+      } else if (role === 20) {
+        redirectUrl = '/profile';  
+      } else {
+        redirectUrl = '/login';  
+      }
       this.router.navigate([redirectUrl]);
     }
   }
@@ -59,32 +68,37 @@ export class LoginComponent implements OnInit {
       this.authService.login(username, password).subscribe({
         next: (response: any) => {
           if (response.isAuthenticated) {
-            const redirectUrl = response.isAdmin ? 'admin/profile' : '/login';
-            console.log('Is Admin:', response.isAdmin); 
-            console.log('Redirecting to:', redirectUrl);
-            this.router.navigate([redirectUrl]).then(() => {
-              if (redirectUrl === '/login') {
-                window.location.reload(); 
-              } else {
-                this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
-              }
-            });
+            const role = response.role;
+            let redirectUrl: string;
+            if (role === 21) {
+              // Redirect to admin profile
+              this.router.navigate(['admin/profile'])
+              this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
+            } else if (role === 21) {
+              // Redirect to admin profile
+              this.router.navigate(['admin/profile'])
+              this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");
+            } else if (role === 20) {
+              window.location.reload();
+            } else {
+              // Default or error handling
+              redirectUrl = '/login';
+              console.log('Redirecting to login or handling invalid role');
+            }
+            console.log('User Role:', role);
             this.notificationService.showNotification('Welcome Back!',  {
               body: 'You have been LoggedIn Successfully!',
               icon: 'assets/images/welcome.png',
               requireInteraction: true
             });
-
           } else {
             this.alertService.error(response.message || 'Login failed. Please try again.');
           }
-        },
-        
+        }, 
         error: (err) => {
           this.alertService.error(err.message || 'An unexpected error occurred.');
         }
       });
-
     } else {
       this.alertService.error('Please fill out all required fields correctly.');
     }

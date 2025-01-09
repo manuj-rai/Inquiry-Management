@@ -33,7 +33,7 @@ export class AuthService {
           return { 
             isAuthenticated: true, 
             token: response.data.token, 
-            isAdmin: response.data.isAdmin };
+            role: response.data.role };
         } 
         // Handle invalid login (statusCode 401)
         if (response?.header?.statusCode === 401) {
@@ -66,9 +66,14 @@ export class AuthService {
     return !!token; // Return true if token exists, otherwise false
   }
 
-  isAdmin(): boolean {
+  getRole(): number {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user.isAdmin || false;
+    return user.role || 0;
+  }
+
+  hasRole(requiredRole: number): boolean {
+    const userRole = this.getRole();
+    return userRole >= requiredRole; // Check if user's role meets or exceeds the required role
   }
 
   getUserDetails(username: string): Observable<any> {

@@ -13,16 +13,22 @@
             <div class="user" *ngFor="let user of users">
                 <div class="profile-container">
                     <img [lazyLoad]="getProfilePictureUrl(user)" [defaultImage]="'/assets/images/profile-placeholder.jpg'" alt="User Profile">
-                    <span *ngIf="user.isAdmin" 
-                        (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
-                        class="admin-badge">Admin
+                    <span 
+                        class="active-user" 
+                        *ngIf="user.role === activeUser.role">
+                        Active
                     </span>
-                    <span *ngIf="!user.isAdmin" 
-                        (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
-                        class="notadmin-badge">!Admin
-                    </span>               
+                    <span *ngIf="activeUser?.role === 22">
+                        <span *ngIf="user.role === 21" 
+                            (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
+                            class="admin-badge">Admin</span>
+                        <span *ngIf="user.role === 20" 
+                            (click)="updateIsAdmin(user.userID, !user.isAdmin)" 
+                            class="user-badge">User</span> 
+                    </span>              
                 </div>
-                <h5>{{ user.name }}</h5>
+                <h5>{{ user.name }} <span *ngIf="user.isAdmin" class="material-icons">verified</span>
+                </h5>
                 <p>{{ getTimeAgo(user.createdDate) }}</p>
             </div>
             <div class="user" *ngIf="users.length < 6">

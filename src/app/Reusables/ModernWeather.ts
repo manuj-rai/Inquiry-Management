@@ -272,6 +272,15 @@ import { FormsModule } from '@angular/forms';
       .front {
         margin: 0;
       }
+
+      @media (max-width:768px) {
+        .temp {
+        font-size: 40px;
+        }
+        .container {
+          top: -25px;
+        }
+      }
       `]
   })
   

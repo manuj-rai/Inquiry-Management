@@ -39,6 +39,18 @@ p {
     border-bottom: 1px solid #101426;
   }
 
+  .profile-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .material-icons {
+    font-size: 20px;
+    margin-left: 10px;
+    color: #36f;
+  }
+
   .profile-pic-container {
     position: relative;
     display: inline-block;

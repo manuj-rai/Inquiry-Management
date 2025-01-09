@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './user-list.component.css'
 })
 export class UserListComponent implements OnInit {
-
+  activeUser: any;
   users: any[] = [];  // Array to hold paginated users
   currentPage: number = 1; // Current page
   pageSize: number = 5; // Number of users per page
@@ -25,12 +25,22 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers(); // Fetch the first page of users
+    const activeUser = JSON.parse(localStorage.getItem('user') || '{}');
+    const role = activeUser?.role; // Access the role from the user object
+    this.activeUser = activeUser;
+  
+    // Check if the role is 22 and perform some action
+    if (role === 22) {
+      console.log('User has role 22');
+      // You can show/hide elements or handle other logic based on this role
+    }
   }
 
   getUsers(): void {
     this.authService.getPaginatedUsers(this.currentPage, this.pageSize).subscribe(
       (response) => {
         this.users = response.data; 
+        console.log(this.users);
       },
       (error) => {
         this.message = `Error fetching users: ${error.error.header.desc}`;

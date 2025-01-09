@@ -11,15 +11,15 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const isLoggedIn = this.authService.isLoggedIn();
-    const isAdminRoute = route.data['isAdmin'] || false;
+    const requiredRole  = route.data['requiredRole'] || 20;
 
     if (!isLoggedIn) {
       this.router.navigate(['/login'], { queryParams: { message: 'Unauthorized access' } });
       return false;
     }  
 
-    if (isAdminRoute && !this.authService.isAdmin()) {
-      this.router.navigate(['/error'], { queryParams: { message: 'Unauthorized access' } });
+    if (requiredRole && !this.authService.hasRole(requiredRole)) {
+      this.router.navigate(['/error'], { queryParams: { message: 'Insufficient permissions' } });
       return false;
     }
     

@@ -46,6 +46,16 @@
     display: inline-block;
 }
 
+h5 {
+    align-items: center;
+}
+
+h5 .material-icons {
+    font-size: 16px;
+    margin-left: 5px;
+    color: #36f;
+}
+
 .user-list .user img{
     width: 5rem;
     height: 5rem;
@@ -56,6 +66,20 @@
 
 .material-icons {
     font-size: 15px;
+}
+
+.active-user {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 1;
+    cursor: pointer;
 }
 
 .admin-badge {
@@ -72,7 +96,7 @@
     cursor: pointer;
 }
 
-.notadmin-badge {
+.user-badge {
     position: absolute;
     top: 0;
     right: 0;
@@ -141,6 +165,13 @@ i.fa.fa-arrow-left {
 
 .pagination-btn:not([disabled]):hover {
     transform: scale(1.1);
+}
+
+@media (max-width:768px) {
+    .user-list {
+        justify-content: space-evenly;
+    }
+    
 }
   
   
