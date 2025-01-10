@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
           if (response.isAuthenticated) {
             const role = response.role;
             let redirectUrl: string;
-            if (role === 21) {
+            if (role === 22) {
               // Redirect to admin profile
               this.router.navigate(['admin/profile'])
               this.alertService.success("Welcome Back! You have been LoggedIn Successfully!");

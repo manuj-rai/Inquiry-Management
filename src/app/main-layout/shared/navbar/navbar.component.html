@@ -1,49 +1,53 @@
 <nav class="navbar">
-    <!-- Logo -->
-    <div class="navbar-logo">
-      <img src="https://static.fibre2fashion.com/f2flogo/f2flogo-white.svg" alt="Logo">
-      <span></span>
-      <!-- Language Dropdown -->
-      <select (change)="switchLanguage($event)" [value]="currentLanguage">
-        <option value="en">English</option>
-        <option value="fr">Français</option>
-      </select>
-    </div>
+  <!-- Logo -->
+  <div class="navbar-logo">
+    <img src="https://static.fibre2fashion.com/f2flogo/f2flogo-white.svg" alt="Logo">
+    <span></span>
+    <!-- Language Dropdown -->
+    <select (change)="switchLanguage($event)" [value]="currentLanguage">
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+    </select>
+  </div>
 
-    <!-- Hamburger Menu -->
-    <div class="navbar-toggle" (click)="toggleMenu()">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </div>
-  
-    <!-- Navigation Links -->
-    <ul class="navbar-links" [class.active]="menuOpen">
-      <li [class.active]="isActive('home')"><a href="home">{{ 'HOME' | translate }}</a></li>
-      <li [class.active]="isActive('news')"><a href="news">{{ 'NEWS' | translate }}</a></li>
-      <li [class.active]="isActive('contact')"><a href="contact">{{ 'CONTACT' | translate }}</a></li>
-      <li [class.active]="isActive('about')"><a href="about">{{ 'ABOUT' | translate }}</a></li>
+  <!-- Hamburger Menu -->
+  <div class="navbar-toggle" (click)="toggleMenu()">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
 
-      <!-- Conditionally show Profile or Login based on user login status -->
-      <div class="navbar-login" *ngIf="isLoggedIn;">
-        <div class="profile-dropdown">
-          <div class="dropdown-btn">{{ userDetails?.name }}</div>  
-          <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
-          <div class="dropdown-content">
-            <div *ngIf="userDetails.role === 21 || userDetails.role === 22">
-              <a href="/admin/dashboard"><span class="material-icons">dashboard</span>Dashboard</a>
-            </div>
-            <a [routerLink]="userDetails.role === 21 || userDetails.role === 22 ? '/admin/profile' : '/profile'"><span class="material-icons">account_circle</span>Profile</a>
-            <a [routerLink]="userDetails.role === 20 ? '/admin/profile' : '/profile'"><span class="material-icons">settings</span>Settings</a>
-            <a (click)="logout()"><span class="material-icons">logout</span>Logout</a>
+  <!-- Navigation Links -->
+  <ul class="navbar-links" [class.active]="menuOpen">
+    <li [class.active]="isActive('home')"><a href="home">{{ 'HOME' | translate }}</a></li>
+    <li [class.active]="isActive('news')"><a href="news">{{ 'NEWS' | translate }}</a></li>
+    <li [class.active]="isActive('contact')"><a href="contact">{{ 'CONTACT' | translate }}</a></li>
+    <li [class.active]="isActive('about')"><a href="about">{{ 'ABOUT' | translate }}</a></li>
+
+    <!-- Conditionally show Profile or Login based on user login status -->
+    <div class="navbar-login" *ngIf="isLoggedIn;">
+      <div class="profile-dropdown">
+        <div class="dropdown-btn">{{ userDetails?.name }}</div>  
+        <img *ngIf="userDetails?.profilePicture" [lazyLoad]="getProfilePictureUrl()" [defaultImage]="'/assets/images/profile-placeholder.jpg'"  alt="Profile" class="profile-img">
+        <div class="dropdown-content">
+          <div *ngIf="userDetails.role === 21 || userDetails.role === 22">
+            <a href="/admin/dashboard"><span class="material-icons">dashboard</span>Dashboard</a>
           </div>
-        </div>      
-      </div>
-      <div class="navbar-login" *ngIf="!isLoggedIn">
-        <a href="login" [class.active]="isActive('login')">{{ 'LOGIN' | translate }}</a>
-      </div>
-    </ul>
-
-  </nav>
+          <a [routerLink]="userDetails?.role === 21 || userDetails?.role === 22 ? '/admin/profile' : '/profile'">
+            <span class="material-icons">account_circle</span>Profile
+          </a>
+          <a [routerLink]="userDetails?.role === 20 ? '/profile' : '/admin/profile'">
+            <span class="material-icons">settings</span>Settings
+          </a>
+          <a (click)="logout()"><span class="material-icons">logout</span>Logout</a>
+        </div>
+      </div>      
+    </div>
+    <div class="navbar-login" *ngIf="!isLoggedIn">
+      <a href="login" [class.active]="isActive('login')">{{ 'LOGIN' | translate }}</a>
+    </div>
+  </ul>
+  
+</nav>
   
 

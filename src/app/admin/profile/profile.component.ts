@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit{
             next: (response) => { 
               if (response?.data) {
                 this.userDetails = response.data; 
-                console.log('User details fetched:', this.userDetails);
               } else {
                 console.warn('User details are missing in the response:', response);
               }

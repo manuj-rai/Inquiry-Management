@@ -28,19 +28,13 @@ export class UserListComponent implements OnInit {
     const activeUser = JSON.parse(localStorage.getItem('user') || '{}');
     const role = activeUser?.role; // Access the role from the user object
     this.activeUser = activeUser;
-  
-    // Check if the role is 22 and perform some action
-    if (role === 22) {
-      console.log('User has role 22');
-      // You can show/hide elements or handle other logic based on this role
-    }
+
   }
 
   getUsers(): void {
     this.authService.getPaginatedUsers(this.currentPage, this.pageSize).subscribe(
       (response) => {
         this.users = response.data; 
-        console.log(this.users);
       },
       (error) => {
         this.message = `Error fetching users: ${error.error.header.desc}`;
