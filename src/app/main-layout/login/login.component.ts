@@ -46,8 +46,10 @@ export class LoginComponent implements OnInit {
       const role = this.authService.getRole(); 
       let redirectUrl: string;
 
-      if (role === 21) {
-        redirectUrl = '/admin/dashboard';  
+      if (role === 22) {
+        redirectUrl = '/admin/profile'; 
+      } else if (role === 21) {
+        redirectUrl = '/admin/profile';  
       } else if (role === 20) {
         redirectUrl = '/profile';  
       } else {

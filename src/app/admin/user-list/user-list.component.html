@@ -32,7 +32,7 @@
                 <p>{{ getTimeAgo(user.createdDate) }}</p>
             </div>
             <div class="user" *ngIf="users.length < 6">
-                <a href="admin/profile" class="more-link">
+                <a (click)="openSignupDialog()" class="more-link">
                 <img src="assets/images/plus.png" alt="More">
                 <h5>More</h5>
                 <p>New User</p>

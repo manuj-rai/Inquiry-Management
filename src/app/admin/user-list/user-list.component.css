@@ -39,6 +39,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    flex: 1;
 }
 
 .profile-container {
@@ -131,6 +132,10 @@ h5 .material-icons {
   
 .user-list .user a:hover {
     text-decoration: none; 
+}
+
+.more-link {
+    cursor: pointer;
 }
 
 .pagination-btn {

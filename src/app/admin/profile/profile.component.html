@@ -52,7 +52,9 @@
             <!-- Name field -->
             <h2 class="profile-name">
               <span *ngIf="!isEditing">{{ userDetails.name }}</span>
-              <span *ngIf="userDetails.role === 21 || userDetails.role === 22" class="material-icons">verified</span>
+              <span *ngIf="!isEditing">
+                <span *ngIf="userDetails.role === 21 || userDetails.role === 22" class="material-icons">verified</span>
+              </span>
               <input
                 *ngIf="isEditing"
                 type="text"

@@ -3,6 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { FormsModule } from '@angular/forms';
+import { SignUpComponent } from '../../main-layout/login/sign-up/sign-up.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -21,7 +23,7 @@ export class UserListComponent implements OnInit {
 
   baseImageUrl: string = 'http://www.local.com/InquiryManagement/';
 
-  constructor(private authService: AuthService) { }
+  constructor(private dialog: MatDialog, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getUsers(); // Fetch the first page of users
@@ -94,4 +96,7 @@ export class UserListComponent implements OnInit {
     this.getUsers(); // Fetch users for the new page
   }
 
+  openSignupDialog() {
+    this.dialog.open(SignUpComponent);
+  }
 }

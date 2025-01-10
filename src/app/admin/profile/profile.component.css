@@ -43,12 +43,14 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 15px 5px;
   }
 
   .material-icons {
     font-size: 20px;
     margin-left: 10px;
     color: #36f;
+    display: flex;
   }
 
   .profile-pic-container {
@@ -99,12 +101,6 @@ p {
     margin: 0px;
   }
   
-  .profile-name {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff;
-  }
-
   .profile-email,
   .profile-tel,
   .profile-username {
@@ -250,6 +246,11 @@ p {
         width: 100%;
         margin-bottom: 10px;
     }
+
+    .form-control {
+      width: 90%;
+    }
+
     .none {
         margin: 0;
         width: 94%;
