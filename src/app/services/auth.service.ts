@@ -28,8 +28,10 @@ export class AuthService {
         // Check for successful login (statusCode 100)
         if (response?.header?.statusCode === 100 && response.data?.isAuthenticated) {
           this.isLoggedInSubject.next(true);
+          if (typeof window !== 'undefined' && localStorage) {
           localStorage.setItem('authToken', response.data.token);
           localStorage.setItem('user', JSON.stringify(response.data));
+          }
           return { 
             isAuthenticated: true, 
             token: response.data.token, 

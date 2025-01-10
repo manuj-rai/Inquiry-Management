@@ -11,7 +11,7 @@
     font-size: .9375rem;
     font-weight: 400;
     position: sticky; 
-    top: 45px; 
+    top: 40px; 
     z-index: 998; 
   }
   
@@ -71,11 +71,13 @@
   @media (max-width: 768px){
     .sidebar {
       width: 130px;
+      position: absolute;
     }
 
     .hidden {
-        width: 40px;
+      width: 40px;
       padding: 0px;
+      position: sticky;
     }
   }
   
