@@ -13,7 +13,10 @@ export class AuthService {
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   private checkLoginStatus(): boolean {
-    return !!localStorage.getItem('authToken'); // Or any other condition
+    if (typeof window !== 'undefined' && localStorage) {
+      return !!localStorage.getItem('authToken');
+    }
+    return false; // Default to logged out if not in a browser environment
   }
 
   private baseUrl = environment.apiBaseUrl;
@@ -64,9 +67,13 @@ export class AuthService {
   }
   
   isLoggedIn(): boolean {
-    const token = localStorage.getItem('authToken');
-    return !!token; // Return true if token exists, otherwise false
+    if (typeof window !== 'undefined' && localStorage) {
+      const token = localStorage.getItem('authToken');
+      return !!token;
+    }
+    return false; // Assume logged out if not in a browser environment
   }
+  
 
   getRole(): number {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
