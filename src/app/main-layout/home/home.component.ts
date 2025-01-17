@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { AlertService } from '../../services/alert.service';
 import { NotificationService } from '../../services/notification.service';
 import { TranslationService } from '../../services/translate.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService  } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit {
   currentLanguage: string = 'en';
 
   constructor(
+    private translate : TranslateService,
     private notificationService: NotificationService,
     private alertService : AlertService
   ){
     this.translationService.initLanguage();
     this.currentLanguage = this.translationService.getCurrentLanguage();
+    this.translate.use('en');
   }
 
   ngOnInit(): void {
