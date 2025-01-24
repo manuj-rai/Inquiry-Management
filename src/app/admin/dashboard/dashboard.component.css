@@ -28,14 +28,13 @@ p {
     animation: fadeIn 1s ease-in-out;
 }
 
-
 .progress-circle {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     background: conic-gradient(
-        #4caf50 0% 75%,  /* Filled portion (green) */
-        #e0e0e0 75% 100%  /* Unfilled portion (grey) */
+        #4caf50 0% 75%,  
+        #e0e0e0 75% 100%  
       );
     position: relative;
     margin: 10px 0;
