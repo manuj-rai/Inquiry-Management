@@ -1,1 +1,1 @@
-[![Inquiry Management Preview](/assets/images/project-2.png)](https://inquiry-management-rho.vercel.app/)
+[![Inquiry Management Preview](/src/assets/images/project-2.png)](https://inquiry-management-rho.vercel.app/)
